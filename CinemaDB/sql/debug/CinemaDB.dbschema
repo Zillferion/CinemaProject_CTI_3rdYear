@@ -1,0 +1,1837 @@
+<?xml version="1.0" encoding="utf-8"?>
+<DataSchemaModel FileFormatVersion="1.2" SchemaVersion="1.1" DspName="Microsoft.Data.Schema.Sql.Sql100DatabaseSchemaProvider" CollationLcid="1033" CollationCaseSensitive="False">
+	<Header>
+		<CustomData Category="ModelCapability">
+			<Metadata Name="ModelCapability" Value="Default" />
+		</CustomData>
+		<CustomData Category="ClrTypesDbSchema" Type="DbSchema">
+			<Metadata Name="ClrTypesDbSchema" Value="True" />
+		</CustomData>
+		<CustomData Category="AnsiNulls">
+			<Metadata Name="AnsiNulls" Value="True" />
+		</CustomData>
+		<CustomData Category="QuotedIdentifier">
+			<Metadata Name="QuotedIdentifier" Value="True" />
+		</CustomData>
+		<CustomData Category="CompatibilityMode">
+			<Metadata Name="CompatibilityMode" Value="100" />
+		</CustomData>
+		<CustomData Category="Permissions" Type="XmlPermissions">
+			<Metadata Name="FileName" Value="C:\USERS\CHASSO\DESKTOP\CTI YEAR 3 SEMESTER 1 PROJECT\PROJECTCINEMA\CINEMA\CINEMADB\PROPERTIES\DATABASE.SQLPERMISSIONS" />
+		</CustomData>
+	</Header>
+	<Model>
+		<Element Type="ISql100DatabaseOptions">
+			<Property Name="Collation" Value="SQL_Latin1_General_CP1_CI_AS" />
+			<Property Name="IsAnsiNullDefaultOn" Value="True" />
+			<Property Name="IsAnsiNullsOn" Value="True" />
+			<Property Name="IsAnsiWarningsOn" Value="True" />
+			<Property Name="IsArithAbortOn" Value="True" />
+			<Property Name="IsConcatNullYieldsNullOn" Value="True" />
+			<Property Name="IsTornPageProtectionOn" Value="False" />
+			<Property Name="IsFullTextEnabled" Value="True" />
+			<Property Name="PageVerifyMode" Value="3" />
+			<Relationship Name="DefaultFilegroup">
+				<Entry>
+					<References ExternalSource="BuiltIns" Name="[PRIMARY]" />
+				</Entry>
+			</Relationship>
+		</Element>
+		<Element Type="ISql100PrimaryKeyConstraint">
+			<Relationship Name="ColumnSpecifications">
+				<Entry>
+					<Element Type="ISqlIndexedColumnSpecification">
+						<Relationship Name="Column">
+							<Entry>
+								<References Name="[dbo].[tblMovies].[MovieId]" />
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+			</Relationship>
+			<Relationship Name="DefiningTable">
+				<Entry>
+					<References Name="[dbo].[tblMovies]" />
+				</Entry>
+			</Relationship>
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="3" />
+		</Element>
+		<Element Type="ISql100PrimaryKeyConstraint">
+			<Relationship Name="ColumnSpecifications">
+				<Entry>
+					<Element Type="ISqlIndexedColumnSpecification">
+						<Relationship Name="Column">
+							<Entry>
+								<References Name="[dbo].[tblDistributors].[DistributorId]" />
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+			</Relationship>
+			<Relationship Name="DefiningTable">
+				<Entry>
+					<References Name="[dbo].[tblDistributors]" />
+				</Entry>
+			</Relationship>
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="4" />
+		</Element>
+		<Element Type="ISql100PrimaryKeyConstraint">
+			<Relationship Name="ColumnSpecifications">
+				<Entry>
+					<Element Type="ISqlIndexedColumnSpecification">
+						<Relationship Name="Column">
+							<Entry>
+								<References Name="[dbo].[tlnkMovieDistributor].[linkId]" />
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+			</Relationship>
+			<Relationship Name="DefiningTable">
+				<Entry>
+					<References Name="[dbo].[tlnkMovieDistributor]" />
+				</Entry>
+			</Relationship>
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="5" />
+		</Element>
+		<Element Type="ISql100PrimaryKeyConstraint">
+			<Relationship Name="ColumnSpecifications">
+				<Entry>
+					<Element Type="ISqlIndexedColumnSpecification">
+						<Relationship Name="Column">
+							<Entry>
+								<References Name="[dbo].[tblScreen].[ScreenId]" />
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+			</Relationship>
+			<Relationship Name="DefiningTable">
+				<Entry>
+					<References Name="[dbo].[tblScreen]" />
+				</Entry>
+			</Relationship>
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="6" />
+		</Element>
+		<Element Type="ISql100PrimaryKeyConstraint">
+			<Relationship Name="ColumnSpecifications">
+				<Entry>
+					<Element Type="ISqlIndexedColumnSpecification">
+						<Relationship Name="Column">
+							<Entry>
+								<References Name="[dbo].[tlnkScreenMovie].[linkId]" />
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+			</Relationship>
+			<Relationship Name="DefiningTable">
+				<Entry>
+					<References Name="[dbo].[tlnkScreenMovie]" />
+				</Entry>
+			</Relationship>
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="7" />
+		</Element>
+		<Element Type="ISql100PrimaryKeyConstraint">
+			<Relationship Name="ColumnSpecifications">
+				<Entry>
+					<Element Type="ISqlIndexedColumnSpecification">
+						<Relationship Name="Column">
+							<Entry>
+								<References Name="[dbo].[tblMovieTime].[TimeId]" />
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+			</Relationship>
+			<Relationship Name="DefiningTable">
+				<Entry>
+					<References Name="[dbo].[tblMovieTime]" />
+				</Entry>
+			</Relationship>
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="8" />
+		</Element>
+		<Element Type="ISql100PrimaryKeyConstraint">
+			<Relationship Name="ColumnSpecifications">
+				<Entry>
+					<Element Type="ISqlIndexedColumnSpecification">
+						<Relationship Name="Column">
+							<Entry>
+								<References Name="[dbo].[tblMovieTypes].[TypeId]" />
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+			</Relationship>
+			<Relationship Name="DefiningTable">
+				<Entry>
+					<References Name="[dbo].[tblMovieTypes]" />
+				</Entry>
+			</Relationship>
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="9" />
+		</Element>
+		<Element Type="ISql100PrimaryKeyConstraint">
+			<Relationship Name="ColumnSpecifications">
+				<Entry>
+					<Element Type="ISqlIndexedColumnSpecification">
+						<Relationship Name="Column">
+							<Entry>
+								<References Name="[dbo].[tblUsers].[UserGuid]" />
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+			</Relationship>
+			<Relationship Name="DefiningTable">
+				<Entry>
+					<References Name="[dbo].[tblUsers]" />
+				</Entry>
+			</Relationship>
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="10" />
+		</Element>
+		<Element Type="ISql100UniqueConstraint">
+			<Relationship Name="ColumnSpecifications">
+				<Entry>
+					<Element Type="ISqlIndexedColumnSpecification">
+						<Relationship Name="Column">
+							<Entry>
+								<References Name="[dbo].[tblMovieTypes].[IntValue]" />
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+			</Relationship>
+			<Relationship Name="DefiningTable">
+				<Entry>
+					<References Name="[dbo].[tblMovieTypes]" />
+				</Entry>
+			</Relationship>
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="11" />
+		</Element>
+		<Element Type="ISql90CheckConstraint">
+			<Property Name="CheckExpressionScript">
+				<Value><![CDATA[ExpectedAudience = 'Mainstream' OR ExpectedAudience = 'Average' OR ExpectedAudience = 'Below-Average' OR ExpectedAudience = 'Specialist' OR ExpectedAudience = 'Non-Mainstream']]></Value>
+			</Property>
+			<Relationship Name="CheckExpressionDependencies">
+				<Entry>
+					<References Name="[dbo].[tblMovies].[ExpectedAudience]" />
+				</Entry>
+			</Relationship>
+			<Relationship Name="DefiningTable">
+				<Entry>
+					<References Name="[dbo].[tblMovies]" />
+				</Entry>
+			</Relationship>
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="12" />
+		</Element>
+		<Element Type="ISql90CheckConstraint">
+			<Property Name="CheckExpressionScript">
+				<Value><![CDATA[AdminLevel = 0 OR AdminLevel = 1 OR AdminLevel = 2]]></Value>
+			</Property>
+			<Relationship Name="CheckExpressionDependencies">
+				<Entry>
+					<References Name="[dbo].[tblUsers].[AdminLevel]" />
+				</Entry>
+			</Relationship>
+			<Relationship Name="DefiningTable">
+				<Entry>
+					<References Name="[dbo].[tblUsers]" />
+				</Entry>
+			</Relationship>
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="13" />
+		</Element>
+		<Element Type="ISql90DefaultConstraint">
+			<Property Name="DefaultExpressionScript">
+				<Value><![CDATA[NEWSEQUENTIALID()]]></Value>
+			</Property>
+			<Relationship Name="DefiningTable">
+				<Entry>
+					<References Name="[dbo].[tblMovies]" />
+				</Entry>
+			</Relationship>
+			<Relationship Name="ForColumn">
+				<Entry>
+					<References Name="[dbo].[tblMovies].[MovieId]" />
+				</Entry>
+			</Relationship>
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="14" />
+		</Element>
+		<Element Type="ISql90DefaultConstraint">
+			<Property Name="DefaultExpressionScript">
+				<Value><![CDATA[GETDATE()]]></Value>
+			</Property>
+			<Relationship Name="DefiningTable">
+				<Entry>
+					<References Name="[dbo].[tblMovies]" />
+				</Entry>
+			</Relationship>
+			<Relationship Name="ForColumn">
+				<Entry>
+					<References Name="[dbo].[tblMovies].[Created]" />
+				</Entry>
+			</Relationship>
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="15" />
+		</Element>
+		<Element Type="ISql90DefaultConstraint">
+			<Property Name="DefaultExpressionScript">
+				<Value><![CDATA[NEWSEQUENTIALID()]]></Value>
+			</Property>
+			<Relationship Name="DefiningTable">
+				<Entry>
+					<References Name="[dbo].[tblDistributors]" />
+				</Entry>
+			</Relationship>
+			<Relationship Name="ForColumn">
+				<Entry>
+					<References Name="[dbo].[tblDistributors].[DistributorId]" />
+				</Entry>
+			</Relationship>
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="16" />
+		</Element>
+		<Element Type="ISql90DefaultConstraint">
+			<Property Name="DefaultExpressionScript">
+				<Value><![CDATA[1]]></Value>
+			</Property>
+			<Relationship Name="DefiningTable">
+				<Entry>
+					<References Name="[dbo].[tblDistributors]" />
+				</Entry>
+			</Relationship>
+			<Relationship Name="ForColumn">
+				<Entry>
+					<References Name="[dbo].[tblDistributors].[Permission]" />
+				</Entry>
+			</Relationship>
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="17" />
+		</Element>
+		<Element Type="ISql90DefaultConstraint">
+			<Property Name="DefaultExpressionScript">
+				<Value><![CDATA[1]]></Value>
+			</Property>
+			<Relationship Name="DefiningTable">
+				<Entry>
+					<References Name="[dbo].[tblDistributors]" />
+				</Entry>
+			</Relationship>
+			<Relationship Name="ForColumn">
+				<Entry>
+					<References Name="[dbo].[tblDistributors].[IsActive]" />
+				</Entry>
+			</Relationship>
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="18" />
+		</Element>
+		<Element Type="ISql90DefaultConstraint">
+			<Property Name="DefaultExpressionScript">
+				<Value><![CDATA[0]]></Value>
+			</Property>
+			<Relationship Name="DefiningTable">
+				<Entry>
+					<References Name="[dbo].[tblDistributors]" />
+				</Entry>
+			</Relationship>
+			<Relationship Name="ForColumn">
+				<Entry>
+					<References Name="[dbo].[tblDistributors].[IsAdmin]" />
+				</Entry>
+			</Relationship>
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="19" />
+		</Element>
+		<Element Type="ISql90DefaultConstraint">
+			<Property Name="DefaultExpressionScript">
+				<Value><![CDATA[GETDATE()]]></Value>
+			</Property>
+			<Relationship Name="DefiningTable">
+				<Entry>
+					<References Name="[dbo].[tblDistributors]" />
+				</Entry>
+			</Relationship>
+			<Relationship Name="ForColumn">
+				<Entry>
+					<References Name="[dbo].[tblDistributors].[Created]" />
+				</Entry>
+			</Relationship>
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="20" />
+		</Element>
+		<Element Type="ISql90DefaultConstraint">
+			<Property Name="DefaultExpressionScript">
+				<Value><![CDATA[NEWSEQUENTIALID()]]></Value>
+			</Property>
+			<Relationship Name="DefiningTable">
+				<Entry>
+					<References Name="[dbo].[tlnkMovieDistributor]" />
+				</Entry>
+			</Relationship>
+			<Relationship Name="ForColumn">
+				<Entry>
+					<References Name="[dbo].[tlnkMovieDistributor].[linkId]" />
+				</Entry>
+			</Relationship>
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="21" />
+		</Element>
+		<Element Type="ISql90DefaultConstraint">
+			<Property Name="DefaultExpressionScript">
+				<Value><![CDATA[GETDATE()]]></Value>
+			</Property>
+			<Relationship Name="DefiningTable">
+				<Entry>
+					<References Name="[dbo].[tlnkMovieDistributor]" />
+				</Entry>
+			</Relationship>
+			<Relationship Name="ForColumn">
+				<Entry>
+					<References Name="[dbo].[tlnkMovieDistributor].[Created]" />
+				</Entry>
+			</Relationship>
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="22" />
+		</Element>
+		<Element Type="ISql90DefaultConstraint">
+			<Property Name="DefaultExpressionScript">
+				<Value><![CDATA[NEWSEQUENTIALID()]]></Value>
+			</Property>
+			<Relationship Name="DefiningTable">
+				<Entry>
+					<References Name="[dbo].[tblScreen]" />
+				</Entry>
+			</Relationship>
+			<Relationship Name="ForColumn">
+				<Entry>
+					<References Name="[dbo].[tblScreen].[ScreenId]" />
+				</Entry>
+			</Relationship>
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="23" />
+		</Element>
+		<Element Type="ISql90DefaultConstraint">
+			<Property Name="DefaultExpressionScript">
+				<Value><![CDATA[NEWSEQUENTIALID()]]></Value>
+			</Property>
+			<Relationship Name="DefiningTable">
+				<Entry>
+					<References Name="[dbo].[tlnkScreenMovie]" />
+				</Entry>
+			</Relationship>
+			<Relationship Name="ForColumn">
+				<Entry>
+					<References Name="[dbo].[tlnkScreenMovie].[linkId]" />
+				</Entry>
+			</Relationship>
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="24" />
+		</Element>
+		<Element Type="ISql90DefaultConstraint">
+			<Property Name="DefaultExpressionScript">
+				<Value><![CDATA[GETDATE()]]></Value>
+			</Property>
+			<Relationship Name="DefiningTable">
+				<Entry>
+					<References Name="[dbo].[tlnkScreenMovie]" />
+				</Entry>
+			</Relationship>
+			<Relationship Name="ForColumn">
+				<Entry>
+					<References Name="[dbo].[tlnkScreenMovie].[Created]" />
+				</Entry>
+			</Relationship>
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="25" />
+		</Element>
+		<Element Type="ISql90DefaultConstraint">
+			<Property Name="DefaultExpressionScript">
+				<Value><![CDATA[NEWSEQUENTIALID()]]></Value>
+			</Property>
+			<Relationship Name="DefiningTable">
+				<Entry>
+					<References Name="[dbo].[tblMovieTime]" />
+				</Entry>
+			</Relationship>
+			<Relationship Name="ForColumn">
+				<Entry>
+					<References Name="[dbo].[tblMovieTime].[TimeId]" />
+				</Entry>
+			</Relationship>
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="26" />
+		</Element>
+		<Element Type="ISql90DefaultConstraint">
+			<Property Name="DefaultExpressionScript">
+				<Value><![CDATA[0]]></Value>
+			</Property>
+			<Relationship Name="DefiningTable">
+				<Entry>
+					<References Name="[dbo].[tblMovieTime]" />
+				</Entry>
+			</Relationship>
+			<Relationship Name="ForColumn">
+				<Entry>
+					<References Name="[dbo].[tblMovieTime].[NumViewers]" />
+				</Entry>
+			</Relationship>
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="27" />
+		</Element>
+		<Element Type="ISql90DefaultConstraint">
+			<Property Name="DefaultExpressionScript">
+				<Value><![CDATA[0]]></Value>
+			</Property>
+			<Relationship Name="DefiningTable">
+				<Entry>
+					<References Name="[dbo].[tblMovies]" />
+				</Entry>
+			</Relationship>
+			<Relationship Name="ForColumn">
+				<Entry>
+					<References Name="[dbo].[tblMovies].[IsArchived]" />
+				</Entry>
+			</Relationship>
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="28" />
+		</Element>
+		<Element Type="ISql90DefaultConstraint">
+			<Property Name="DefaultExpressionScript">
+				<Value><![CDATA[NEWSEQUENTIALID()]]></Value>
+			</Property>
+			<Relationship Name="DefiningTable">
+				<Entry>
+					<References Name="[dbo].[tblMovieTypes]" />
+				</Entry>
+			</Relationship>
+			<Relationship Name="ForColumn">
+				<Entry>
+					<References Name="[dbo].[tblMovieTypes].[TypeId]" />
+				</Entry>
+			</Relationship>
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="29" />
+		</Element>
+		<Element Type="ISql90DefaultConstraint">
+			<Property Name="DefaultExpressionScript">
+				<Value><![CDATA[NEWSEQUENTIALID()]]></Value>
+			</Property>
+			<Relationship Name="DefiningTable">
+				<Entry>
+					<References Name="[dbo].[tblUsers]" />
+				</Entry>
+			</Relationship>
+			<Relationship Name="ForColumn">
+				<Entry>
+					<References Name="[dbo].[tblUsers].[UserGuid]" />
+				</Entry>
+			</Relationship>
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="30" />
+		</Element>
+		<Element Type="ISql90DefaultConstraint">
+			<Property Name="DefaultExpressionScript">
+				<Value><![CDATA[GETDATE()]]></Value>
+			</Property>
+			<Relationship Name="DefiningTable">
+				<Entry>
+					<References Name="[dbo].[tblUsers]" />
+				</Entry>
+			</Relationship>
+			<Relationship Name="ForColumn">
+				<Entry>
+					<References Name="[dbo].[tblUsers].[Created]" />
+				</Entry>
+			</Relationship>
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="31" />
+		</Element>
+		<Element Type="ISql90DefaultConstraint">
+			<Property Name="DefaultExpressionScript">
+				<Value><![CDATA[1]]></Value>
+			</Property>
+			<Relationship Name="DefiningTable">
+				<Entry>
+					<References Name="[dbo].[tblUsers]" />
+				</Entry>
+			</Relationship>
+			<Relationship Name="ForColumn">
+				<Entry>
+					<References Name="[dbo].[tblUsers].[bActive]" />
+				</Entry>
+			</Relationship>
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="32" />
+		</Element>
+		<Element Type="ISql90DefaultConstraint">
+			<Property Name="DefaultExpressionScript">
+				<Value><![CDATA[0]]></Value>
+			</Property>
+			<Relationship Name="DefiningTable">
+				<Entry>
+					<References Name="[dbo].[tblUsers]" />
+				</Entry>
+			</Relationship>
+			<Relationship Name="ForColumn">
+				<Entry>
+					<References Name="[dbo].[tblUsers].[AdminLevel]" />
+				</Entry>
+			</Relationship>
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="33" />
+		</Element>
+		<Element Type="ISql90ForeignKeyConstraint">
+			<Relationship Name="Columns">
+				<Entry>
+					<References Name="[dbo].[tblMovies].[Type]" />
+				</Entry>
+			</Relationship>
+			<Relationship Name="DefiningTable">
+				<Entry>
+					<References Name="[dbo].[tblMovies]" />
+				</Entry>
+			</Relationship>
+			<Relationship Name="ForeignColumns">
+				<Entry>
+					<References Name="[dbo].[tblMovieTypes].[IntValue]" />
+				</Entry>
+			</Relationship>
+			<Relationship Name="ForeignTable">
+				<Entry>
+					<References Name="[dbo].[tblMovieTypes]" />
+				</Entry>
+			</Relationship>
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="34" />
+		</Element>
+		<Element Type="ISql90ForeignKeyConstraint">
+			<Relationship Name="Columns">
+				<Entry>
+					<References Name="[dbo].[tlnkMovieDistributor].[MovieId]" />
+				</Entry>
+			</Relationship>
+			<Relationship Name="DefiningTable">
+				<Entry>
+					<References Name="[dbo].[tlnkMovieDistributor]" />
+				</Entry>
+			</Relationship>
+			<Relationship Name="ForeignColumns">
+				<Entry>
+					<References Name="[dbo].[tblMovies].[MovieId]" />
+				</Entry>
+			</Relationship>
+			<Relationship Name="ForeignTable">
+				<Entry>
+					<References Name="[dbo].[tblMovies]" />
+				</Entry>
+			</Relationship>
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="35" />
+		</Element>
+		<Element Type="ISql90ForeignKeyConstraint">
+			<Relationship Name="Columns">
+				<Entry>
+					<References Name="[dbo].[tlnkMovieDistributor].[DistributorId]" />
+				</Entry>
+			</Relationship>
+			<Relationship Name="DefiningTable">
+				<Entry>
+					<References Name="[dbo].[tlnkMovieDistributor]" />
+				</Entry>
+			</Relationship>
+			<Relationship Name="ForeignColumns">
+				<Entry>
+					<References Name="[dbo].[tblDistributors].[DistributorId]" />
+				</Entry>
+			</Relationship>
+			<Relationship Name="ForeignTable">
+				<Entry>
+					<References Name="[dbo].[tblDistributors]" />
+				</Entry>
+			</Relationship>
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="36" />
+		</Element>
+		<Element Type="ISql90ForeignKeyConstraint">
+			<Relationship Name="Columns">
+				<Entry>
+					<References Name="[dbo].[tlnkScreenMovie].[MovieId]" />
+				</Entry>
+			</Relationship>
+			<Relationship Name="DefiningTable">
+				<Entry>
+					<References Name="[dbo].[tlnkScreenMovie]" />
+				</Entry>
+			</Relationship>
+			<Relationship Name="ForeignColumns">
+				<Entry>
+					<References Name="[dbo].[tblMovies].[MovieId]" />
+				</Entry>
+			</Relationship>
+			<Relationship Name="ForeignTable">
+				<Entry>
+					<References Name="[dbo].[tblMovies]" />
+				</Entry>
+			</Relationship>
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="37" />
+		</Element>
+		<Element Type="ISql90ForeignKeyConstraint">
+			<Relationship Name="Columns">
+				<Entry>
+					<References Name="[dbo].[tlnkScreenMovie].[ScreenId]" />
+				</Entry>
+			</Relationship>
+			<Relationship Name="DefiningTable">
+				<Entry>
+					<References Name="[dbo].[tlnkScreenMovie]" />
+				</Entry>
+			</Relationship>
+			<Relationship Name="ForeignColumns">
+				<Entry>
+					<References Name="[dbo].[tblScreen].[ScreenId]" />
+				</Entry>
+			</Relationship>
+			<Relationship Name="ForeignTable">
+				<Entry>
+					<References Name="[dbo].[tblScreen]" />
+				</Entry>
+			</Relationship>
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="38" />
+		</Element>
+		<Element Type="ISql90ForeignKeyConstraint">
+			<Relationship Name="Columns">
+				<Entry>
+					<References Name="[dbo].[tblMovieTime].[MovieId]" />
+				</Entry>
+			</Relationship>
+			<Relationship Name="DefiningTable">
+				<Entry>
+					<References Name="[dbo].[tblMovieTime]" />
+				</Entry>
+			</Relationship>
+			<Relationship Name="ForeignColumns">
+				<Entry>
+					<References Name="[dbo].[tblMovies].[MovieId]" />
+				</Entry>
+			</Relationship>
+			<Relationship Name="ForeignTable">
+				<Entry>
+					<References Name="[dbo].[tblMovies]" />
+				</Entry>
+			</Relationship>
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="39" />
+		</Element>
+		<Element Type="ISql100Procedure" Name="[dbo].[ArchiveNewMovie]">
+			<Property Name="BodyScript">
+				<Value><![CDATA[
+	SELECT @param1, @param2
+RETURN 0]]></Value>
+			</Property>
+			<Property Name="IsAnsiNullsOn" Value="True" />
+			<Relationship Name="BodyDependencies">
+				<Entry>
+					<References Name="[dbo].[ArchiveNewMovie].[@param1]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[ArchiveNewMovie].[@param2]" />
+				</Entry>
+			</Relationship>
+			<Relationship Name="Owner">
+				<Entry>
+					<References ExternalSource="BuiltIns" Name="[dbo]" />
+				</Entry>
+			</Relationship>
+			<Relationship Name="Parameters">
+				<Entry>
+					<Element Type="ISql100SubroutineParameter" Name="[dbo].[ArchiveNewMovie].[@param1]">
+						<Property Name="DefaultExpressionScript">
+							<Value><![CDATA[0]]></Value>
+						</Property>
+						<Relationship Name="Type">
+							<Entry>
+								<Element Type="ISql90TypeSpecifier">
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[int]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="ISql100SubroutineParameter" Name="[dbo].[ArchiveNewMovie].[@param2]">
+						<Relationship Name="Type">
+							<Entry>
+								<Element Type="ISql90TypeSpecifier">
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[int]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+			</Relationship>
+			<Annotation Type="SysCommentsObjectAnnotation">
+				<Property Name="Length" Value="114" />
+				<Property Name="StartLine" Value="1" />
+				<Property Name="StartColumn" Value="1" />
+				<Property Name="HeaderContents" Value="CREATE PROCEDURE [dbo].[ArchiveNewMovie]&#xD;&#xA;&#x9;@param1 int = 0, &#xD;&#xA;&#x9;@param2 int&#xD;&#xA;AS" />
+			</Annotation>
+		</Element>
+		<Element Type="ISql100Procedure" Name="[dbo].[CreateUpdateMovie]">
+			<Property Name="BodyScript">
+				<Value><![CDATA[
+	SELECT @param1, @param2
+RETURN 0]]></Value>
+			</Property>
+			<Property Name="IsAnsiNullsOn" Value="True" />
+			<Relationship Name="BodyDependencies">
+				<Entry>
+					<References Name="[dbo].[CreateUpdateMovie].[@param1]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[CreateUpdateMovie].[@param2]" />
+				</Entry>
+			</Relationship>
+			<Relationship Name="Owner">
+				<Entry>
+					<References ExternalSource="BuiltIns" Name="[dbo]" />
+				</Entry>
+			</Relationship>
+			<Relationship Name="Parameters">
+				<Entry>
+					<Element Type="ISql100SubroutineParameter" Name="[dbo].[CreateUpdateMovie].[@param1]">
+						<Property Name="DefaultExpressionScript">
+							<Value><![CDATA[0]]></Value>
+						</Property>
+						<Relationship Name="Type">
+							<Entry>
+								<Element Type="ISql90TypeSpecifier">
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[int]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="ISql100SubroutineParameter" Name="[dbo].[CreateUpdateMovie].[@param2]">
+						<Relationship Name="Type">
+							<Entry>
+								<Element Type="ISql90TypeSpecifier">
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[int]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+			</Relationship>
+			<Annotation Type="SysCommentsObjectAnnotation">
+				<Property Name="Length" Value="116" />
+				<Property Name="StartLine" Value="1" />
+				<Property Name="StartColumn" Value="1" />
+				<Property Name="HeaderContents" Value="CREATE PROCEDURE [dbo].[CreateUpdateMovie]&#xD;&#xA;&#x9;@param1 int = 0, &#xD;&#xA;&#x9;@param2 int&#xD;&#xA;AS" />
+			</Annotation>
+		</Element>
+		<Element Type="ISql100Procedure" Name="[dbo].[GetUserInformation]">
+			<Property Name="BodyScript">
+				<Value><![CDATA[
+	--If the username exists in the database continue, else throw error.
+	IF EXISTS (SELECT * FROM tblUsers WHERE LoginUsername = @username)
+	BEGIN
+		--If username and password combination exists in the database continue, else throw error.
+		IF EXISTS (SELECT * FROM tblUsers WHERE LoginUsername = @username AND LoginPassword = @password)
+		BEGIN
+			--Checks that the user is active.
+			IF EXISTS (SELECT * FROM tblUsers WHERE LoginUsername = @username AND LoginPassword = @password AND bActive = 1)
+			BEGIN
+				--Get the user details where the username and password are correct.
+				SELECT *
+				FROM tblUsers
+				WHERE LoginUsername = @username AND LoginPassword = @password
+			END
+			ELSE
+			BEGIN
+				SELECT 'That acount has been de-activated!'
+			END
+		END
+		ELSE
+		BEGIN
+			SELECT 'Entered username and password do not match!'
+		END
+	END
+	ELSE
+	BEGIN
+		SELECT 'That username is invalid!'
+	END]]></Value>
+			</Property>
+			<Property Name="IsAnsiNullsOn" Value="True" />
+			<Relationship Name="BodyDependencies">
+				<Entry>
+					<References Name="[dbo].[tblUsers]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[tblUsers].[LoginUsername]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[GetUserInformation].[@username]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[tblUsers].[LoginPassword]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[GetUserInformation].[@password]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[tblUsers].[bActive]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[tblUsers]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[tblUsers].[LoginUsername]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[tblUsers].[LoginPassword]" />
+				</Entry>
+			</Relationship>
+			<Relationship Name="Owner">
+				<Entry>
+					<References ExternalSource="BuiltIns" Name="[dbo]" />
+				</Entry>
+			</Relationship>
+			<Relationship Name="Parameters">
+				<Entry>
+					<Element Type="ISql100SubroutineParameter" Name="[dbo].[GetUserInformation].[@username]">
+						<Relationship Name="Type">
+							<Entry>
+								<Element Type="ISql90TypeSpecifier">
+									<Property Name="Length" Value="255" />
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[nvarchar]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="ISql100SubroutineParameter" Name="[dbo].[GetUserInformation].[@password]">
+						<Relationship Name="Type">
+							<Entry>
+								<Element Type="ISql90TypeSpecifier">
+									<Property Name="Length" Value="255" />
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[nvarchar]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+			</Relationship>
+			<Annotation Type="SysCommentsObjectAnnotation">
+				<Property Name="Length" Value="1025" />
+				<Property Name="StartLine" Value="1" />
+				<Property Name="StartColumn" Value="1" />
+				<Property Name="HeaderContents" Value="CREATE PROCEDURE [dbo].[GetUserInformation]&#xD;&#xA;&#x9;@username NVARCHAR(255),&#xD;&#xA;&#x9;@password NVARCHAR(255)&#xD;&#xA;AS" />
+			</Annotation>
+		</Element>
+		<Element Type="ISql100Table" Name="[dbo].[tblDistributors]">
+			<Property Name="IsAnsiNullsOn" Value="True" />
+			<Relationship Name="Columns">
+				<Entry>
+					<Element Type="ISql100SimpleColumn" Name="[dbo].[tblDistributors].[DistributorId]">
+						<Property Name="IsNullable" Value="False" />
+						<Property Name="IsRowGuidColumn" Value="True" />
+						<Relationship Name="TypeSpecifier">
+							<Entry>
+								<Element Type="ISql90TypeSpecifier">
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[uniqueidentifier]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+						<AttachedAnnotation Disambiguator="4" />
+						<AttachedAnnotation Disambiguator="16" />
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="ISql100SimpleColumn" Name="[dbo].[tblDistributors].[Name]">
+						<Property Name="IsNullable" Value="False" />
+						<Relationship Name="TypeSpecifier">
+							<Entry>
+								<Element Type="ISql90TypeSpecifier">
+									<Property Name="Length" Value="255" />
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[nvarchar]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="ISql100SimpleColumn" Name="[dbo].[tblDistributors].[Permission]">
+						<Property Name="IsNullable" Value="False" />
+						<Relationship Name="TypeSpecifier">
+							<Entry>
+								<Element Type="ISql90TypeSpecifier">
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[int]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+						<AttachedAnnotation Disambiguator="17" />
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="ISql100SimpleColumn" Name="[dbo].[tblDistributors].[IsActive]">
+						<Property Name="IsNullable" Value="False" />
+						<Relationship Name="TypeSpecifier">
+							<Entry>
+								<Element Type="ISql90TypeSpecifier">
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[bit]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+						<AttachedAnnotation Disambiguator="18" />
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="ISql100SimpleColumn" Name="[dbo].[tblDistributors].[IsAdmin]">
+						<Property Name="IsNullable" Value="False" />
+						<Relationship Name="TypeSpecifier">
+							<Entry>
+								<Element Type="ISql90TypeSpecifier">
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[int]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+						<AttachedAnnotation Disambiguator="19" />
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="ISql100SimpleColumn" Name="[dbo].[tblDistributors].[Created]">
+						<Property Name="IsNullable" Value="False" />
+						<Relationship Name="TypeSpecifier">
+							<Entry>
+								<Element Type="ISql90TypeSpecifier">
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[datetime]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+						<AttachedAnnotation Disambiguator="20" />
+					</Element>
+				</Entry>
+			</Relationship>
+			<Relationship Name="Owner">
+				<Entry>
+					<References ExternalSource="BuiltIns" Name="[dbo]" />
+				</Entry>
+			</Relationship>
+		</Element>
+		<Element Type="ISql100Table" Name="[dbo].[tblMovies]">
+			<Property Name="IsAnsiNullsOn" Value="True" />
+			<Relationship Name="Columns">
+				<Entry>
+					<Element Type="ISql100SimpleColumn" Name="[dbo].[tblMovies].[MovieId]">
+						<Property Name="IsNullable" Value="False" />
+						<Property Name="IsRowGuidColumn" Value="True" />
+						<Relationship Name="TypeSpecifier">
+							<Entry>
+								<Element Type="ISql90TypeSpecifier">
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[uniqueidentifier]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+						<AttachedAnnotation Disambiguator="3" />
+						<AttachedAnnotation Disambiguator="14" />
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="ISql100SimpleColumn" Name="[dbo].[tblMovies].[Name]">
+						<Property Name="IsNullable" Value="False" />
+						<Relationship Name="TypeSpecifier">
+							<Entry>
+								<Element Type="ISql90TypeSpecifier">
+									<Property Name="Length" Value="255" />
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[nvarchar]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="ISql100SimpleColumn" Name="[dbo].[tblMovies].[Duration]">
+						<Property Name="IsNullable" Value="False" />
+						<Relationship Name="TypeSpecifier">
+							<Entry>
+								<Element Type="ISql90TypeSpecifier">
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[int]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="ISql100SimpleColumn" Name="[dbo].[tblMovies].[Director]">
+						<Property Name="IsNullable" Value="False" />
+						<Relationship Name="TypeSpecifier">
+							<Entry>
+								<Element Type="ISql90TypeSpecifier">
+									<Property Name="Length" Value="255" />
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[nvarchar]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="ISql100SimpleColumn" Name="[dbo].[tblMovies].[Producer]">
+						<Property Name="IsNullable" Value="False" />
+						<Relationship Name="TypeSpecifier">
+							<Entry>
+								<Element Type="ISql90TypeSpecifier">
+									<Property Name="Length" Value="255" />
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[nvarchar]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="ISql100SimpleColumn" Name="[dbo].[tblMovies].[Type]">
+						<Property Name="IsNullable" Value="False" />
+						<Relationship Name="TypeSpecifier">
+							<Entry>
+								<Element Type="ISql90TypeSpecifier">
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[int]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+						<AttachedAnnotation Disambiguator="34" />
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="ISql100SimpleColumn" Name="[dbo].[tblMovies].[AgeRest]">
+						<Property Name="IsNullable" Value="False" />
+						<Relationship Name="TypeSpecifier">
+							<Entry>
+								<Element Type="ISql90TypeSpecifier">
+									<Property Name="Length" Value="25" />
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[nvarchar]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="ISql100SimpleColumn" Name="[dbo].[tblMovies].[ExpectedAudience]">
+						<Property Name="IsNullable" Value="False" />
+						<Relationship Name="TypeSpecifier">
+							<Entry>
+								<Element Type="ISql90TypeSpecifier">
+									<Property Name="Length" Value="100" />
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[nvarchar]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+						<AttachedAnnotation Disambiguator="12" />
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="ISql100SimpleColumn" Name="[dbo].[tblMovies].[BBFC_Rate]">
+						<Relationship Name="TypeSpecifier">
+							<Entry>
+								<Element Type="ISql90TypeSpecifier">
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[int]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="ISql100SimpleColumn" Name="[dbo].[tblMovies].[Created]">
+						<Property Name="IsNullable" Value="False" />
+						<Relationship Name="TypeSpecifier">
+							<Entry>
+								<Element Type="ISql90TypeSpecifier">
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[datetime]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+						<AttachedAnnotation Disambiguator="15" />
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="ISql100SimpleColumn" Name="[dbo].[tblMovies].[NumViewers]">
+						<Relationship Name="TypeSpecifier">
+							<Entry>
+								<Element Type="ISql90TypeSpecifier">
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[int]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="ISql100SimpleColumn" Name="[dbo].[tblMovies].[IsArchived]">
+						<Property Name="IsNullable" Value="False" />
+						<Relationship Name="TypeSpecifier">
+							<Entry>
+								<Element Type="ISql90TypeSpecifier">
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[bit]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+						<AttachedAnnotation Disambiguator="28" />
+					</Element>
+				</Entry>
+			</Relationship>
+			<Relationship Name="Owner">
+				<Entry>
+					<References ExternalSource="BuiltIns" Name="[dbo]" />
+				</Entry>
+			</Relationship>
+		</Element>
+		<Element Type="ISql100Table" Name="[dbo].[tblMovieTime]">
+			<Property Name="IsAnsiNullsOn" Value="True" />
+			<Relationship Name="Columns">
+				<Entry>
+					<Element Type="ISql100SimpleColumn" Name="[dbo].[tblMovieTime].[TimeId]">
+						<Property Name="IsNullable" Value="False" />
+						<Property Name="IsRowGuidColumn" Value="True" />
+						<Relationship Name="TypeSpecifier">
+							<Entry>
+								<Element Type="ISql90TypeSpecifier">
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[uniqueidentifier]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+						<AttachedAnnotation Disambiguator="8" />
+						<AttachedAnnotation Disambiguator="26" />
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="ISql100SimpleColumn" Name="[dbo].[tblMovieTime].[Time]">
+						<Property Name="IsNullable" Value="False" />
+						<Relationship Name="TypeSpecifier">
+							<Entry>
+								<Element Type="ISql90TypeSpecifier">
+									<Property Name="Precision" Value="7" />
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[time]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="ISql100SimpleColumn" Name="[dbo].[tblMovieTime].[Date]">
+						<Property Name="IsNullable" Value="False" />
+						<Relationship Name="TypeSpecifier">
+							<Entry>
+								<Element Type="ISql90TypeSpecifier">
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[date]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="ISql100SimpleColumn" Name="[dbo].[tblMovieTime].[MovieId]">
+						<Property Name="IsNullable" Value="False" />
+						<Relationship Name="TypeSpecifier">
+							<Entry>
+								<Element Type="ISql90TypeSpecifier">
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[uniqueidentifier]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+						<AttachedAnnotation Disambiguator="39" />
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="ISql100SimpleColumn" Name="[dbo].[tblMovieTime].[NumViewers]">
+						<Property Name="IsNullable" Value="False" />
+						<Relationship Name="TypeSpecifier">
+							<Entry>
+								<Element Type="ISql90TypeSpecifier">
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[int]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+						<AttachedAnnotation Disambiguator="27" />
+					</Element>
+				</Entry>
+			</Relationship>
+			<Relationship Name="Owner">
+				<Entry>
+					<References ExternalSource="BuiltIns" Name="[dbo]" />
+				</Entry>
+			</Relationship>
+		</Element>
+		<Element Type="ISql100Table" Name="[dbo].[tblMovieTypes]">
+			<Property Name="IsAnsiNullsOn" Value="True" />
+			<Relationship Name="Columns">
+				<Entry>
+					<Element Type="ISql100SimpleColumn" Name="[dbo].[tblMovieTypes].[TypeId]">
+						<Property Name="IsNullable" Value="False" />
+						<Property Name="IsRowGuidColumn" Value="True" />
+						<Relationship Name="TypeSpecifier">
+							<Entry>
+								<Element Type="ISql90TypeSpecifier">
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[uniqueidentifier]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+						<AttachedAnnotation Disambiguator="9" />
+						<AttachedAnnotation Disambiguator="29" />
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="ISql100SimpleColumn" Name="[dbo].[tblMovieTypes].[IntValue]">
+						<Property Name="IsNullable" Value="False" />
+						<Relationship Name="TypeSpecifier">
+							<Entry>
+								<Element Type="ISql90TypeSpecifier">
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[int]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+						<AttachedAnnotation Disambiguator="11" />
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="ISql100SimpleColumn" Name="[dbo].[tblMovieTypes].[TextValue]">
+						<Property Name="IsNullable" Value="False" />
+						<Relationship Name="TypeSpecifier">
+							<Entry>
+								<Element Type="ISql90TypeSpecifier">
+									<Property Name="Length" Value="100" />
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[nvarchar]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+			</Relationship>
+			<Relationship Name="Owner">
+				<Entry>
+					<References ExternalSource="BuiltIns" Name="[dbo]" />
+				</Entry>
+			</Relationship>
+		</Element>
+		<Element Type="ISql100Table" Name="[dbo].[tblScreen]">
+			<Property Name="IsAnsiNullsOn" Value="True" />
+			<Relationship Name="Columns">
+				<Entry>
+					<Element Type="ISql100SimpleColumn" Name="[dbo].[tblScreen].[ScreenId]">
+						<Property Name="IsNullable" Value="False" />
+						<Property Name="IsRowGuidColumn" Value="True" />
+						<Relationship Name="TypeSpecifier">
+							<Entry>
+								<Element Type="ISql90TypeSpecifier">
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[uniqueidentifier]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+						<AttachedAnnotation Disambiguator="6" />
+						<AttachedAnnotation Disambiguator="23" />
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="ISql100SimpleColumn" Name="[dbo].[tblScreen].[ScreenNum]">
+						<Property Name="IsNullable" Value="False" />
+						<Relationship Name="TypeSpecifier">
+							<Entry>
+								<Element Type="ISql90TypeSpecifier">
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[int]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+			</Relationship>
+			<Relationship Name="Owner">
+				<Entry>
+					<References ExternalSource="BuiltIns" Name="[dbo]" />
+				</Entry>
+			</Relationship>
+		</Element>
+		<Element Type="ISql100Table" Name="[dbo].[tblUsers]">
+			<Property Name="IsAnsiNullsOn" Value="True" />
+			<Relationship Name="Columns">
+				<Entry>
+					<Element Type="ISql100SimpleColumn" Name="[dbo].[tblUsers].[UserGuid]">
+						<Property Name="IsNullable" Value="False" />
+						<Property Name="IsRowGuidColumn" Value="True" />
+						<Relationship Name="TypeSpecifier">
+							<Entry>
+								<Element Type="ISql90TypeSpecifier">
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[uniqueidentifier]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+						<AttachedAnnotation Disambiguator="10" />
+						<AttachedAnnotation Disambiguator="30" />
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="ISql100SimpleColumn" Name="[dbo].[tblUsers].[Created]">
+						<Property Name="IsNullable" Value="False" />
+						<Relationship Name="TypeSpecifier">
+							<Entry>
+								<Element Type="ISql90TypeSpecifier">
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[datetime]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+						<AttachedAnnotation Disambiguator="31" />
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="ISql100SimpleColumn" Name="[dbo].[tblUsers].[UserName]">
+						<Property Name="IsNullable" Value="False" />
+						<Relationship Name="TypeSpecifier">
+							<Entry>
+								<Element Type="ISql90TypeSpecifier">
+									<Property Name="Length" Value="255" />
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[nvarchar]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="ISql100SimpleColumn" Name="[dbo].[tblUsers].[UserSurname]">
+						<Property Name="IsNullable" Value="False" />
+						<Relationship Name="TypeSpecifier">
+							<Entry>
+								<Element Type="ISql90TypeSpecifier">
+									<Property Name="Length" Value="255" />
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[nvarchar]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="ISql100SimpleColumn" Name="[dbo].[tblUsers].[UserDoB]">
+						<Property Name="IsNullable" Value="False" />
+						<Relationship Name="TypeSpecifier">
+							<Entry>
+								<Element Type="ISql90TypeSpecifier">
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[date]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="ISql100SimpleColumn" Name="[dbo].[tblUsers].[ContactNumber]">
+						<Relationship Name="TypeSpecifier">
+							<Entry>
+								<Element Type="ISql90TypeSpecifier">
+									<Property Name="Length" Value="20" />
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[nvarchar]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="ISql100SimpleColumn" Name="[dbo].[tblUsers].[LoginUsername]">
+						<Property Name="IsNullable" Value="False" />
+						<Relationship Name="TypeSpecifier">
+							<Entry>
+								<Element Type="ISql90TypeSpecifier">
+									<Property Name="Length" Value="255" />
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[nvarchar]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="ISql100SimpleColumn" Name="[dbo].[tblUsers].[LoginPassword]">
+						<Property Name="IsNullable" Value="False" />
+						<Relationship Name="TypeSpecifier">
+							<Entry>
+								<Element Type="ISql90TypeSpecifier">
+									<Property Name="Length" Value="255" />
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[nvarchar]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="ISql100SimpleColumn" Name="[dbo].[tblUsers].[bActive]">
+						<Property Name="IsNullable" Value="False" />
+						<Relationship Name="TypeSpecifier">
+							<Entry>
+								<Element Type="ISql90TypeSpecifier">
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[bit]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+						<AttachedAnnotation Disambiguator="32" />
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="ISql100SimpleColumn" Name="[dbo].[tblUsers].[AdminLevel]">
+						<Property Name="IsNullable" Value="False" />
+						<Relationship Name="TypeSpecifier">
+							<Entry>
+								<Element Type="ISql90TypeSpecifier">
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[int]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+						<AttachedAnnotation Disambiguator="13" />
+						<AttachedAnnotation Disambiguator="33" />
+					</Element>
+				</Entry>
+			</Relationship>
+			<Relationship Name="Owner">
+				<Entry>
+					<References ExternalSource="BuiltIns" Name="[dbo]" />
+				</Entry>
+			</Relationship>
+		</Element>
+		<Element Type="ISql100Table" Name="[dbo].[tlnkMovieDistributor]">
+			<Property Name="IsAnsiNullsOn" Value="True" />
+			<Relationship Name="Columns">
+				<Entry>
+					<Element Type="ISql100SimpleColumn" Name="[dbo].[tlnkMovieDistributor].[linkId]">
+						<Property Name="IsNullable" Value="False" />
+						<Property Name="IsRowGuidColumn" Value="True" />
+						<Relationship Name="TypeSpecifier">
+							<Entry>
+								<Element Type="ISql90TypeSpecifier">
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[uniqueidentifier]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+						<AttachedAnnotation Disambiguator="5" />
+						<AttachedAnnotation Disambiguator="21" />
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="ISql100SimpleColumn" Name="[dbo].[tlnkMovieDistributor].[MovieId]">
+						<Property Name="IsNullable" Value="False" />
+						<Relationship Name="TypeSpecifier">
+							<Entry>
+								<Element Type="ISql90TypeSpecifier">
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[uniqueidentifier]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+						<AttachedAnnotation Disambiguator="35" />
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="ISql100SimpleColumn" Name="[dbo].[tlnkMovieDistributor].[DistributorId]">
+						<Property Name="IsNullable" Value="False" />
+						<Relationship Name="TypeSpecifier">
+							<Entry>
+								<Element Type="ISql90TypeSpecifier">
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[uniqueidentifier]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+						<AttachedAnnotation Disambiguator="36" />
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="ISql100SimpleColumn" Name="[dbo].[tlnkMovieDistributor].[Created]">
+						<Property Name="IsNullable" Value="False" />
+						<Relationship Name="TypeSpecifier">
+							<Entry>
+								<Element Type="ISql90TypeSpecifier">
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[datetime]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+						<AttachedAnnotation Disambiguator="22" />
+					</Element>
+				</Entry>
+			</Relationship>
+			<Relationship Name="Owner">
+				<Entry>
+					<References ExternalSource="BuiltIns" Name="[dbo]" />
+				</Entry>
+			</Relationship>
+		</Element>
+		<Element Type="ISql100Table" Name="[dbo].[tlnkScreenMovie]">
+			<Property Name="IsAnsiNullsOn" Value="True" />
+			<Relationship Name="Columns">
+				<Entry>
+					<Element Type="ISql100SimpleColumn" Name="[dbo].[tlnkScreenMovie].[linkId]">
+						<Property Name="IsNullable" Value="False" />
+						<Property Name="IsRowGuidColumn" Value="True" />
+						<Relationship Name="TypeSpecifier">
+							<Entry>
+								<Element Type="ISql90TypeSpecifier">
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[uniqueidentifier]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+						<AttachedAnnotation Disambiguator="7" />
+						<AttachedAnnotation Disambiguator="24" />
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="ISql100SimpleColumn" Name="[dbo].[tlnkScreenMovie].[MovieId]">
+						<Property Name="IsNullable" Value="False" />
+						<Relationship Name="TypeSpecifier">
+							<Entry>
+								<Element Type="ISql90TypeSpecifier">
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[uniqueidentifier]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+						<AttachedAnnotation Disambiguator="37" />
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="ISql100SimpleColumn" Name="[dbo].[tlnkScreenMovie].[ScreenId]">
+						<Property Name="IsNullable" Value="False" />
+						<Relationship Name="TypeSpecifier">
+							<Entry>
+								<Element Type="ISql90TypeSpecifier">
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[uniqueidentifier]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+						<AttachedAnnotation Disambiguator="38" />
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="ISql100SimpleColumn" Name="[dbo].[tlnkScreenMovie].[Created]">
+						<Property Name="IsNullable" Value="False" />
+						<Relationship Name="TypeSpecifier">
+							<Entry>
+								<Element Type="ISql90TypeSpecifier">
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[datetime]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+						<AttachedAnnotation Disambiguator="25" />
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="ISql100SimpleColumn" Name="[dbo].[tlnkScreenMovie].[StartScreen]">
+						<Property Name="IsNullable" Value="False" />
+						<Relationship Name="TypeSpecifier">
+							<Entry>
+								<Element Type="ISql90TypeSpecifier">
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[datetime]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="ISql100SimpleColumn" Name="[dbo].[tlnkScreenMovie].[EndScreen]">
+						<Property Name="IsNullable" Value="False" />
+						<Relationship Name="TypeSpecifier">
+							<Entry>
+								<Element Type="ISql90TypeSpecifier">
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[datetime]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+			</Relationship>
+			<Relationship Name="Owner">
+				<Entry>
+					<References ExternalSource="BuiltIns" Name="[dbo]" />
+				</Entry>
+			</Relationship>
+		</Element>
+	</Model>
+</DataSchemaModel>

@@ -7,3 +7,13 @@ C:\Users\deathknight\documents\visual studio 2010\Projects\CinemaProject\CinemaP
 C:\Users\deathknight\documents\visual studio 2010\Projects\CinemaProject\CinemaProject\obj\x86\Debug\GenerateResource.write.1.tlog
 C:\Users\deathknight\documents\visual studio 2010\Projects\CinemaProject\CinemaProject\obj\x86\Debug\CinemaProject.exe
 C:\Users\deathknight\documents\visual studio 2010\Projects\CinemaProject\CinemaProject\obj\x86\Debug\CinemaProject.pdb
+D:\CTICinemaProject\CinemaProject_CTI_3rdYear\CinemaProject\obj\x86\Debug\CinemaProject.exe
+D:\CTICinemaProject\CinemaProject_CTI_3rdYear\CinemaProject\obj\x86\Debug\CinemaProject.pdb
+D:\CTICinemaProject\CinemaProject_CTI_3rdYear\CinemaProject\bin\Debug\CinemaProject.exe
+D:\CTICinemaProject\CinemaProject_CTI_3rdYear\CinemaProject\bin\Debug\CinemaProject.pdb
+D:\CTICinemaProject\CinemaProject_CTI_3rdYear\CinemaProject\obj\x86\Debug\ResolveAssemblyReference.cache
+D:\CTICinemaProject\CinemaProject_CTI_3rdYear\CinemaProject\obj\x86\Debug\CinemaProject.MainGUI.resources
+D:\CTICinemaProject\CinemaProject_CTI_3rdYear\CinemaProject\obj\x86\Debug\CinemaProject.Properties.Resources.resources
+D:\CTICinemaProject\CinemaProject_CTI_3rdYear\CinemaProject\obj\x86\Debug\GenerateResource.read.1.tlog
+D:\CTICinemaProject\CinemaProject_CTI_3rdYear\CinemaProject\obj\x86\Debug\GenerateResource.write.1.tlog
+D:\CTICinemaProject\CinemaProject_CTI_3rdYear\CinemaProject\obj\x86\Debug\CinemaProject.Login.resources

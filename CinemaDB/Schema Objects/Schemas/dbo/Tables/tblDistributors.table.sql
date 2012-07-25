@@ -1,0 +1,9 @@
+﻿CREATE TABLE [dbo].[tblDistributors]
+(
+	DistributorId UNIQUEIDENTIFIER NOT NULL DEFAULT NEWSEQUENTIALID() RowGuidCol PRIMARY KEY,
+	Name NVARCHAR(255) NOT NULL,
+	Permission INT NOT NULL DEFAULT 1,	--(This column could be used or dumped)
+	IsActive BIT NOT NULL DEFAULT 1,
+	IsAdmin INT NOT NULL DEFAULT 0,
+	Created DATETIME NOT NULL DEFAULT GETDATE()
+)

@@ -1,0 +1,16 @@
+C:\Users\Chasso\Desktop\CTI Year 3 Semester 1 Project\ProjectCinema\Cinema\CinemaDB\sql\debug\CinemaDB_Script.PreDeployment.sql
+C:\Users\Chasso\Desktop\CTI Year 3 Semester 1 Project\ProjectCinema\Cinema\CinemaDB\sql\debug\CinemaDB_Script.PostDeployment.sql
+C:\Users\Chasso\Desktop\CTI Year 3 Semester 1 Project\ProjectCinema\Cinema\CinemaDB\sql\debug\CinemaDB_Database.sqlsettings
+C:\Users\Chasso\Desktop\CTI Year 3 Semester 1 Project\ProjectCinema\Cinema\CinemaDB\sql\debug\CinemaDB_Database.sqldeployment
+C:\Users\Chasso\Desktop\CTI Year 3 Semester 1 Project\ProjectCinema\Cinema\CinemaDB\sql\debug\CinemaDB_Database.sqlcmdvars
+C:\Users\Chasso\Desktop\CTI Year 3 Semester 1 Project\ProjectCinema\Cinema\CinemaDB\sql\debug\CinemaDB.deploymanifest
+C:\Users\Chasso\Desktop\CTI Year 3 Semester 1 Project\ProjectCinema\Cinema\CinemaDB\sql\debug\CinemaDB.dbschema
+C:\Users\Chasso\Desktop\CTI Year 3 Semester 1 Project\ProjectCinema\Cinema\CinemaDB\obj\Debug\CinemaDB.dbschema
+D:\CTICinemaProject\CinemaProject_CTI_3rdYear\CinemaDB\sql\debug\CinemaDB_Script.PreDeployment.sql
+D:\CTICinemaProject\CinemaProject_CTI_3rdYear\CinemaDB\sql\debug\CinemaDB_Script.PostDeployment.sql
+D:\CTICinemaProject\CinemaProject_CTI_3rdYear\CinemaDB\sql\debug\CinemaDB_Database.sqlsettings
+D:\CTICinemaProject\CinemaProject_CTI_3rdYear\CinemaDB\sql\debug\CinemaDB_Database.sqldeployment
+D:\CTICinemaProject\CinemaProject_CTI_3rdYear\CinemaDB\sql\debug\CinemaDB_Database.sqlcmdvars
+D:\CTICinemaProject\CinemaProject_CTI_3rdYear\CinemaDB\sql\debug\CinemaDB.deploymanifest
+D:\CTICinemaProject\CinemaProject_CTI_3rdYear\CinemaDB\sql\debug\CinemaDB.dbschema
+D:\CTICinemaProject\CinemaProject_CTI_3rdYear\CinemaDB\obj\Debug\CinemaDB.dbschema
