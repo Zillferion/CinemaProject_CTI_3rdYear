@@ -30,6 +30,13 @@
         {
             this.tbcUserRoles = new System.Windows.Forms.TabControl();
             this.tbMovieSettings = new System.Windows.Forms.TabPage();
+            this.btnMovieDetails = new System.Windows.Forms.Button();
+            this.txtNumOfTickets = new System.Windows.Forms.TextBox();
+            this.lblNumberOfTickets = new System.Windows.Forms.Label();
+            this.cbbSession = new System.Windows.Forms.ComboBox();
+            this.lbl = new System.Windows.Forms.Label();
+            this.cbbMovieName = new System.Windows.Forms.ComboBox();
+            this.lblMovie = new System.Windows.Forms.Label();
             this.tbUserSettings = new System.Windows.Forms.TabPage();
             this.grpUserDetails = new System.Windows.Forms.GroupBox();
             this.btnCancelUserDetailsChange = new System.Windows.Forms.Button();
@@ -47,7 +54,9 @@
             this.lblSelectUser = new System.Windows.Forms.Label();
             this.btnAddUser = new System.Windows.Forms.Button();
             this.dropdownSelectUsers = new System.Windows.Forms.ComboBox();
+            this.btnBook = new System.Windows.Forms.Button();
             this.tbcUserRoles.SuspendLayout();
+            this.tbMovieSettings.SuspendLayout();
             this.tbUserSettings.SuspendLayout();
             this.grpUserDetails.SuspendLayout();
             this.SuspendLayout();
@@ -68,12 +77,82 @@
             // tbMovieSettings
             // 
             this.tbMovieSettings.BackColor = System.Drawing.SystemColors.Control;
+            this.tbMovieSettings.Controls.Add(this.btnBook);
+            this.tbMovieSettings.Controls.Add(this.btnMovieDetails);
+            this.tbMovieSettings.Controls.Add(this.txtNumOfTickets);
+            this.tbMovieSettings.Controls.Add(this.lblNumberOfTickets);
+            this.tbMovieSettings.Controls.Add(this.cbbSession);
+            this.tbMovieSettings.Controls.Add(this.lbl);
+            this.tbMovieSettings.Controls.Add(this.cbbMovieName);
+            this.tbMovieSettings.Controls.Add(this.lblMovie);
             this.tbMovieSettings.Location = new System.Drawing.Point(4, 22);
             this.tbMovieSettings.Name = "tbMovieSettings";
             this.tbMovieSettings.Padding = new System.Windows.Forms.Padding(3);
             this.tbMovieSettings.Size = new System.Drawing.Size(312, 212);
             this.tbMovieSettings.TabIndex = 0;
             this.tbMovieSettings.Text = "Movie Settings";
+            // 
+            // btnMovieDetails
+            // 
+            this.btnMovieDetails.Location = new System.Drawing.Point(209, 33);
+            this.btnMovieDetails.Name = "btnMovieDetails";
+            this.btnMovieDetails.Size = new System.Drawing.Size(97, 23);
+            this.btnMovieDetails.TabIndex = 6;
+            this.btnMovieDetails.Text = "Show Details";
+            this.btnMovieDetails.UseVisualStyleBackColor = true;
+            this.btnMovieDetails.Click += new System.EventHandler(this.btnMovieDetails_Click);
+            // 
+            // txtNumOfTickets
+            // 
+            this.txtNumOfTickets.Location = new System.Drawing.Point(106, 91);
+            this.txtNumOfTickets.Name = "txtNumOfTickets";
+            this.txtNumOfTickets.Size = new System.Drawing.Size(200, 20);
+            this.txtNumOfTickets.TabIndex = 5;
+            // 
+            // lblNumberOfTickets
+            // 
+            this.lblNumberOfTickets.AutoSize = true;
+            this.lblNumberOfTickets.Location = new System.Drawing.Point(6, 94);
+            this.lblNumberOfTickets.Name = "lblNumberOfTickets";
+            this.lblNumberOfTickets.Size = new System.Drawing.Size(94, 13);
+            this.lblNumberOfTickets.TabIndex = 4;
+            this.lblNumberOfTickets.Text = "Number of Tickets";
+            // 
+            // cbbSession
+            // 
+            this.cbbSession.FormattingEnabled = true;
+            this.cbbSession.Location = new System.Drawing.Point(106, 62);
+            this.cbbSession.Name = "cbbSession";
+            this.cbbSession.Size = new System.Drawing.Size(200, 21);
+            this.cbbSession.TabIndex = 3;
+            this.cbbSession.SelectedIndexChanged += new System.EventHandler(this.cbbSession_SelectedIndexChanged);
+            // 
+            // lbl
+            // 
+            this.lbl.AutoSize = true;
+            this.lbl.Location = new System.Drawing.Point(6, 65);
+            this.lbl.Name = "lbl";
+            this.lbl.Size = new System.Drawing.Size(44, 13);
+            this.lbl.TabIndex = 2;
+            this.lbl.Text = "Session";
+            // 
+            // cbbMovieName
+            // 
+            this.cbbMovieName.FormattingEnabled = true;
+            this.cbbMovieName.Location = new System.Drawing.Point(106, 6);
+            this.cbbMovieName.Name = "cbbMovieName";
+            this.cbbMovieName.Size = new System.Drawing.Size(200, 21);
+            this.cbbMovieName.TabIndex = 1;
+            this.cbbMovieName.SelectedIndexChanged += new System.EventHandler(this.cbbMovieName_SelectedIndexChanged);
+            // 
+            // lblMovie
+            // 
+            this.lblMovie.AutoSize = true;
+            this.lblMovie.Location = new System.Drawing.Point(6, 9);
+            this.lblMovie.Name = "lblMovie";
+            this.lblMovie.Size = new System.Drawing.Size(67, 13);
+            this.lblMovie.TabIndex = 0;
+            this.lblMovie.Text = "Movie Name";
             // 
             // tbUserSettings
             // 
@@ -262,6 +341,16 @@
             this.dropdownSelectUsers.TabIndex = 1;
             this.dropdownSelectUsers.SelectedIndexChanged += new System.EventHandler(this.dropdownSelectUsers_SelectedIndexChanged);
             // 
+            // btnBook
+            // 
+            this.btnBook.Location = new System.Drawing.Point(212, 117);
+            this.btnBook.Name = "btnBook";
+            this.btnBook.Size = new System.Drawing.Size(97, 23);
+            this.btnBook.TabIndex = 7;
+            this.btnBook.Text = "Book";
+            this.btnBook.UseVisualStyleBackColor = true;
+            this.btnBook.Click += new System.EventHandler(this.btnBook_Click);
+            // 
             // MainGUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -273,6 +362,8 @@
             this.Text = "Cinema Management System";
             this.Load += new System.EventHandler(this.MainGUI_Load);
             this.tbcUserRoles.ResumeLayout(false);
+            this.tbMovieSettings.ResumeLayout(false);
+            this.tbMovieSettings.PerformLayout();
             this.tbUserSettings.ResumeLayout(false);
             this.tbUserSettings.PerformLayout();
             this.grpUserDetails.ResumeLayout(false);
@@ -302,6 +393,14 @@
         private System.Windows.Forms.GroupBox grpUserDetails;
         private System.Windows.Forms.Button btnCancelUserDetailsChange;
         private System.Windows.Forms.Button btnSave;
+        private System.Windows.Forms.TextBox txtNumOfTickets;
+        private System.Windows.Forms.Label lblNumberOfTickets;
+        private System.Windows.Forms.ComboBox cbbSession;
+        private System.Windows.Forms.Label lbl;
+        private System.Windows.Forms.ComboBox cbbMovieName;
+        private System.Windows.Forms.Label lblMovie;
+        private System.Windows.Forms.Button btnMovieDetails;
+        private System.Windows.Forms.Button btnBook;
     }
 }
 

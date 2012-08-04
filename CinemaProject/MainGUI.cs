@@ -33,6 +33,8 @@ namespace CinemaProject
 			{
 				dropdownSelectUsers.Items.Add( user.ToString() );
 			}
+
+            MovieButtonControl(0);
 		}
 
 		private void btnAddUser_Click( object sender, EventArgs e )
@@ -96,5 +98,82 @@ namespace CinemaProject
 
 			btnSave.Text = "Update User";
 		}
+
+        private void cbbSession_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cbbMovieName_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cbbMovieName.SelectedItem != "")
+            {
+                List<string> sessionList = new List<string>();
+                //Load Movie Session Info from tInkScreenMovie table
+                //Load items into the session list
+
+                foreach (string item in sessionList)
+                {
+                    cbbSession.Items.Add(sessionList);
+                }
+                MovieButtonControl(1);
+            }
+            else
+            {
+                MovieButtonControl(0);
+            }
+        }
+
+        private void btnMovieDetails_Click(object sender, EventArgs e)
+        {
+            if (cbbMovieName.SelectedText != "")
+            {
+                
+            }
+            //Load Movie info from tblMovies
+        }
+
+        private void btnBook_Click(object sender, EventArgs e)
+        {
+            int NumOfTickets;
+            if (cbbMovieName.SelectedText == "")
+            {
+                MessageBox.Show("No movie selected for booking!");
+            }
+            else if (cbbSession.SelectedText == "" )
+            {
+                MessageBox.Show("No session selected for booking!");
+            }
+            else if (!int.TryParse(txtNumOfTickets.Text, out NumOfTickets))
+            {
+                MessageBox.Show("Please enter a correct number of tickets");
+            }
+            else
+            {
+                //Write to database
+            }
+        }
+
+        public void MovieButtonControl(int Mode)
+        {
+            //Mode 0: Disable, Mode 1: Enable 
+            if (Mode == 0)
+            {
+                cbbMovieName.Enabled = false;
+                cbbSession.Enabled = false;
+                txtNumOfTickets.Enabled = false;
+                btnMovieDetails.Enabled = false;
+                btnBook.Enabled = false;
+            }
+            else
+            {
+                cbbMovieName.Enabled = true;
+                cbbSession.Enabled = true;
+                txtNumOfTickets.Enabled = true;
+                btnMovieDetails.Enabled = true;
+                btnBook.Enabled = true;
+            }
+            
+        }
 	}
 }

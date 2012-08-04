@@ -17,3 +17,13 @@ D:\CTICinemaProject\CinemaProject_CTI_3rdYear\CinemaProject\obj\x86\Debug\Cinema
 D:\CTICinemaProject\CinemaProject_CTI_3rdYear\CinemaProject\obj\x86\Debug\GenerateResource.read.1.tlog
 D:\CTICinemaProject\CinemaProject_CTI_3rdYear\CinemaProject\obj\x86\Debug\GenerateResource.write.1.tlog
 D:\CTICinemaProject\CinemaProject_CTI_3rdYear\CinemaProject\obj\x86\Debug\CinemaProject.Login.resources
+E:\Third Year Project\CinemaProject\obj\x86\Debug\CinemaProject.exe
+E:\Third Year Project\CinemaProject\obj\x86\Debug\CinemaProject.pdb
+E:\Third Year Project\CinemaProject\bin\Debug\CinemaProject.exe
+E:\Third Year Project\CinemaProject\bin\Debug\CinemaProject.pdb
+E:\Third Year Project\CinemaProject\obj\x86\Debug\ResolveAssemblyReference.cache
+E:\Third Year Project\CinemaProject\obj\x86\Debug\CinemaProject.Login.resources
+E:\Third Year Project\CinemaProject\obj\x86\Debug\CinemaProject.MainGUI.resources
+E:\Third Year Project\CinemaProject\obj\x86\Debug\CinemaProject.Properties.Resources.resources
+E:\Third Year Project\CinemaProject\obj\x86\Debug\GenerateResource.read.1.tlog
+E:\Third Year Project\CinemaProject\obj\x86\Debug\GenerateResource.write.1.tlog
