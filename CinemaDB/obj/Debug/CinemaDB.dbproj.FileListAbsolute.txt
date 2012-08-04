@@ -14,3 +14,11 @@ D:\CTICinemaProject\CinemaProject_CTI_3rdYear\CinemaDB\sql\debug\CinemaDB_Databa
 D:\CTICinemaProject\CinemaProject_CTI_3rdYear\CinemaDB\sql\debug\CinemaDB.deploymanifest
 D:\CTICinemaProject\CinemaProject_CTI_3rdYear\CinemaDB\sql\debug\CinemaDB.dbschema
 D:\CTICinemaProject\CinemaProject_CTI_3rdYear\CinemaDB\obj\Debug\CinemaDB.dbschema
+E:\Third Year Project\CinemaDB\sql\debug\CinemaDB_Script.PreDeployment.sql
+E:\Third Year Project\CinemaDB\sql\debug\CinemaDB_Script.PostDeployment.sql
+E:\Third Year Project\CinemaDB\sql\debug\CinemaDB_Database.sqlsettings
+E:\Third Year Project\CinemaDB\sql\debug\CinemaDB_Database.sqldeployment
+E:\Third Year Project\CinemaDB\sql\debug\CinemaDB_Database.sqlcmdvars
+E:\Third Year Project\CinemaDB\sql\debug\CinemaDB.deploymanifest
+E:\Third Year Project\CinemaDB\sql\debug\CinemaDB.dbschema
+E:\Third Year Project\CinemaDB\obj\Debug\CinemaDB.dbschema
