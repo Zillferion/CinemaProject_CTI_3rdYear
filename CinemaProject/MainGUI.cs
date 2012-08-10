@@ -40,6 +40,7 @@ namespace CinemaProject
 					tbcUserRoles.TabPages.Remove( tbUserSettings );
 					tbcUserRoles.TabPages.Remove( tbMovieSettings );
 					tbcUserRoles.TabPages.Remove( tbDistributors );
+                    FillMovieDropDown();
 					break;
 				//User is a Manager.
 				case 1:
@@ -260,7 +261,6 @@ namespace CinemaProject
 				cbbMovieName.Enabled = false;
 				cbbSession.Enabled = false;
 				txtNumOfTickets.Enabled = false;
-				btnMovieDetails.Enabled = false;
 				btnBook.Enabled = false;
 			}
 			else
@@ -268,7 +268,6 @@ namespace CinemaProject
 				cbbMovieName.Enabled = true;
 				cbbSession.Enabled = true;
 				txtNumOfTickets.Enabled = true;
-				btnMovieDetails.Enabled = true;
 				btnBook.Enabled = true;
 			}
 		}
@@ -359,10 +358,15 @@ namespace CinemaProject
 		{
 			try
 			{
-				//Clears the current list.
-				ddlMovies.Items.Clear();
-				//Clear the List object declared at the top.
-				_movies.Clear();
+                //Clears the current list.
+                ddlMovies.Items.Clear();
+                //Clear the List object declared at the top.
+                _movies.Clear();
+
+                //Clears the current list.
+                cbbMovieName.Items.Clear();
+                //Clear the List object declared at the top.
+                _nonArchivedMovies.Clear();
 
 				//Create new connection.
 				using ( SqlConnection cn = new SqlConnection( connectionString ) )
@@ -429,6 +433,23 @@ namespace CinemaProject
 				MessageBox.Show( "Error:  " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error );
 			}
 		}
+
+        public void SetMovieDetailsBlank()
+        {
+            lblMovie.Text = "";
+            lblMovieDesc.Text = "";
+            lblMovieDirector.Text = "";
+            lblMovieDuration.Text = "";
+            lblMovieProducer.Text = "";
+            lblMovieTitle.Text = "";
+            lblMovieType.Text = "";
+        }
+
+        public void SetMovieDetails(int movieID)
+        {
+
+        }
+
 		#endregion
 	}
 }

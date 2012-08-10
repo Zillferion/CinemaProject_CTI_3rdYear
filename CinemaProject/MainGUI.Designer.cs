@@ -30,6 +30,29 @@
         {
             this.tbcUserRoles = new System.Windows.Forms.TabControl();
             this.tbBookings = new System.Windows.Forms.TabPage();
+            this.btnBook = new System.Windows.Forms.Button();
+            this.txtNumOfTickets = new System.Windows.Forms.TextBox();
+            this.cbbSession = new System.Windows.Forms.ComboBox();
+            this.cbbMovieName = new System.Windows.Forms.ComboBox();
+            this.lblNumberOfTickets = new System.Windows.Forms.Label();
+            this.lbl = new System.Windows.Forms.Label();
+            this.lblMovieProducerH = new System.Windows.Forms.Label();
+            this.lblMovieBBFCRatingH = new System.Windows.Forms.Label();
+            this.lblMovieDirectorH = new System.Windows.Forms.Label();
+            this.lblMovieDescH = new System.Windows.Forms.Label();
+            this.lblMovieTypeH = new System.Windows.Forms.Label();
+            this.lblMovieDurationH = new System.Windows.Forms.Label();
+            this.lblMovieTitle = new System.Windows.Forms.Label();
+            this.lblMovieTitleH = new System.Windows.Forms.Label();
+            this.lblMovieProducer = new System.Windows.Forms.Label();
+            this.lblMovieBBFCRating = new System.Windows.Forms.Label();
+            this.lblMovieDirector = new System.Windows.Forms.Label();
+            this.lblMovieDesc = new System.Windows.Forms.Label();
+            this.lblMovieType = new System.Windows.Forms.Label();
+            this.lblMovieDuration = new System.Windows.Forms.Label();
+            this.lblMovie = new System.Windows.Forms.Label();
+            this.shapeContainer1 = new Microsoft.VisualBasic.PowerPacks.ShapeContainer();
+            this.lineShape1 = new Microsoft.VisualBasic.PowerPacks.LineShape();
             this.tbUserSettings = new System.Windows.Forms.TabPage();
             this.grpUserDetails = new System.Windows.Forms.GroupBox();
             this.txtConfirmPassword = new System.Windows.Forms.TextBox();
@@ -80,29 +103,6 @@
             this.btnAddMovie = new System.Windows.Forms.Button();
             this.ddlMovies = new System.Windows.Forms.ComboBox();
             this.tbDistributors = new System.Windows.Forms.TabPage();
-            this.lblMovie = new System.Windows.Forms.Label();
-            this.lblMovieDuration = new System.Windows.Forms.Label();
-            this.lblMovieType = new System.Windows.Forms.Label();
-            this.lblMovieDesc = new System.Windows.Forms.Label();
-            this.lblMovieDirector = new System.Windows.Forms.Label();
-            this.lblMovieBBFCRating = new System.Windows.Forms.Label();
-            this.lblMovieProducer = new System.Windows.Forms.Label();
-            this.lblMovieTitleH = new System.Windows.Forms.Label();
-            this.lblMovieTitle = new System.Windows.Forms.Label();
-            this.lblMovieDurationH = new System.Windows.Forms.Label();
-            this.lblMovieTypeH = new System.Windows.Forms.Label();
-            this.lblMovieDescH = new System.Windows.Forms.Label();
-            this.lblMovieDirectorH = new System.Windows.Forms.Label();
-            this.lblMovieBBFCRatingH = new System.Windows.Forms.Label();
-            this.lblMovieProducerH = new System.Windows.Forms.Label();
-            this.lbl = new System.Windows.Forms.Label();
-            this.lblNumberOfTickets = new System.Windows.Forms.Label();
-            this.cbbMovieName = new System.Windows.Forms.ComboBox();
-            this.cbbSession = new System.Windows.Forms.ComboBox();
-            this.txtNumOfTickets = new System.Windows.Forms.TextBox();
-            this.shapeContainer1 = new Microsoft.VisualBasic.PowerPacks.ShapeContainer();
-            this.lineShape1 = new Microsoft.VisualBasic.PowerPacks.LineShape();
-            this.btnBook = new System.Windows.Forms.Button();
             this.tbcUserRoles.SuspendLayout();
             this.tbBookings.SuspendLayout();
             this.tbUserSettings.SuspendLayout();
@@ -157,6 +157,223 @@
             this.tbBookings.Size = new System.Drawing.Size(600, 384);
             this.tbBookings.TabIndex = 0;
             this.tbBookings.Text = "Bookings";
+            // 
+            // btnBook
+            // 
+            this.btnBook.Location = new System.Drawing.Point(465, 61);
+            this.btnBook.Name = "btnBook";
+            this.btnBook.Size = new System.Drawing.Size(97, 23);
+            this.btnBook.TabIndex = 7;
+            this.btnBook.Text = "Book";
+            this.btnBook.UseVisualStyleBackColor = true;
+            this.btnBook.Click += new System.EventHandler(this.btnBook_Click);
+            // 
+            // txtNumOfTickets
+            // 
+            this.txtNumOfTickets.Location = new System.Drawing.Point(429, 35);
+            this.txtNumOfTickets.Name = "txtNumOfTickets";
+            this.txtNumOfTickets.Size = new System.Drawing.Size(133, 20);
+            this.txtNumOfTickets.TabIndex = 5;
+            // 
+            // cbbSession
+            // 
+            this.cbbSession.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbbSession.FormattingEnabled = true;
+            this.cbbSession.Location = new System.Drawing.Point(429, 6);
+            this.cbbSession.Name = "cbbSession";
+            this.cbbSession.Size = new System.Drawing.Size(133, 21);
+            this.cbbSession.TabIndex = 3;
+            this.cbbSession.SelectedIndexChanged += new System.EventHandler(this.cbbSession_SelectedIndexChanged);
+            // 
+            // cbbMovieName
+            // 
+            this.cbbMovieName.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbbMovieName.FormattingEnabled = true;
+            this.cbbMovieName.Location = new System.Drawing.Point(106, 6);
+            this.cbbMovieName.Name = "cbbMovieName";
+            this.cbbMovieName.Size = new System.Drawing.Size(200, 21);
+            this.cbbMovieName.TabIndex = 1;
+            this.cbbMovieName.SelectedIndexChanged += new System.EventHandler(this.cbbMovieName_SelectedIndexChanged);
+            // 
+            // lblNumberOfTickets
+            // 
+            this.lblNumberOfTickets.AutoSize = true;
+            this.lblNumberOfTickets.Location = new System.Drawing.Point(329, 38);
+            this.lblNumberOfTickets.Name = "lblNumberOfTickets";
+            this.lblNumberOfTickets.Size = new System.Drawing.Size(94, 13);
+            this.lblNumberOfTickets.TabIndex = 4;
+            this.lblNumberOfTickets.Text = "Number of Tickets";
+            // 
+            // lbl
+            // 
+            this.lbl.AutoSize = true;
+            this.lbl.Location = new System.Drawing.Point(329, 9);
+            this.lbl.Name = "lbl";
+            this.lbl.Size = new System.Drawing.Size(44, 13);
+            this.lbl.TabIndex = 2;
+            this.lbl.Text = "Session";
+            // 
+            // lblMovieProducerH
+            // 
+            this.lblMovieProducerH.AutoSize = true;
+            this.lblMovieProducerH.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.lblMovieProducerH.Location = new System.Drawing.Point(303, 133);
+            this.lblMovieProducerH.Name = "lblMovieProducerH";
+            this.lblMovieProducerH.Size = new System.Drawing.Size(62, 13);
+            this.lblMovieProducerH.TabIndex = 16;
+            this.lblMovieProducerH.Text = "Producer:";
+            // 
+            // lblMovieBBFCRatingH
+            // 
+            this.lblMovieBBFCRatingH.AutoSize = true;
+            this.lblMovieBBFCRatingH.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.lblMovieBBFCRatingH.Location = new System.Drawing.Point(303, 153);
+            this.lblMovieBBFCRatingH.Name = "lblMovieBBFCRatingH";
+            this.lblMovieBBFCRatingH.Size = new System.Drawing.Size(83, 13);
+            this.lblMovieBBFCRatingH.TabIndex = 20;
+            this.lblMovieBBFCRatingH.Text = "BBFC Rating:";
+            // 
+            // lblMovieDirectorH
+            // 
+            this.lblMovieDirectorH.AutoSize = true;
+            this.lblMovieDirectorH.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.lblMovieDirectorH.Location = new System.Drawing.Point(303, 113);
+            this.lblMovieDirectorH.Name = "lblMovieDirectorH";
+            this.lblMovieDirectorH.Size = new System.Drawing.Size(56, 13);
+            this.lblMovieDirectorH.TabIndex = 14;
+            this.lblMovieDirectorH.Text = "Director:";
+            // 
+            // lblMovieDescH
+            // 
+            this.lblMovieDescH.AutoSize = true;
+            this.lblMovieDescH.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.lblMovieDescH.Location = new System.Drawing.Point(6, 203);
+            this.lblMovieDescH.Name = "lblMovieDescH";
+            this.lblMovieDescH.Size = new System.Drawing.Size(71, 13);
+            this.lblMovieDescH.TabIndex = 22;
+            this.lblMovieDescH.Text = "Description";
+            // 
+            // lblMovieTypeH
+            // 
+            this.lblMovieTypeH.AutoSize = true;
+            this.lblMovieTypeH.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.lblMovieTypeH.Location = new System.Drawing.Point(6, 153);
+            this.lblMovieTypeH.Name = "lblMovieTypeH";
+            this.lblMovieTypeH.Size = new System.Drawing.Size(39, 13);
+            this.lblMovieTypeH.TabIndex = 18;
+            this.lblMovieTypeH.Text = "Type:";
+            // 
+            // lblMovieDurationH
+            // 
+            this.lblMovieDurationH.AutoSize = true;
+            this.lblMovieDurationH.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.lblMovieDurationH.Location = new System.Drawing.Point(6, 133);
+            this.lblMovieDurationH.Name = "lblMovieDurationH";
+            this.lblMovieDurationH.Size = new System.Drawing.Size(59, 13);
+            this.lblMovieDurationH.TabIndex = 12;
+            this.lblMovieDurationH.Text = "Duration:";
+            // 
+            // lblMovieTitle
+            // 
+            this.lblMovieTitle.AutoSize = true;
+            this.lblMovieTitle.Location = new System.Drawing.Point(100, 113);
+            this.lblMovieTitle.Name = "lblMovieTitle";
+            this.lblMovieTitle.Size = new System.Drawing.Size(57, 13);
+            this.lblMovieTitle.TabIndex = 11;
+            this.lblMovieTitle.Text = "Temp Title";
+            // 
+            // lblMovieTitleH
+            // 
+            this.lblMovieTitleH.AutoSize = true;
+            this.lblMovieTitleH.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.lblMovieTitleH.Location = new System.Drawing.Point(6, 113);
+            this.lblMovieTitleH.Name = "lblMovieTitleH";
+            this.lblMovieTitleH.Size = new System.Drawing.Size(74, 13);
+            this.lblMovieTitleH.TabIndex = 10;
+            this.lblMovieTitleH.Text = "Movie Title:";
+            // 
+            // lblMovieProducer
+            // 
+            this.lblMovieProducer.AutoSize = true;
+            this.lblMovieProducer.Location = new System.Drawing.Point(407, 133);
+            this.lblMovieProducer.Name = "lblMovieProducer";
+            this.lblMovieProducer.Size = new System.Drawing.Size(80, 13);
+            this.lblMovieProducer.TabIndex = 17;
+            this.lblMovieProducer.Text = "Temp Producer";
+            // 
+            // lblMovieBBFCRating
+            // 
+            this.lblMovieBBFCRating.AutoSize = true;
+            this.lblMovieBBFCRating.Location = new System.Drawing.Point(407, 153);
+            this.lblMovieBBFCRating.Name = "lblMovieBBFCRating";
+            this.lblMovieBBFCRating.Size = new System.Drawing.Size(68, 13);
+            this.lblMovieBBFCRating.TabIndex = 21;
+            this.lblMovieBBFCRating.Text = "Temp Rating";
+            // 
+            // lblMovieDirector
+            // 
+            this.lblMovieDirector.AutoSize = true;
+            this.lblMovieDirector.Location = new System.Drawing.Point(407, 113);
+            this.lblMovieDirector.Name = "lblMovieDirector";
+            this.lblMovieDirector.Size = new System.Drawing.Size(74, 13);
+            this.lblMovieDirector.TabIndex = 15;
+            this.lblMovieDirector.Text = "Temp Director";
+            // 
+            // lblMovieDesc
+            // 
+            this.lblMovieDesc.AutoSize = true;
+            this.lblMovieDesc.Location = new System.Drawing.Point(100, 203);
+            this.lblMovieDesc.Name = "lblMovieDesc";
+            this.lblMovieDesc.Size = new System.Drawing.Size(61, 13);
+            this.lblMovieDesc.TabIndex = 23;
+            this.lblMovieDesc.Text = "Temp Type";
+            // 
+            // lblMovieType
+            // 
+            this.lblMovieType.AutoSize = true;
+            this.lblMovieType.Location = new System.Drawing.Point(100, 153);
+            this.lblMovieType.Name = "lblMovieType";
+            this.lblMovieType.Size = new System.Drawing.Size(61, 13);
+            this.lblMovieType.TabIndex = 19;
+            this.lblMovieType.Text = "Temp Type";
+            // 
+            // lblMovieDuration
+            // 
+            this.lblMovieDuration.AutoSize = true;
+            this.lblMovieDuration.Location = new System.Drawing.Point(100, 133);
+            this.lblMovieDuration.Name = "lblMovieDuration";
+            this.lblMovieDuration.Size = new System.Drawing.Size(77, 13);
+            this.lblMovieDuration.TabIndex = 13;
+            this.lblMovieDuration.Text = "Temp Duration";
+            // 
+            // lblMovie
+            // 
+            this.lblMovie.AutoSize = true;
+            this.lblMovie.Location = new System.Drawing.Point(6, 9);
+            this.lblMovie.Name = "lblMovie";
+            this.lblMovie.Size = new System.Drawing.Size(67, 13);
+            this.lblMovie.TabIndex = 0;
+            this.lblMovie.Text = "Movie Name";
+            // 
+            // shapeContainer1
+            // 
+            this.shapeContainer1.Location = new System.Drawing.Point(3, 3);
+            this.shapeContainer1.Margin = new System.Windows.Forms.Padding(0);
+            this.shapeContainer1.Name = "shapeContainer1";
+            this.shapeContainer1.Shapes.AddRange(new Microsoft.VisualBasic.PowerPacks.Shape[] {
+            this.lineShape1});
+            this.shapeContainer1.Size = new System.Drawing.Size(594, 378);
+            this.shapeContainer1.TabIndex = 9;
+            this.shapeContainer1.TabStop = false;
+            // 
+            // lineShape1
+            // 
+            this.lineShape1.BorderColor = System.Drawing.SystemColors.AppWorkspace;
+            this.lineShape1.Name = "lineShape1";
+            this.lineShape1.X1 = 5;
+            this.lineShape1.X2 = 580;
+            this.lineShape1.Y1 = 98;
+            this.lineShape1.Y2 = 98;
             // 
             // tbUserSettings
             // 
@@ -401,7 +618,7 @@
             // lblSelectUser
             // 
             this.lblSelectUser.AutoSize = true;
-            this.lblSelectUser.Location = new System.Drawing.Point(6, 9);
+            this.lblSelectUser.Location = new System.Drawing.Point(15, 9);
             this.lblSelectUser.Name = "lblSelectUser";
             this.lblSelectUser.Size = new System.Drawing.Size(62, 13);
             this.lblSelectUser.TabIndex = 3;
@@ -410,9 +627,9 @@
             // btnAddUser
             // 
             this.btnAddUser.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnAddUser.Location = new System.Drawing.Point(519, 4);
+            this.btnAddUser.Location = new System.Drawing.Point(519, 6);
             this.btnAddUser.Name = "btnAddUser";
-            this.btnAddUser.Size = new System.Drawing.Size(75, 23);
+            this.btnAddUser.Size = new System.Drawing.Size(75, 21);
             this.btnAddUser.TabIndex = 2;
             this.btnAddUser.Text = "Add User";
             this.btnAddUser.UseVisualStyleBackColor = true;
@@ -424,9 +641,9 @@
                         | System.Windows.Forms.AnchorStyles.Right)));
             this.dropdownSelectUsers.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.dropdownSelectUsers.FormattingEnabled = true;
-            this.dropdownSelectUsers.Location = new System.Drawing.Point(74, 6);
+            this.dropdownSelectUsers.Location = new System.Drawing.Point(114, 6);
             this.dropdownSelectUsers.Name = "dropdownSelectUsers";
-            this.dropdownSelectUsers.Size = new System.Drawing.Size(439, 21);
+            this.dropdownSelectUsers.Size = new System.Drawing.Size(399, 21);
             this.dropdownSelectUsers.TabIndex = 1;
             this.dropdownSelectUsers.SelectedIndexChanged += new System.EventHandler(this.dropdownSelectUsers_SelectedIndexChanged);
             // 
@@ -490,13 +707,13 @@
             "18"});
             this.ddlBBFCRating.Location = new System.Drawing.Point(105, 193);
             this.ddlBBFCRating.Name = "ddlBBFCRating";
-            this.ddlBBFCRating.Size = new System.Drawing.Size(465, 21);
+            this.ddlBBFCRating.Size = new System.Drawing.Size(474, 21);
             this.ddlBBFCRating.TabIndex = 30;
             // 
             // lblBBFCRating
             // 
             this.lblBBFCRating.AutoSize = true;
-            this.lblBBFCRating.Location = new System.Drawing.Point(-1, 196);
+            this.lblBBFCRating.Location = new System.Drawing.Point(6, 196);
             this.lblBBFCRating.Name = "lblBBFCRating";
             this.lblBBFCRating.Size = new System.Drawing.Size(68, 13);
             this.lblBBFCRating.TabIndex = 31;
@@ -516,13 +733,13 @@
             "Non-Mainstream"});
             this.ddlExpectedAudience.Location = new System.Drawing.Point(105, 166);
             this.ddlExpectedAudience.Name = "ddlExpectedAudience";
-            this.ddlExpectedAudience.Size = new System.Drawing.Size(465, 21);
+            this.ddlExpectedAudience.Size = new System.Drawing.Size(474, 21);
             this.ddlExpectedAudience.TabIndex = 18;
             // 
             // lblExpectedAudience
             // 
             this.lblExpectedAudience.AutoSize = true;
-            this.lblExpectedAudience.Location = new System.Drawing.Point(3, 169);
+            this.lblExpectedAudience.Location = new System.Drawing.Point(6, 169);
             this.lblExpectedAudience.Name = "lblExpectedAudience";
             this.lblExpectedAudience.Size = new System.Drawing.Size(100, 13);
             this.lblExpectedAudience.TabIndex = 29;
@@ -652,7 +869,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(-1, 221);
+            this.label7.Location = new System.Drawing.Point(6, 221);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(37, 13);
             this.label7.TabIndex = 13;
@@ -661,7 +878,7 @@
             // lblDuration
             // 
             this.lblDuration.AutoSize = true;
-            this.lblDuration.Location = new System.Drawing.Point(8, 143);
+            this.lblDuration.Location = new System.Drawing.Point(6, 143);
             this.lblDuration.Name = "lblDuration";
             this.lblDuration.Size = new System.Drawing.Size(92, 13);
             this.lblDuration.TabIndex = 11;
@@ -670,7 +887,7 @@
             // lblSelectMovie
             // 
             this.lblSelectMovie.AutoSize = true;
-            this.lblSelectMovie.Location = new System.Drawing.Point(6, 9);
+            this.lblSelectMovie.Location = new System.Drawing.Point(15, 9);
             this.lblSelectMovie.Name = "lblSelectMovie";
             this.lblSelectMovie.Size = new System.Drawing.Size(69, 13);
             this.lblSelectMovie.TabIndex = 3;
@@ -679,9 +896,9 @@
             // btnAddMovie
             // 
             this.btnAddMovie.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnAddMovie.Location = new System.Drawing.Point(519, 4);
+            this.btnAddMovie.Location = new System.Drawing.Point(519, 6);
             this.btnAddMovie.Name = "btnAddMovie";
-            this.btnAddMovie.Size = new System.Drawing.Size(75, 23);
+            this.btnAddMovie.Size = new System.Drawing.Size(75, 21);
             this.btnAddMovie.TabIndex = 2;
             this.btnAddMovie.Text = "Add Movie";
             this.btnAddMovie.UseVisualStyleBackColor = true;
@@ -692,9 +909,9 @@
                         | System.Windows.Forms.AnchorStyles.Right)));
             this.ddlMovies.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.ddlMovies.FormattingEnabled = true;
-            this.ddlMovies.Location = new System.Drawing.Point(74, 6);
+            this.ddlMovies.Location = new System.Drawing.Point(114, 6);
             this.ddlMovies.Name = "ddlMovies";
-            this.ddlMovies.Size = new System.Drawing.Size(439, 21);
+            this.ddlMovies.Size = new System.Drawing.Size(399, 21);
             this.ddlMovies.TabIndex = 1;
             // 
             // tbDistributors
@@ -706,226 +923,6 @@
             this.tbDistributors.TabIndex = 4;
             this.tbDistributors.Text = "Distributor Section";
             this.tbDistributors.UseVisualStyleBackColor = true;
-            // 
-            // lblMovie
-            // 
-            this.lblMovie.AutoSize = true;
-            this.lblMovie.Location = new System.Drawing.Point(6, 9);
-            this.lblMovie.Name = "lblMovie";
-            this.lblMovie.Size = new System.Drawing.Size(67, 13);
-            this.lblMovie.TabIndex = 0;
-            this.lblMovie.Text = "Movie Name";
-            // 
-            // lblMovieDuration
-            // 
-            this.lblMovieDuration.AutoSize = true;
-            this.lblMovieDuration.Location = new System.Drawing.Point(100, 133);
-            this.lblMovieDuration.Name = "lblMovieDuration";
-            this.lblMovieDuration.Size = new System.Drawing.Size(77, 13);
-            this.lblMovieDuration.TabIndex = 13;
-            this.lblMovieDuration.Text = "Temp Duration";
-            // 
-            // lblMovieType
-            // 
-            this.lblMovieType.AutoSize = true;
-            this.lblMovieType.Location = new System.Drawing.Point(100, 153);
-            this.lblMovieType.Name = "lblMovieType";
-            this.lblMovieType.Size = new System.Drawing.Size(61, 13);
-            this.lblMovieType.TabIndex = 19;
-            this.lblMovieType.Text = "Temp Type";
-            // 
-            // lblMovieDesc
-            // 
-            this.lblMovieDesc.AutoSize = true;
-            this.lblMovieDesc.Location = new System.Drawing.Point(100, 203);
-            this.lblMovieDesc.Name = "lblMovieDesc";
-            this.lblMovieDesc.Size = new System.Drawing.Size(61, 13);
-            this.lblMovieDesc.TabIndex = 23;
-            this.lblMovieDesc.Text = "Temp Type";
-            // 
-            // lblMovieDirector
-            // 
-            this.lblMovieDirector.AutoSize = true;
-            this.lblMovieDirector.Location = new System.Drawing.Point(407, 113);
-            this.lblMovieDirector.Name = "lblMovieDirector";
-
-            this.lblMovieDirector.Size = new System.Drawing.Size(74, 13);
-            this.lblMovieDirector.TabIndex = 15;
-            this.lblMovieDirector.Text = "Temp Director";
-            // 
-            // lblMovieBBFCRating
-            // 
-            this.lblMovieBBFCRating.AutoSize = true;
-            this.lblMovieBBFCRating.Location = new System.Drawing.Point(407, 153);
-            this.lblMovieBBFCRating.Name = "lblMovieBBFCRating";
-
-            this.lblMovieBBFCRating.Size = new System.Drawing.Size(68, 13);
-            this.lblMovieBBFCRating.TabIndex = 21;
-            this.lblMovieBBFCRating.Text = "Temp Rating";
-            // 
-            // lblMovieProducer
-            // 
-            this.lblMovieProducer.AutoSize = true;
-            this.lblMovieProducer.Location = new System.Drawing.Point(407, 133);
-            this.lblMovieProducer.Name = "lblMovieProducer";
-            this.lblMovieProducer.Size = new System.Drawing.Size(80, 13);
-            this.lblMovieProducer.TabIndex = 17;
-            this.lblMovieProducer.Text = "Temp Producer";
-            // 
-            // lblMovieTitleH
-            // 
-            this.lblMovieTitleH.AutoSize = true;
-            this.lblMovieTitleH.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.lblMovieTitleH.Location = new System.Drawing.Point(6, 113);
-            this.lblMovieTitleH.Name = "lblMovieTitleH";
-            this.lblMovieTitleH.Size = new System.Drawing.Size(74, 13);
-            this.lblMovieTitleH.TabIndex = 10;
-            this.lblMovieTitleH.Text = "Movie Title:";
-            this.lblMovieTitleH.Click += new System.EventHandler(this.lblMovieTitleH_Click);
-            // 
-            // lblMovieTitle
-            // 
-            this.lblMovieTitle.AutoSize = true;
-            this.lblMovieTitle.Location = new System.Drawing.Point(100, 113);
-            this.lblMovieTitle.Name = "lblMovieTitle";
-            this.lblMovieTitle.Size = new System.Drawing.Size(57, 13);
-            this.lblMovieTitle.TabIndex = 11;
-            this.lblMovieTitle.Text = "Temp Title";
-            // 
-            // lblMovieDurationH
-            // 
-            this.lblMovieDurationH.AutoSize = true;
-            this.lblMovieDurationH.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.lblMovieDurationH.Location = new System.Drawing.Point(6, 133);
-            this.lblMovieDurationH.Name = "lblMovieDurationH";
-            this.lblMovieDurationH.Size = new System.Drawing.Size(59, 13);
-            this.lblMovieDurationH.TabIndex = 12;
-            this.lblMovieDurationH.Text = "Duration:";
-            // 
-            // lblMovieTypeH
-            // 
-            this.lblMovieTypeH.AutoSize = true;
-            this.lblMovieTypeH.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.lblMovieTypeH.Location = new System.Drawing.Point(6, 153);
-            this.lblMovieTypeH.Name = "lblMovieTypeH";
-            this.lblMovieTypeH.Size = new System.Drawing.Size(39, 13);
-            this.lblMovieTypeH.TabIndex = 18;
-            this.lblMovieTypeH.Text = "Type:";
-            // 
-            // lblMovieDescH
-            // 
-            this.lblMovieDescH.AutoSize = true;
-            this.lblMovieDescH.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.lblMovieDescH.Location = new System.Drawing.Point(6, 203);
-            this.lblMovieDescH.Name = "lblMovieDescH";
-            this.lblMovieDescH.Size = new System.Drawing.Size(71, 13);
-            this.lblMovieDescH.TabIndex = 22;
-            this.lblMovieDescH.Text = "Description";
-            // 
-            // lblMovieDirectorH
-            // 
-            this.lblMovieDirectorH.AutoSize = true;
-            this.lblMovieDirectorH.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.lblMovieDirectorH.Location = new System.Drawing.Point(303, 113);
-            this.lblMovieDirectorH.Name = "lblMovieDirectorH";
-            this.lblMovieDirectorH.Size = new System.Drawing.Size(56, 13);
-            this.lblMovieDirectorH.TabIndex = 14;
-            this.lblMovieDirectorH.Text = "Director:";
-            // 
-            // lblMovieBBFCRatingH
-            // 
-            this.lblMovieBBFCRatingH.AutoSize = true;
-            this.lblMovieBBFCRatingH.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.lblMovieBBFCRatingH.Location = new System.Drawing.Point(303, 153);
-            this.lblMovieBBFCRatingH.Name = "lblMovieBBFCRatingH";
-            this.lblMovieBBFCRatingH.Size = new System.Drawing.Size(83, 13);
-            this.lblMovieBBFCRatingH.TabIndex = 20;
-            this.lblMovieBBFCRatingH.Text = "BBFC Rating:";
-            // 
-            // lblMovieProducerH
-            // 
-            this.lblMovieProducerH.AutoSize = true;
-            this.lblMovieProducerH.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.lblMovieProducerH.Location = new System.Drawing.Point(303, 133);
-            this.lblMovieProducerH.Name = "lblMovieProducerH";
-            this.lblMovieProducerH.Size = new System.Drawing.Size(62, 13);
-            this.lblMovieProducerH.TabIndex = 16;
-            this.lblMovieProducerH.Text = "Producer:";
-            // 
-            // lbl
-            // 
-            this.lbl.AutoSize = true;
-            this.lbl.Location = new System.Drawing.Point(329, 9);
-            this.lbl.Name = "lbl";
-            this.lbl.Size = new System.Drawing.Size(44, 13);
-            this.lbl.TabIndex = 2;
-            this.lbl.Text = "Session";
-            // 
-            // lblNumberOfTickets
-            // 
-            this.lblNumberOfTickets.AutoSize = true;
-            this.lblNumberOfTickets.Location = new System.Drawing.Point(329, 38);
-            this.lblNumberOfTickets.Name = "lblNumberOfTickets";
-            this.lblNumberOfTickets.Size = new System.Drawing.Size(94, 13);
-            this.lblNumberOfTickets.TabIndex = 4;
-            this.lblNumberOfTickets.Text = "Number of Tickets";
-            // 
-            // cbbMovieName
-            // 
-            this.cbbMovieName.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbbMovieName.FormattingEnabled = true;
-            this.cbbMovieName.Location = new System.Drawing.Point(106, 6);
-            this.cbbMovieName.Name = "cbbMovieName";
-            this.cbbMovieName.Size = new System.Drawing.Size(200, 21);
-            this.cbbMovieName.TabIndex = 1;
-            this.cbbMovieName.SelectedIndexChanged += new System.EventHandler(this.cbbMovieName_SelectedIndexChanged);
-            // 
-            // cbbSession
-            // 
-            this.cbbSession.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbbSession.FormattingEnabled = true;
-            this.cbbSession.Location = new System.Drawing.Point(429, 6);
-            this.cbbSession.Name = "cbbSession";
-            this.cbbSession.Size = new System.Drawing.Size(133, 21);
-            this.cbbSession.TabIndex = 3;
-            this.cbbSession.SelectedIndexChanged += new System.EventHandler(this.cbbSession_SelectedIndexChanged);
-            // 
-            // txtNumOfTickets
-            // 
-            this.txtNumOfTickets.Location = new System.Drawing.Point(429, 35);
-            this.txtNumOfTickets.Name = "txtNumOfTickets";
-            this.txtNumOfTickets.Size = new System.Drawing.Size(133, 20);
-            this.txtNumOfTickets.TabIndex = 5;
-            // 
-            // shapeContainer1
-            // 
-            this.shapeContainer1.Location = new System.Drawing.Point(3, 3);
-            this.shapeContainer1.Margin = new System.Windows.Forms.Padding(0);
-            this.shapeContainer1.Name = "shapeContainer1";
-            this.shapeContainer1.Shapes.AddRange(new Microsoft.VisualBasic.PowerPacks.Shape[] {
-            this.lineShape1});
-            this.shapeContainer1.Size = new System.Drawing.Size(586, 386);
-            this.shapeContainer1.TabIndex = 9;
-            this.shapeContainer1.TabStop = false;
-            // 
-            // lineShape1
-            // 
-            this.lineShape1.BorderColor = System.Drawing.SystemColors.AppWorkspace;
-            this.lineShape1.Name = "lineShape1";
-            this.lineShape1.X1 = 5;
-            this.lineShape1.X2 = 580;
-            this.lineShape1.Y1 = 98;
-            this.lineShape1.Y2 = 98;
-            // 
-            // btnBook
-            // 
-            this.btnBook.Location = new System.Drawing.Point(465, 61);
-            this.btnBook.Name = "btnBook";
-            this.btnBook.Size = new System.Drawing.Size(97, 23);
-            this.btnBook.TabIndex = 7;
-            this.btnBook.Text = "Book";
-            this.btnBook.UseVisualStyleBackColor = true;
-            this.btnBook.Click += new System.EventHandler(this.btnBook_Click);
             // 
             // MainGUI
             // 
