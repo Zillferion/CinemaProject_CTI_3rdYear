@@ -202,29 +202,7 @@ namespace CinemaProject
 			}
 		}
 
-
-		public void MovieButtonControl( int Mode )
-		{
-			//Mode 0: Disable, Mode 1: Enable 
-			if ( Mode == 0 )
-			{
-				cbbMovieName.Enabled = false;
-				cbbSession.Enabled = false;
-				txtNumOfTickets.Enabled = false;
-				btnMovieDetails.Enabled = false;
-				btnBook.Enabled = false;
-			}
-			else
-			{
-				cbbMovieName.Enabled = true;
-				cbbSession.Enabled = true;
-				txtNumOfTickets.Enabled = true;
-				btnMovieDetails.Enabled = true;
-				btnBook.Enabled = true;
-			}
-		}
-		#endregion
-
+        #endregion
 		#region Movie Setting Events
 
 		#endregion
@@ -294,6 +272,49 @@ namespace CinemaProject
 				MessageBox.Show( "Error:  " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error );
 			}
 		}
+
+        
+		public void MovieButtonControl( int Mode )
+		{
+			//Mode 0: Disable, Mode 1: Enable 
+			if ( Mode == 0 )
+			{
+				cbbMovieName.Enabled = false;
+				cbbSession.Enabled = false;
+				txtNumOfTickets.Enabled = false;
+				btnBook.Enabled = false;
+			}
+			else
+			{
+				cbbMovieName.Enabled = true;
+				cbbSession.Enabled = true;
+				txtNumOfTickets.Enabled = true;
+				btnBook.Enabled = true;
+			}
+		}
+
+
+        public void SetMovieDetailsBlank()
+        {
+            lblMovie.Text = "";
+            lblMovieDesc.Text = "";
+            lblMovieDirector.Text = "";
+            lblMovieDuration.Text = "";
+            lblMovieProducer.Text = "";
+            lblMovieTitle.Text = "";
+            lblMovieType.Text = "";
+        }
+
+        public void SetMovieDetails(int movieID)
+        {
+
+        }
+
 		#endregion
+
+        private void lblMovieTitleH_Click(object sender, EventArgs e)
+        {
+
+        }
 	}
 }
