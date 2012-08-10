@@ -153,9 +153,6 @@
     <Build Include="Schema Objects\Schemas\dbo\Tables\tlnkScreenMovie.table.sql">
       <SubType>Code</SubType>
     </Build>
-    <Build Include="Schema Objects\Schemas\dbo\Tables\tblMovieTime.table.sql">
-      <SubType>Code</SubType>
-    </Build>
     <Build Include="Schema Objects\Schemas\dbo\Programmability\Stored Procedures\CreateUpdateMovie.proc.sql">
       <SubType>Code</SubType>
     </Build>
@@ -168,13 +165,16 @@
     <Build Include="Schema Objects\Schemas\dbo\Programmability\Stored Procedures\GetUserInformation.proc.sql">
       <SubType>Code</SubType>
     </Build>
-    <Build Include="Schema Objects\Schemas\dbo\Programmability\Stored Procedures\GetUserLists.proc.sql">
+    <Build Include="Schema Objects\Schemas\dbo\Programmability\Stored Procedures\GetUserList.proc.sql">
       <SubType>Code</SubType>
     </Build>
     <Build Include="Schema Objects\Schemas\dbo\Programmability\Stored Procedures\UpdateUser.proc.sql">
       <SubType>Code</SubType>
     </Build>
     <Build Include="Schema Objects\Schemas\dbo\Programmability\Stored Procedures\CreateUser.proc.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Schemas\dbo\Programmability\Stored Procedures\GetMovieList.proc.sql">
       <SubType>Code</SubType>
     </Build>
   </ItemGroup>

@@ -29,8 +29,9 @@
         private void InitializeComponent()
         {
             this.tbcUserRoles = new System.Windows.Forms.TabControl();
-            this.tbMovieSettings = new System.Windows.Forms.TabPage();
+            this.tbBookings = new System.Windows.Forms.TabPage();
             this.btnBook = new System.Windows.Forms.Button();
+
             this.txtNumOfTickets = new System.Windows.Forms.TextBox();
             this.lblNumberOfTickets = new System.Windows.Forms.Label();
             this.cbbSession = new System.Windows.Forms.ComboBox();
@@ -104,58 +105,80 @@
             this.lblMovieDescH = new System.Windows.Forms.Label();
             this.lblMovieDesc = new System.Windows.Forms.Label();
             this.tbcUserRoles.SuspendLayout();
-            this.tbMovieSettings.SuspendLayout();
+            this.tbBookings.SuspendLayout();
             this.tbUserSettings.SuspendLayout();
             this.grpUserDetails.SuspendLayout();
             this.tabPage2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
             // tbcUserRoles
             // 
+
             this.tbcUserRoles.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
                         | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
-            this.tbcUserRoles.Controls.Add(this.tbMovieSettings);
+            this.tbcUserRoles.Controls.Add(this.tbBookings);
             this.tbcUserRoles.Controls.Add(this.tbUserSettings);
             this.tbcUserRoles.Controls.Add(this.tabPage2);
+
             this.tbcUserRoles.Location = new System.Drawing.Point(12, 12);
             this.tbcUserRoles.Name = "tbcUserRoles";
             this.tbcUserRoles.SelectedIndex = 0;
             this.tbcUserRoles.Size = new System.Drawing.Size(600, 418);
             this.tbcUserRoles.TabIndex = 0;
             // 
-            // tbMovieSettings
+
+            // tbBookings
             // 
-            this.tbMovieSettings.BackColor = System.Drawing.SystemColors.Control;
-            this.tbMovieSettings.Controls.Add(this.lblMovieDesc);
-            this.tbMovieSettings.Controls.Add(this.lblMovieDescH);
-            this.tbMovieSettings.Controls.Add(this.lblBBFCRating);
-            this.tbMovieSettings.Controls.Add(this.lblMovieBBFCRatingH);
-            this.tbMovieSettings.Controls.Add(this.lblMovieType);
-            this.tbMovieSettings.Controls.Add(this.lblMovieTypeH);
-            this.tbMovieSettings.Controls.Add(this.lblMovieProducer);
-            this.tbMovieSettings.Controls.Add(this.lblMovieProducerH);
-            this.tbMovieSettings.Controls.Add(this.lblMovieDirector);
-            this.tbMovieSettings.Controls.Add(this.lblMovieDirectorH);
-            this.tbMovieSettings.Controls.Add(this.lblMovieDuration);
-            this.tbMovieSettings.Controls.Add(this.lblMovieDurationH);
-            this.tbMovieSettings.Controls.Add(this.lblMovieTitle);
-            this.tbMovieSettings.Controls.Add(this.lblMovieTitleH);
-            this.tbMovieSettings.Controls.Add(this.btnBook);
-            this.tbMovieSettings.Controls.Add(this.txtNumOfTickets);
-            this.tbMovieSettings.Controls.Add(this.lblNumberOfTickets);
-            this.tbMovieSettings.Controls.Add(this.cbbSession);
-            this.tbMovieSettings.Controls.Add(this.lbl);
-            this.tbMovieSettings.Controls.Add(this.cbbMovieName);
-            this.tbMovieSettings.Controls.Add(this.lblMovie);
-            this.tbMovieSettings.Controls.Add(this.shapeContainer1);
-            this.tbMovieSettings.Location = new System.Drawing.Point(4, 22);
-            this.tbMovieSettings.Name = "tbMovieSettings";
-            this.tbMovieSettings.Padding = new System.Windows.Forms.Padding(3);
-            this.tbMovieSettings.Size = new System.Drawing.Size(592, 392);
-            this.tbMovieSettings.TabIndex = 0;
-            this.tbMovieSettings.Text = "Bookings";
+
+            this.tbBookings.BackColor = System.Drawing.SystemColors.Control;
+            this.tbBookings.Controls.Add(this.lblMovieDesc);
+            this.tbBookings.Controls.Add(this.lblMovieDescH);
+            this.tbBookings.Controls.Add(this.lblBBFCRating);
+            this.tbBookings.Controls.Add(this.lblMovieBBFCRatingH);
+            this.tbBookings.Controls.Add(this.lblMovieType);
+            this.tbBookings.Controls.Add(this.lblMovieTypeH);
+            this.tbBookings.Controls.Add(this.lblMovieProducer);
+            this.tbBookings.Controls.Add(this.lblMovieProducerH);
+            this.tbBookings.Controls.Add(this.lblMovieDirector);
+            this.tbBookings.Controls.Add(this.lblMovieDirectorH);
+            this.tbBookings.Controls.Add(this.lblMovieDuration);
+            this.tbBookings.Controls.Add(this.lblMovieDurationH);
+            this.tbBookings.Controls.Add(this.lblMovieTitle);
+            this.tbBookings.Controls.Add(this.lblMovieTitleH);
+            this.tbBookings.Controls.Add(this.btnBook);
+            this.tbBookings.Controls.Add(this.txtNumOfTickets);
+            this.tbBookings.Controls.Add(this.lblNumberOfTickets);
+            this.tbBookings.Controls.Add(this.cbbSession);
+            this.tbBookings.Controls.Add(this.lbl);
+            this.tbBookings.Controls.Add(this.cbbMovieName);
+            this.tbBookings.Controls.Add(this.lblMovie);
+            this.tbBookings.Controls.Add(this.shapeContainer1);
+            this.tbBookings.Location = new System.Drawing.Point(4, 22);
+            this.tbBookings.Name = "tbBookings";
+
+            this.tbBookings.Padding = new System.Windows.Forms.Padding(3);
+            this.tbBookings.Size = new System.Drawing.Size(592, 392);
+            this.tbBookings.TabIndex = 0;
+            this.tbBookings.Text = "Bookings";
             // 
             // btnBook
             // 
@@ -281,6 +304,9 @@
             // 
             this.txtPassword.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
+
+
+
             this.txtPassword.Location = new System.Drawing.Point(105, 170);
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.PasswordChar = '*';
@@ -293,6 +319,7 @@
                         | System.Windows.Forms.AnchorStyles.Right)));
             this.txtLoginUserName.Location = new System.Drawing.Point(105, 144);
             this.txtLoginUserName.Name = "txtLoginUserName";
+
             this.txtLoginUserName.Size = new System.Drawing.Size(466, 20);
             this.txtLoginUserName.TabIndex = 10;
             // 
@@ -317,6 +344,14 @@
             // lblUsername
             // 
             this.lblUsername.AutoSize = true;
+
+
+
+
+
+
+
+
             this.lblUsername.Location = new System.Drawing.Point(6, 147);
             this.lblUsername.Name = "lblUsername";
             this.lblUsername.Size = new System.Drawing.Size(84, 13);
@@ -329,22 +364,31 @@
                         | System.Windows.Forms.AnchorStyles.Right)));
             this.txtContactNumber.Location = new System.Drawing.Point(105, 65);
             this.txtContactNumber.Name = "txtContactNumber";
+
             this.txtContactNumber.Size = new System.Drawing.Size(466, 20);
             this.txtContactNumber.TabIndex = 7;
             // 
             // lblContactNumber
             // 
+
+
+
             this.lblContactNumber.AutoSize = true;
             this.lblContactNumber.Location = new System.Drawing.Point(6, 65);
             this.lblContactNumber.Name = "lblContactNumber";
+
             this.lblContactNumber.Size = new System.Drawing.Size(84, 13);
             this.lblContactNumber.TabIndex = 20;
+
             this.lblContactNumber.Text = "Contact Number";
             // 
             // cbAdminLevel
             // 
             this.cbAdminLevel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
+
+
+
             this.cbAdminLevel.FormattingEnabled = true;
             this.cbAdminLevel.Items.AddRange(new object[] {
             "Employee",
@@ -361,6 +405,7 @@
             this.btnCancelUserDetailsChange.Enabled = false;
             this.btnCancelUserDetailsChange.Location = new System.Drawing.Point(87, 324);
             this.btnCancelUserDetailsChange.Name = "btnCancelUserDetailsChange";
+
             this.btnCancelUserDetailsChange.Size = new System.Drawing.Size(75, 23);
             this.btnCancelUserDetailsChange.TabIndex = 18;
             this.btnCancelUserDetailsChange.Text = "Cancel";
@@ -380,6 +425,9 @@
             // 
             // lblName
             // 
+
+
+
             this.lblName.AutoSize = true;
             this.lblName.Location = new System.Drawing.Point(6, 16);
             this.lblName.Name = "lblName";
@@ -393,6 +441,7 @@
                         | System.Windows.Forms.AnchorStyles.Right)));
             this.dateDateOfBirth.Location = new System.Drawing.Point(105, 91);
             this.dateDateOfBirth.Name = "dateDateOfBirth";
+
             this.dateDateOfBirth.Size = new System.Drawing.Size(466, 20);
             this.dateDateOfBirth.TabIndex = 8;
             // 
@@ -417,6 +466,11 @@
             // chkActive
             // 
             this.chkActive.AutoSize = true;
+
+
+
+
+
             this.chkActive.Location = new System.Drawing.Point(105, 222);
             this.chkActive.Name = "chkActive";
             this.chkActive.Size = new System.Drawing.Size(15, 14);
@@ -428,6 +482,7 @@
             this.lblSurname.AutoSize = true;
             this.lblSurname.Location = new System.Drawing.Point(6, 42);
             this.lblSurname.Name = "lblSurname";
+
             this.lblSurname.Size = new System.Drawing.Size(49, 13);
             this.lblSurname.TabIndex = 7;
             this.lblSurname.Text = "Surname";
@@ -452,6 +507,10 @@
             // 
             // lblAdmin
             // 
+
+
+
+
             this.lblAdmin.AutoSize = true;
             this.lblAdmin.Location = new System.Drawing.Point(6, 123);
             this.lblAdmin.Name = "lblAdmin";
@@ -464,6 +523,7 @@
             this.lblSelectUser.AutoSize = true;
             this.lblSelectUser.Location = new System.Drawing.Point(6, 9);
             this.lblSelectUser.Name = "lblSelectUser";
+
             this.lblSelectUser.Size = new System.Drawing.Size(62, 13);
             this.lblSelectUser.TabIndex = 3;
             this.lblSelectUser.Text = "Select User";
@@ -492,6 +552,10 @@
             // 
             // tabPage2
             // 
+
+
+
+
             this.tabPage2.BackColor = System.Drawing.SystemColors.Control;
             this.tabPage2.Controls.Add(this.groupBox1);
             this.tabPage2.Controls.Add(this.lblSelectMovie);
@@ -499,6 +563,7 @@
             this.tabPage2.Controls.Add(this.ddlMovies);
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
+
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage2.Size = new System.Drawing.Size(592, 392);
             this.tabPage2.TabIndex = 3;
@@ -506,6 +571,9 @@
             // 
             // groupBox1
             // 
+
+
+
             this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
                         | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
@@ -531,6 +599,7 @@
             this.groupBox1.Controls.Add(this.label9);
             this.groupBox1.Location = new System.Drawing.Point(9, 33);
             this.groupBox1.Name = "groupBox1";
+
             this.groupBox1.Size = new System.Drawing.Size(577, 353);
             this.groupBox1.TabIndex = 17;
             this.groupBox1.TabStop = false;
@@ -538,35 +607,50 @@
             // 
             // textBox1
             // 
+
+
+
             this.textBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
             this.textBox1.Location = new System.Drawing.Point(103, 196);
             this.textBox1.Name = "textBox1";
+
             this.textBox1.PasswordChar = '*';
             this.textBox1.Size = new System.Drawing.Size(466, 20);
             this.textBox1.TabIndex = 12;
             // 
             // textBox2
             // 
+
+
+
             this.textBox2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
             this.textBox2.Location = new System.Drawing.Point(105, 170);
             this.textBox2.Name = "textBox2";
+
             this.textBox2.PasswordChar = '*';
             this.textBox2.Size = new System.Drawing.Size(466, 20);
             this.textBox2.TabIndex = 11;
             // 
             // textBox3
             // 
+
+
+
             this.textBox3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
             this.textBox3.Location = new System.Drawing.Point(105, 144);
             this.textBox3.Name = "textBox3";
+
             this.textBox3.Size = new System.Drawing.Size(466, 20);
             this.textBox3.TabIndex = 10;
             // 
             // label1
             // 
+
+
+
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(6, 199);
             this.label1.Name = "label1";
@@ -576,6 +660,9 @@
             // 
             // label2
             // 
+
+
+
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(6, 173);
             this.label2.Name = "label2";
@@ -585,6 +672,9 @@
             // 
             // label3
             // 
+
+
+
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(6, 147);
             this.label3.Name = "label3";
@@ -594,15 +684,22 @@
             // 
             // textBox4
             // 
+
+
+
             this.textBox4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
             this.textBox4.Location = new System.Drawing.Point(105, 65);
             this.textBox4.Name = "textBox4";
+
             this.textBox4.Size = new System.Drawing.Size(466, 20);
             this.textBox4.TabIndex = 7;
             // 
             // label4
             // 
+
+
+
             this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(6, 65);
             this.label4.Name = "label4";
@@ -612,24 +709,34 @@
             // 
             // comboBox1
             // 
+
+
+
             this.comboBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
+
             this.comboBox1.FormattingEnabled = true;
             this.comboBox1.Items.AddRange(new object[] {
             "Employee",
             "Manager",
             "Administrator"});
+
             this.comboBox1.Location = new System.Drawing.Point(105, 117);
             this.comboBox1.Name = "comboBox1";
+
             this.comboBox1.Size = new System.Drawing.Size(466, 21);
             this.comboBox1.TabIndex = 9;
             // 
             // button1
             // 
+
+
+
             this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.button1.Enabled = false;
             this.button1.Location = new System.Drawing.Point(87, 324);
             this.button1.Name = "button1";
+
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 18;
             this.button1.Text = "Cancel";
@@ -637,9 +744,14 @@
             // 
             // button2
             // 
+
+
+
+
             this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.button2.Location = new System.Drawing.Point(6, 324);
             this.button2.Name = "button2";
+
             this.button2.Size = new System.Drawing.Size(75, 23);
             this.button2.TabIndex = 14;
             this.button2.Text = "Save";
@@ -647,6 +759,10 @@
             // 
             // label5
             // 
+
+
+
+
             this.label5.AutoSize = true;
             this.label5.Location = new System.Drawing.Point(6, 16);
             this.label5.Name = "label5";
@@ -656,42 +772,61 @@
             // 
             // dateTimePicker1
             // 
+
+
+
             this.dateTimePicker1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
             this.dateTimePicker1.Location = new System.Drawing.Point(105, 91);
             this.dateTimePicker1.Name = "dateTimePicker1";
+
             this.dateTimePicker1.Size = new System.Drawing.Size(466, 20);
             this.dateTimePicker1.TabIndex = 8;
             // 
             // textBox5
             // 
+
+
+
             this.textBox5.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
             this.textBox5.Location = new System.Drawing.Point(105, 13);
             this.textBox5.Name = "textBox5";
+
             this.textBox5.Size = new System.Drawing.Size(466, 20);
             this.textBox5.TabIndex = 4;
             // 
             // textBox6
             // 
+
+
+
             this.textBox6.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
             this.textBox6.Location = new System.Drawing.Point(105, 39);
             this.textBox6.Name = "textBox6";
+
             this.textBox6.Size = new System.Drawing.Size(466, 20);
             this.textBox6.TabIndex = 6;
             // 
             // checkBox1
             // 
+
+
+
             this.checkBox1.AutoSize = true;
             this.checkBox1.Location = new System.Drawing.Point(105, 222);
             this.checkBox1.Name = "checkBox1";
+
             this.checkBox1.Size = new System.Drawing.Size(15, 14);
             this.checkBox1.TabIndex = 13;
             this.checkBox1.UseVisualStyleBackColor = true;
             // 
             // label6
             // 
+
+
+
             this.label6.AutoSize = true;
             this.label6.Location = new System.Drawing.Point(6, 42);
             this.label6.Name = "label6";
@@ -701,6 +836,9 @@
             // 
             // label7
             // 
+
+
+
             this.label7.AutoSize = true;
             this.label7.Location = new System.Drawing.Point(6, 222);
             this.label7.Name = "label7";
@@ -710,6 +848,9 @@
             // 
             // label8
             // 
+
+
+
             this.label8.AutoSize = true;
             this.label8.Location = new System.Drawing.Point(6, 97);
             this.label8.Name = "label8";
@@ -719,6 +860,9 @@
             // 
             // label9
             // 
+
+
+
             this.label9.AutoSize = true;
             this.label9.Location = new System.Drawing.Point(6, 123);
             this.label9.Name = "label9";
@@ -728,18 +872,26 @@
             // 
             // lblSelectMovie
             // 
+
+
+
             this.lblSelectMovie.AutoSize = true;
             this.lblSelectMovie.Location = new System.Drawing.Point(6, 9);
             this.lblSelectMovie.Name = "lblSelectMovie";
+
             this.lblSelectMovie.Size = new System.Drawing.Size(69, 13);
             this.lblSelectMovie.TabIndex = 3;
             this.lblSelectMovie.Text = "Select Movie";
             // 
             // btnAddMovie
             // 
+
+
+
             this.btnAddMovie.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnAddMovie.Location = new System.Drawing.Point(511, 4);
             this.btnAddMovie.Name = "btnAddMovie";
+
             this.btnAddMovie.Size = new System.Drawing.Size(75, 23);
             this.btnAddMovie.TabIndex = 2;
             this.btnAddMovie.Text = "Add User";
@@ -747,21 +899,67 @@
             // 
             // ddlMovies
             // 
+
+
+
+
             this.ddlMovies.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
+
             this.ddlMovies.FormattingEnabled = true;
             this.ddlMovies.Location = new System.Drawing.Point(74, 6);
             this.ddlMovies.Name = "ddlMovies";
+
             this.ddlMovies.Size = new System.Drawing.Size(431, 21);
             this.ddlMovies.TabIndex = 1;
             // 
             // shapeContainer1
             // 
+
+
+
+
+
+
+
+
+
             this.shapeContainer1.Location = new System.Drawing.Point(3, 3);
+
             this.shapeContainer1.Margin = new System.Windows.Forms.Padding(0);
             this.shapeContainer1.Name = "shapeContainer1";
             this.shapeContainer1.Shapes.AddRange(new Microsoft.VisualBasic.PowerPacks.Shape[] {
             this.lineShape1});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
             this.shapeContainer1.Size = new System.Drawing.Size(586, 386);
             this.shapeContainer1.TabIndex = 9;
             this.shapeContainer1.TabStop = false;
@@ -777,10 +975,34 @@
             // 
             // lblMovieTitleH
             // 
+
+
+
+
+
+
+
+
+
+
+
+
+
             this.lblMovieTitleH.AutoSize = true;
             this.lblMovieTitleH.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+
+
+
+
+
+
+
+
+
+
             this.lblMovieTitleH.Location = new System.Drawing.Point(6, 113);
             this.lblMovieTitleH.Name = "lblMovieTitleH";
+
             this.lblMovieTitleH.Size = new System.Drawing.Size(74, 13);
             this.lblMovieTitleH.TabIndex = 10;
             this.lblMovieTitleH.Text = "Movie Title:";
@@ -788,9 +1010,25 @@
             // 
             // lblMovieTitle
             // 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
             this.lblMovieTitle.AutoSize = true;
             this.lblMovieTitle.Location = new System.Drawing.Point(100, 113);
             this.lblMovieTitle.Name = "lblMovieTitle";
+
             this.lblMovieTitle.Size = new System.Drawing.Size(57, 13);
             this.lblMovieTitle.TabIndex = 11;
             this.lblMovieTitle.Text = "Temp Title";
@@ -799,46 +1037,102 @@
             // 
             this.lblMovieDurationH.AutoSize = true;
             this.lblMovieDurationH.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
             this.lblMovieDurationH.Location = new System.Drawing.Point(6, 133);
             this.lblMovieDurationH.Name = "lblMovieDurationH";
+
             this.lblMovieDurationH.Size = new System.Drawing.Size(59, 13);
             this.lblMovieDurationH.TabIndex = 12;
             this.lblMovieDurationH.Text = "Duration:";
             // 
             // lblMovieDuration
             // 
+
+
+
+
             this.lblMovieDuration.AutoSize = true;
             this.lblMovieDuration.Location = new System.Drawing.Point(100, 133);
             this.lblMovieDuration.Name = "lblMovieDuration";
+
             this.lblMovieDuration.Size = new System.Drawing.Size(77, 13);
             this.lblMovieDuration.TabIndex = 13;
             this.lblMovieDuration.Text = "Temp Duration";
             // 
             // lblMovieDirectorH
             // 
+
+
+
+
             this.lblMovieDirectorH.AutoSize = true;
             this.lblMovieDirectorH.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+
+
+
+
+
+
+
+
+
             this.lblMovieDirectorH.Location = new System.Drawing.Point(303, 113);
             this.lblMovieDirectorH.Name = "lblMovieDirectorH";
+
             this.lblMovieDirectorH.Size = new System.Drawing.Size(56, 13);
             this.lblMovieDirectorH.TabIndex = 14;
             this.lblMovieDirectorH.Text = "Director:";
             // 
             // lblMovieDirector
             // 
+
+
+
+
+
             this.lblMovieDirector.AutoSize = true;
             this.lblMovieDirector.Location = new System.Drawing.Point(407, 113);
             this.lblMovieDirector.Name = "lblMovieDirector";
+
             this.lblMovieDirector.Size = new System.Drawing.Size(74, 13);
             this.lblMovieDirector.TabIndex = 15;
             this.lblMovieDirector.Text = "Temp Director";
             // 
             // lblMovieProducerH
             // 
+
+
+
+
+
             this.lblMovieProducerH.AutoSize = true;
             this.lblMovieProducerH.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+
+
+
+
+
+
+
+
+
             this.lblMovieProducerH.Location = new System.Drawing.Point(303, 133);
             this.lblMovieProducerH.Name = "lblMovieProducerH";
+
             this.lblMovieProducerH.Size = new System.Drawing.Size(62, 13);
             this.lblMovieProducerH.TabIndex = 16;
             this.lblMovieProducerH.Text = "Producer:";
@@ -846,18 +1140,44 @@
             // lblMovieProducer
             // 
             this.lblMovieProducer.AutoSize = true;
+
+
+
+
+
+
+
+
+
+
             this.lblMovieProducer.Location = new System.Drawing.Point(407, 133);
             this.lblMovieProducer.Name = "lblMovieProducer";
+
             this.lblMovieProducer.Size = new System.Drawing.Size(80, 13);
             this.lblMovieProducer.TabIndex = 17;
             this.lblMovieProducer.Text = "Temp Producer";
             // 
             // lblMovieTypeH
             // 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
             this.lblMovieTypeH.AutoSize = true;
             this.lblMovieTypeH.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.lblMovieTypeH.Location = new System.Drawing.Point(6, 153);
             this.lblMovieTypeH.Name = "lblMovieTypeH";
+
             this.lblMovieTypeH.Size = new System.Drawing.Size(39, 13);
             this.lblMovieTypeH.TabIndex = 18;
             this.lblMovieTypeH.Text = "Type:";
@@ -865,8 +1185,15 @@
             // lblMovieType
             // 
             this.lblMovieType.AutoSize = true;
+
+
+
+
+
+
             this.lblMovieType.Location = new System.Drawing.Point(100, 153);
             this.lblMovieType.Name = "lblMovieType";
+
             this.lblMovieType.Size = new System.Drawing.Size(61, 13);
             this.lblMovieType.TabIndex = 19;
             this.lblMovieType.Text = "Temp Type";
@@ -875,17 +1202,37 @@
             // 
             this.lblMovieBBFCRatingH.AutoSize = true;
             this.lblMovieBBFCRatingH.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+
+
+
+
+
+
+
+
+
+
+
+
+
             this.lblMovieBBFCRatingH.Location = new System.Drawing.Point(303, 153);
             this.lblMovieBBFCRatingH.Name = "lblMovieBBFCRatingH";
+
             this.lblMovieBBFCRatingH.Size = new System.Drawing.Size(83, 13);
             this.lblMovieBBFCRatingH.TabIndex = 20;
             this.lblMovieBBFCRatingH.Text = "BBFC Rating:";
             // 
             // lblBBFCRating
             // 
+
+
+
+
+
             this.lblBBFCRating.AutoSize = true;
             this.lblBBFCRating.Location = new System.Drawing.Point(407, 153);
             this.lblBBFCRating.Name = "lblBBFCRating";
+
             this.lblBBFCRating.Size = new System.Drawing.Size(68, 13);
             this.lblBBFCRating.TabIndex = 21;
             this.lblBBFCRating.Text = "Temp Rating";
@@ -894,23 +1241,63 @@
             // 
             this.lblMovieDescH.AutoSize = true;
             this.lblMovieDescH.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
             this.lblMovieDescH.Location = new System.Drawing.Point(6, 203);
             this.lblMovieDescH.Name = "lblMovieDescH";
+
             this.lblMovieDescH.Size = new System.Drawing.Size(71, 13);
             this.lblMovieDescH.TabIndex = 22;
             this.lblMovieDescH.Text = "Description";
             // 
             // lblMovieDesc
             // 
+
+
+
             this.lblMovieDesc.AutoSize = true;
             this.lblMovieDesc.Location = new System.Drawing.Point(100, 203);
             this.lblMovieDesc.Name = "lblMovieDesc";
+
             this.lblMovieDesc.Size = new System.Drawing.Size(61, 13);
             this.lblMovieDesc.TabIndex = 23;
             this.lblMovieDesc.Text = "Temp Type";
             // 
+
+
             // MainGUI
             // 
+
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(624, 442);
@@ -921,8 +1308,8 @@
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.MainGUI_FormClosed);
             this.Load += new System.EventHandler(this.MainGUI_Load);
             this.tbcUserRoles.ResumeLayout(false);
-            this.tbMovieSettings.ResumeLayout(false);
-            this.tbMovieSettings.PerformLayout();
+            this.tbBookings.ResumeLayout(false);
+            this.tbBookings.PerformLayout();
             this.tbUserSettings.ResumeLayout(false);
             this.tbUserSettings.PerformLayout();
             this.grpUserDetails.ResumeLayout(false);
@@ -938,7 +1325,7 @@
         #endregion
 
         private System.Windows.Forms.TabControl tbcUserRoles;
-        private System.Windows.Forms.TabPage tbMovieSettings;
+        private System.Windows.Forms.TabPage tbBookings;
         private System.Windows.Forms.TabPage tbUserSettings;
         private System.Windows.Forms.Label lblSelectUser;
         private System.Windows.Forms.Button btnAddUser;
@@ -961,6 +1348,7 @@
         private System.Windows.Forms.Label lbl;
         private System.Windows.Forms.ComboBox cbbMovieName;
         private System.Windows.Forms.Label lblMovie;
+
         private System.Windows.Forms.Button btnBook;
 		private System.Windows.Forms.ComboBox cbAdminLevel;
 		private System.Windows.Forms.Label lblContactNumber;

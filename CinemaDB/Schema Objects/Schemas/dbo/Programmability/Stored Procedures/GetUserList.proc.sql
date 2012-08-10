@@ -1,4 +1,4 @@
-﻿CREATE PROCEDURE [dbo].[GetUserLists]
+﻿CREATE PROCEDURE [dbo].[GetUserList]
 	@adminLevel INT
 AS
 	IF @adminLevel = 2
