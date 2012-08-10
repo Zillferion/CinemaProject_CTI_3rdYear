@@ -12,10 +12,12 @@ namespace CinemaProject
 {
 	public partial class MainGUI : Form
 	{
+		#region Member Variables
 		private static List<UserDetails> _users = new List<UserDetails>();
 		private static String connectionString = @"server=.\SQLEXPRESS; Database=CinemaDB; Integrated Security=SSPI;";
+		#endregion
 
-
+		#region General Events
 		public MainGUI()
 		{
 			InitializeComponent();
@@ -27,7 +29,13 @@ namespace CinemaProject
 			FillUserDropDown();
 		}
 
+		private void MainGUI_FormClosed( object sender, FormClosedEventArgs e )
+		{
+			Application.Exit();
+		}
+		#endregion
 
+		#region User Setting Events
 		private void btnAddUser_Click( object sender, EventArgs e )
 		{
 			// Enable/disable controls.
@@ -56,7 +64,7 @@ namespace CinemaProject
 			dropdownSelectUsers.Enabled = true;
 			btnAddUser.Enabled = true;
 			btnCancelUserDetailsChange.Enabled = false;
-
+			//Refills the users list.
 			FillUserDropDown();
 		}
 
@@ -78,6 +86,64 @@ namespace CinemaProject
 		}
 
 
+		private void btnSave_Click( object sender, EventArgs e )
+		{
+			if ( txtPassword.Text.Trim() != txtConfirmPassword.Text.Trim() )
+			{
+				MessageBox.Show( "Passwords do not match!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error );
+				return;
+			}
+			if ( btnSave.Text.Equals( "Update User" ) )
+			{
+				using ( SqlConnection cn = new SqlConnection( connectionString ) )
+				{
+					if ( cn.State == ConnectionState.Closed ) cn.Open();
+
+					using ( SqlCommand cmd = new SqlCommand( "UpdateUser", cn ) )
+					{
+						cmd.CommandType = CommandType.StoredProcedure;
+						cmd.Parameters.Add( "@userGuid", SqlDbType.UniqueIdentifier ).Value = _users[ dropdownSelectUsers.SelectedIndex ].userGuid;
+						cmd.Parameters.Add( "@name", SqlDbType.NVarChar ).Value = txtName.Text.Trim();
+						cmd.Parameters.Add( "@surname", SqlDbType.NVarChar ).Value = txtSurname.Text.Trim();
+						cmd.Parameters.Add( "@adminLevel", SqlDbType.Int ).Value = cbAdminLevel.SelectedIndex;
+						cmd.Parameters.Add( "@contactNumber", SqlDbType.NVarChar ).Value = txtContactNumber.Text.Trim();
+						cmd.Parameters.Add( "@password", SqlDbType.NVarChar ).Value = txtPassword.Text.Trim();
+						cmd.Parameters.Add( "@loginName", SqlDbType.NVarChar ).Value = txtLoginUserName.Text.Trim();
+						cmd.Parameters.Add( "@dateOfBirth", SqlDbType.DateTime ).Value = dateDateOfBirth.Text;
+						cmd.Parameters.Add( "@active", SqlDbType.Bit ).Value = chkActive.Checked;
+						cmd.ExecuteNonQuery();
+
+						MessageBox.Show( "User successfully updated.", "Update Success", MessageBoxButtons.OK, MessageBoxIcon.Information );
+					}
+				}
+			}
+			else
+			{
+				using ( SqlConnection cn = new SqlConnection( connectionString ) )
+				{
+					if ( cn.State == ConnectionState.Closed ) cn.Open();
+
+					using ( SqlCommand cmd = new SqlCommand( "CreateUser", cn ) )
+					{
+						cmd.CommandType = CommandType.StoredProcedure;
+						cmd.Parameters.Add( "@name", SqlDbType.NVarChar ).Value = txtName.Text.Trim();
+						cmd.Parameters.Add( "@surname", SqlDbType.NVarChar ).Value = txtSurname.Text.Trim();
+						cmd.Parameters.Add( "@adminLevel", SqlDbType.Int ).Value = cbAdminLevel.SelectedIndex;
+						cmd.Parameters.Add( "@contactNumber", SqlDbType.NVarChar ).Value = txtContactNumber.Text.Trim();
+						cmd.Parameters.Add( "@password", SqlDbType.NVarChar ).Value = txtPassword.Text.Trim();
+						cmd.Parameters.Add( "@loginName", SqlDbType.NVarChar ).Value = txtLoginUserName.Text.Trim();
+						cmd.Parameters.Add( "@dateOfBirth", SqlDbType.DateTime ).Value = dateDateOfBirth.Text;
+						cmd.Parameters.Add( "@active", SqlDbType.Bit ).Value = chkActive.Checked;
+						cmd.ExecuteNonQuery();
+
+						MessageBox.Show( "User successfully created.", "Create Success", MessageBoxButtons.OK, MessageBoxIcon.Information );
+					}
+				}
+			}
+		}
+		#endregion
+
+		#region Booking Events
 		private void cbbSession_SelectedIndexChanged( object sender, EventArgs e )
 		{
 
@@ -157,69 +223,11 @@ namespace CinemaProject
 				btnBook.Enabled = true;
 			}
 		}
+		#endregion
 
+		#region Movie Setting Events
 
-		private void btnSave_Click( object sender, EventArgs e )
-		{
-			if ( txtPassword.Text.Trim() != txtConfirmPassword.Text.Trim() )
-			{
-				MessageBox.Show( "Passwords do not match!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error );
-				return;
-			}
-			if ( btnSave.Text.Equals( "Update User" ) )
-			{
-				using ( SqlConnection cn = new SqlConnection( connectionString ) )
-				{
-					if ( cn.State == ConnectionState.Closed ) cn.Open();
-
-					using ( SqlCommand cmd = new SqlCommand( "UpdateUser", cn ) )
-					{
-						cmd.CommandType = CommandType.StoredProcedure;
-						cmd.Parameters.Add( "@userGuid", SqlDbType.UniqueIdentifier ).Value = _users[ dropdownSelectUsers.SelectedIndex ].userGuid;
-						cmd.Parameters.Add( "@name", SqlDbType.NVarChar ).Value = txtName.Text.Trim();
-						cmd.Parameters.Add( "@surname", SqlDbType.NVarChar ).Value = txtSurname.Text.Trim();
-						cmd.Parameters.Add( "@adminLevel", SqlDbType.Int ).Value = cbAdminLevel.SelectedIndex;
-						cmd.Parameters.Add( "@contactNumber", SqlDbType.NVarChar ).Value = txtContactNumber.Text.Trim();
-						cmd.Parameters.Add( "@password", SqlDbType.NVarChar ).Value = txtPassword.Text.Trim();
-						cmd.Parameters.Add( "@loginName", SqlDbType.NVarChar ).Value = txtLoginUserName.Text.Trim();
-						cmd.Parameters.Add( "@dateOfBirth", SqlDbType.DateTime ).Value = dateDateOfBirth.Text;
-						cmd.Parameters.Add( "@active", SqlDbType.Bit ).Value = chkActive.Checked;
-						cmd.ExecuteNonQuery();
-
-						MessageBox.Show( "User successfully updated.", "Update Success", MessageBoxButtons.OK, MessageBoxIcon.Information );
-					}
-				}
-			}
-			else
-			{
-				using ( SqlConnection cn = new SqlConnection( connectionString ) )
-				{
-					if ( cn.State == ConnectionState.Closed ) cn.Open();
-
-					using ( SqlCommand cmd = new SqlCommand( "CreateUser", cn ) )
-					{
-						cmd.CommandType = CommandType.StoredProcedure;
-						cmd.Parameters.Add( "@name", SqlDbType.NVarChar ).Value = txtName.Text.Trim();
-						cmd.Parameters.Add( "@surname", SqlDbType.NVarChar ).Value = txtSurname.Text.Trim();
-						cmd.Parameters.Add( "@adminLevel", SqlDbType.Int ).Value = cbAdminLevel.SelectedIndex;
-						cmd.Parameters.Add( "@contactNumber", SqlDbType.NVarChar ).Value = txtContactNumber.Text.Trim();
-						cmd.Parameters.Add( "@password", SqlDbType.NVarChar ).Value = txtPassword.Text.Trim();
-						cmd.Parameters.Add( "@loginName", SqlDbType.NVarChar ).Value = txtLoginUserName.Text.Trim();
-						cmd.Parameters.Add( "@dateOfBirth", SqlDbType.DateTime ).Value = dateDateOfBirth.Text;
-						cmd.Parameters.Add( "@active", SqlDbType.Bit ).Value = chkActive.Checked;
-						cmd.ExecuteNonQuery();
-
-						MessageBox.Show( "User successfully created.", "Create Success", MessageBoxButtons.OK, MessageBoxIcon.Information );
-					}
-				}
-			}
-		}
-
-
-		private void MainGUI_FormClosed( object sender, FormClosedEventArgs e )
-		{
-			Application.Exit();
-		}
+		#endregion
 
 
 		#region Methods
@@ -227,10 +235,13 @@ namespace CinemaProject
 		{
 			try
 			{
+				//Clears the current list.
 				dropdownSelectUsers.Items.Clear();
 
+				//Create new connection.
 				using ( SqlConnection cn = new SqlConnection( connectionString ) )
 				{
+					//If the connection is closed, open it.
 					if ( cn.State == ConnectionState.Closed ) cn.Open();
 
 					//Gets all the users that the logged in user is allowed to view and adds it to the dropdown list.
