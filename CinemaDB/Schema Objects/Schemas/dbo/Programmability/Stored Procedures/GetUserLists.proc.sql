@@ -1,7 +1,7 @@
 ﻿CREATE PROCEDURE [dbo].[GetUserLists]
 	@adminLevel INT
 AS
-	IF @adminLevel = 1
+	IF @adminLevel = 2
 	BEGIN
 		SELECT [UserGuid]
 			  ,[Created]
@@ -14,8 +14,9 @@ AS
 			  ,[bActive]
 			  ,[AdminLevel]
 		FROM tblUsers
+		ORDER BY [UserName] + ' ' + [UserSurname]
 	END
-	ELSE IF @adminLevel = 2
+	ELSE IF @adminLevel = 1
 	BEGIN
 		SELECT [UserGuid]
 			  ,[Created]
@@ -28,7 +29,8 @@ AS
 			  ,[bActive]
 			  ,[AdminLevel]
 		FROM tblUsers
-		WHERE AdminLevel <> 1 AND [bActive] = 1
+		WHERE AdminLevel <> 2 AND [bActive] = 1
+		ORDER BY [UserName] + ' ' + [UserSurname]
 	END
 	ELSE
 	BEGIN

@@ -226,7 +226,7 @@
 			this.txtConfirmPassword.Name = "txtConfirmPassword";
 			this.txtConfirmPassword.PasswordChar = '*';
 			this.txtConfirmPassword.Size = new System.Drawing.Size( 474, 20 );
-			this.txtConfirmPassword.TabIndex = 27;
+			this.txtConfirmPassword.TabIndex = 12;
 			// 
 			// txtPassword
 			// 
@@ -236,7 +236,7 @@
 			this.txtPassword.Name = "txtPassword";
 			this.txtPassword.PasswordChar = '*';
 			this.txtPassword.Size = new System.Drawing.Size( 474, 20 );
-			this.txtPassword.TabIndex = 26;
+			this.txtPassword.TabIndex = 11;
 			// 
 			// txtLoginUserName
 			// 
@@ -245,7 +245,7 @@
 			this.txtLoginUserName.Location = new System.Drawing.Point( 105, 144 );
 			this.txtLoginUserName.Name = "txtLoginUserName";
 			this.txtLoginUserName.Size = new System.Drawing.Size( 474, 20 );
-			this.txtLoginUserName.TabIndex = 25;
+			this.txtLoginUserName.TabIndex = 10;
 			// 
 			// lblConfirmPassword
 			// 
@@ -281,7 +281,7 @@
 			this.txtContactNumber.Location = new System.Drawing.Point( 105, 65 );
 			this.txtContactNumber.Name = "txtContactNumber";
 			this.txtContactNumber.Size = new System.Drawing.Size( 474, 20 );
-			this.txtContactNumber.TabIndex = 21;
+			this.txtContactNumber.TabIndex = 7;
 			// 
 			// lblContactNumber
 			// 
@@ -304,7 +304,7 @@
 			this.cbAdminLevel.Location = new System.Drawing.Point( 105, 117 );
 			this.cbAdminLevel.Name = "cbAdminLevel";
 			this.cbAdminLevel.Size = new System.Drawing.Size( 474, 21 );
-			this.cbAdminLevel.TabIndex = 19;
+			this.cbAdminLevel.TabIndex = 9;
 			// 
 			// btnCancelUserDetailsChange
 			// 
@@ -324,7 +324,7 @@
 			this.btnSave.Location = new System.Drawing.Point( 6, 316 );
 			this.btnSave.Name = "btnSave";
 			this.btnSave.Size = new System.Drawing.Size( 75, 23 );
-			this.btnSave.TabIndex = 17;
+			this.btnSave.TabIndex = 14;
 			this.btnSave.Text = "Save";
 			this.btnSave.UseVisualStyleBackColor = true;
 			this.btnSave.Click += new System.EventHandler( this.btnSave_Click );
@@ -345,7 +345,7 @@
 			this.dateDateOfBirth.Location = new System.Drawing.Point( 105, 91 );
 			this.dateDateOfBirth.Name = "dateDateOfBirth";
 			this.dateDateOfBirth.Size = new System.Drawing.Size( 474, 20 );
-			this.dateDateOfBirth.TabIndex = 16;
+			this.dateDateOfBirth.TabIndex = 8;
 			// 
 			// txtName
 			// 
@@ -371,7 +371,7 @@
 			this.chkActive.Location = new System.Drawing.Point( 105, 222 );
 			this.chkActive.Name = "chkActive";
 			this.chkActive.Size = new System.Drawing.Size( 15, 14 );
-			this.chkActive.TabIndex = 14;
+			this.chkActive.TabIndex = 13;
 			this.chkActive.UseVisualStyleBackColor = true;
 			// 
 			// lblSurname
@@ -450,6 +450,7 @@
 			this.MinimumSize = new System.Drawing.Size( 360, 300 );
 			this.Name = "MainGUI";
 			this.Text = "Cinema Management System";
+			this.FormClosed += new System.Windows.Forms.FormClosedEventHandler( this.MainGUI_FormClosed );
 			this.Load += new System.EventHandler( this.MainGUI_Load );
 			this.tbcUserRoles.ResumeLayout( false );
 			this.tbMovieSettings.ResumeLayout( false );

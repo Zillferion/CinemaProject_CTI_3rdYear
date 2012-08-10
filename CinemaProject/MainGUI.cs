@@ -15,71 +15,19 @@ namespace CinemaProject
 		private static List<UserDetails> _users = new List<UserDetails>();
 		private static String connectionString = @"server=.\SQLEXPRESS; Database=CinemaDB; Integrated Security=SSPI;";
 
+
 		public MainGUI()
 		{
 			InitializeComponent();
-			//TODO:  Fix admin level.  Fix Cancel button.
 		}
+
 
 		private void MainGUI_Load( object sender, EventArgs e )
 		{
-			try
-			{
-				using ( SqlConnection cn = new SqlConnection( connectionString ) )
-				{
-					if ( cn.State == ConnectionState.Closed ) cn.Open();
-
-					//Gets all the users that the logged in user is allowed to view and adds it to the dropdown list.
-					using ( SqlCommand cmd = new SqlCommand( "GetUserLists", cn ) )
-					{
-						cmd.CommandType = CommandType.StoredProcedure;
-						cmd.Parameters.Add( "@adminLevel", SqlDbType.Int ).Value = UserInformation.AdminLevel;
-
-						using ( SqlDataReader dr = cmd.ExecuteReader() )
-						{
-							while ( dr.Read() )
-							{
-								String name = dr.GetString( dr.GetOrdinal( "UserName" ) );
-								String surname = dr.GetString( dr.GetOrdinal( "UserSurname" ) );
-								DateTime doB = dr.GetDateTime( dr.GetOrdinal( "UserDoB" ) );
-								Int32 adminLvl = dr.GetInt32( dr.GetOrdinal( "AdminLevel" ) );
-								Boolean active = dr.GetBoolean( dr.GetOrdinal( "bActive" ) );
-								DateTime registered = dr.GetDateTime( dr.GetOrdinal( "Created" ) );
-								String username = dr.GetString( dr.GetOrdinal( "LoginUsername" ) );
-								String password = dr.GetString( dr.GetOrdinal( "LoginPassword" ) );
-								Guid userGuid = dr.GetGuid( dr.GetOrdinal( "UserGuid" ) );
-								String contactNumber = dr[ 5 ].ToString();
-
-								UserDetails user = new UserDetails
-								(
-									name
-									, surname
-									, doB
-									, adminLvl
-									, active
-									, registered
-									, username
-									, password
-									, userGuid
-									, contactNumber
-								);
-								//Adds the user to the list declared at the top.
-								_users.Add( user );
-								//Adds the user to the dropdown list.
-								dropdownSelectUsers.Items.Add( user.ToString() );
-							}
-							//Always select the 1st item in the dropdown as default.
-							dropdownSelectUsers.SelectedIndex = 0;
-						}
-					}
-				}
-			}
-			catch ( Exception ex )
-			{
-				MessageBox.Show( "Error:  " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error );
-			}
+			FillUserDropDown();
 			MovieButtonControl( 0 );
 		}
+
 
 		private void btnAddUser_Click( object sender, EventArgs e )
 		{
@@ -102,6 +50,7 @@ namespace CinemaProject
 			btnSave.Text = "Add User";
 		}
 
+
 		private void btnCancelUserDetailsChange_Click( object sender, EventArgs e )
 		{
 			// Enable/disable controls.
@@ -109,9 +58,9 @@ namespace CinemaProject
 			btnAddUser.Enabled = true;
 			btnCancelUserDetailsChange.Enabled = false;
 
-			// Set default values.
-			dropdownSelectUsers.SelectedIndex = 0;
+			FillUserDropDown();
 		}
+
 
 		private void dropdownSelectUsers_SelectedIndexChanged( object sender, EventArgs e )
 		{
@@ -266,5 +215,75 @@ namespace CinemaProject
 				}
 			}
 		}
+
+
+		private void MainGUI_FormClosed( object sender, FormClosedEventArgs e )
+		{
+			Application.Exit();
+		}
+
+
+		#region Methods
+		private void FillUserDropDown()
+		{
+			try
+			{
+				dropdownSelectUsers.Items.Clear();
+
+				using ( SqlConnection cn = new SqlConnection( connectionString ) )
+				{
+					if ( cn.State == ConnectionState.Closed ) cn.Open();
+
+					//Gets all the users that the logged in user is allowed to view and adds it to the dropdown list.
+					using ( SqlCommand cmd = new SqlCommand( "GetUserLists", cn ) )
+					{
+						cmd.CommandType = CommandType.StoredProcedure;
+						cmd.Parameters.Add( "@adminLevel", SqlDbType.Int ).Value = UserInformation.AdminLevel;
+
+						using ( SqlDataReader dr = cmd.ExecuteReader() )
+						{
+							while ( dr.Read() )
+							{
+								String name = dr.GetString( dr.GetOrdinal( "UserName" ) );
+								String surname = dr.GetString( dr.GetOrdinal( "UserSurname" ) );
+								DateTime doB = dr.GetDateTime( dr.GetOrdinal( "UserDoB" ) );
+								Int32 adminLvl = dr.GetInt32( dr.GetOrdinal( "AdminLevel" ) );
+								Boolean active = dr.GetBoolean( dr.GetOrdinal( "bActive" ) );
+								DateTime registered = dr.GetDateTime( dr.GetOrdinal( "Created" ) );
+								String username = dr.GetString( dr.GetOrdinal( "LoginUsername" ) );
+								String password = dr.GetString( dr.GetOrdinal( "LoginPassword" ) );
+								Guid userGuid = dr.GetGuid( dr.GetOrdinal( "UserGuid" ) );
+								String contactNumber = dr[ 5 ].ToString();
+
+								UserDetails user = new UserDetails
+								(
+									name
+									, surname
+									, doB
+									, adminLvl
+									, active
+									, registered
+									, username
+									, password
+									, userGuid
+									, contactNumber
+								);
+								//Adds the user to the list declared at the top.
+								_users.Add( user );
+								//Adds the user to the dropdown list.
+								dropdownSelectUsers.Items.Add( user.ToString() );
+							}
+							//Always select the 1st item in the dropdown as default.
+							dropdownSelectUsers.SelectedIndex = 0;
+						}
+					}
+				}
+			}
+			catch ( Exception ex )
+			{
+				MessageBox.Show( "Error:  " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error );
+			}
+		}
+		#endregion
 	}
 }
