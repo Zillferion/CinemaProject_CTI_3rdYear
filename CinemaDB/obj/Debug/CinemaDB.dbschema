@@ -1479,6 +1479,22 @@ RETURN 0]]></Value>
 						<AttachedAnnotation Disambiguator="26" />
 					</Element>
 				</Entry>
+				<Entry>
+					<Element Type="ISql100SimpleColumn" Name="[dbo].[tblMovies].[YearProduced]">
+						<Property Name="IsNullable" Value="False" />
+						<Relationship Name="TypeSpecifier">
+							<Entry>
+								<Element Type="ISql90TypeSpecifier">
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[int]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
 			</Relationship>
 			<Relationship Name="Owner">
 				<Entry>

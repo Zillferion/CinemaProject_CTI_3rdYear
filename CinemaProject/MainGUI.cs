@@ -25,7 +25,6 @@ namespace CinemaProject
 		private void MainGUI_Load( object sender, EventArgs e )
 		{
 			FillUserDropDown();
-			MovieButtonControl( 0 );
 		}
 
 
