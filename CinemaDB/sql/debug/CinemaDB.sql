@@ -190,34 +190,17 @@ PRINT N'Creating [dbo].[tblMovies]...';
 GO
 CREATE TABLE [dbo].[tblMovies] (
     [MovieId]          UNIQUEIDENTIFIER ROWGUIDCOL NOT NULL,
+    [Created]          DATETIME         NOT NULL,
     [Name]             NVARCHAR (255)   NOT NULL,
     [Duration]         INT              NOT NULL,
+    [YearProduced]     INT              NOT NULL,
     [Director]         NVARCHAR (255)   NOT NULL,
     [Producer]         NVARCHAR (255)   NOT NULL,
     [Type]             NVARCHAR (MAX)   NOT NULL,
-    [AgeRest]          NVARCHAR (25)    NOT NULL,
     [ExpectedAudience] NVARCHAR (100)   NOT NULL,
-    [BBFC_Rate]        NVARCHAR (8)     NULL,
-    [Created]          DATETIME         NOT NULL,
-    [NumViewers]       INT              NULL,
+    [BBFC_Rate]        NVARCHAR (8)     NOT NULL,
     [IsArchived]       BIT              NOT NULL,
-    [YearProduced]     INT              NOT NULL,
     PRIMARY KEY CLUSTERED ([MovieId] ASC) WITH (ALLOW_PAGE_LOCKS = ON, ALLOW_ROW_LOCKS = ON, PAD_INDEX = OFF, IGNORE_DUP_KEY = OFF, STATISTICS_NORECOMPUTE = OFF)
-);
-
-
-GO
-PRINT N'Creating [dbo].[tblMovieTime]...';
-
-
-GO
-CREATE TABLE [dbo].[tblMovieTime] (
-    [TimeId]     UNIQUEIDENTIFIER ROWGUIDCOL NOT NULL,
-    [Time]       TIME (7)         NOT NULL,
-    [Date]       DATE             NOT NULL,
-    [MovieId]    UNIQUEIDENTIFIER NOT NULL,
-    [NumViewers] INT              NOT NULL,
-    PRIMARY KEY CLUSTERED ([TimeId] ASC) WITH (ALLOW_PAGE_LOCKS = ON, ALLOW_ROW_LOCKS = ON, PAD_INDEX = OFF, IGNORE_DUP_KEY = OFF, STATISTICS_NORECOMPUTE = OFF)
 );
 
 
@@ -229,6 +212,7 @@ GO
 CREATE TABLE [dbo].[tblScreen] (
     [ScreenId]  UNIQUEIDENTIFIER ROWGUIDCOL NOT NULL,
     [ScreenNum] INT              NOT NULL,
+    [Seats]     INT              NOT NULL,
     PRIMARY KEY CLUSTERED ([ScreenId] ASC) WITH (ALLOW_PAGE_LOCKS = ON, ALLOW_ROW_LOCKS = ON, PAD_INDEX = OFF, IGNORE_DUP_KEY = OFF, STATISTICS_NORECOMPUTE = OFF)
 );
 
@@ -274,11 +258,12 @@ PRINT N'Creating [dbo].[tlnkScreenMovie]...';
 GO
 CREATE TABLE [dbo].[tlnkScreenMovie] (
     [linkId]      UNIQUEIDENTIFIER ROWGUIDCOL NOT NULL,
+    [Created]     DATETIME         NOT NULL,
     [MovieId]     UNIQUEIDENTIFIER NOT NULL,
     [ScreenId]    UNIQUEIDENTIFIER NOT NULL,
-    [Created]     DATETIME         NOT NULL,
     [StartScreen] DATETIME         NOT NULL,
     [EndScreen]   DATETIME         NOT NULL,
+    [BookedNum]   INT              NOT NULL,
     PRIMARY KEY CLUSTERED ([linkId] ASC) WITH (ALLOW_PAGE_LOCKS = ON, ALLOW_ROW_LOCKS = ON, PAD_INDEX = OFF, IGNORE_DUP_KEY = OFF, STATISTICS_NORECOMPUTE = OFF)
 );
 
@@ -353,24 +338,6 @@ PRINT N'Creating On column: IsArchived...';
 GO
 ALTER TABLE [dbo].[tblMovies]
     ADD DEFAULT 0 FOR [IsArchived];
-
-
-GO
-PRINT N'Creating On column: TimeId...';
-
-
-GO
-ALTER TABLE [dbo].[tblMovieTime]
-    ADD DEFAULT NEWSEQUENTIALID() FOR [TimeId];
-
-
-GO
-PRINT N'Creating On column: NumViewers...';
-
-
-GO
-ALTER TABLE [dbo].[tblMovieTime]
-    ADD DEFAULT 0 FOR [NumViewers];
 
 
 GO
@@ -455,12 +422,12 @@ ALTER TABLE [dbo].[tlnkScreenMovie]
 
 
 GO
-PRINT N'Creating On column: MovieId...';
+PRINT N'Creating On column: BookedNum...';
 
 
 GO
-ALTER TABLE [dbo].[tblMovieTime] WITH NOCHECK
-    ADD FOREIGN KEY ([MovieId]) REFERENCES [dbo].[tblMovies] ([MovieId]) ON DELETE NO ACTION ON UPDATE NO ACTION;
+ALTER TABLE [dbo].[tlnkScreenMovie]
+    ADD DEFAULT 0 FOR [BookedNum];
 
 
 GO
@@ -509,12 +476,21 @@ ALTER TABLE [dbo].[tblMovies] WITH NOCHECK
 
 
 GO
+PRINT N'Creating On column: BBFC_Rate...';
+
+
+GO
+ALTER TABLE [dbo].[tblMovies] WITH NOCHECK
+    ADD CHECK (BBFC_Rate='U' OR BBFC_Rate = 'PG' OR BBFC_Rate = '12' OR BBFC_Rate = '12A' OR BBFC_Rate = '15' OR BBFC_Rate = '18');
+
+
+GO
 PRINT N'Creating On column: AdminLevel...';
 
 
 GO
 ALTER TABLE [dbo].[tblUsers] WITH NOCHECK
-    ADD CHECK (AdminLevel = 0 OR AdminLevel = 1 OR AdminLevel = 2);
+    ADD CHECK (AdminLevel = 0 OR AdminLevel = 1 OR AdminLevel = 2 OR AdminLevel = 3);
 
 
 GO
@@ -557,6 +533,15 @@ AS
 	INSERT INTO tblUsers (UserName,UserSurname,AdminLevel,ContactNumber,LoginPassword,LoginUsername,UserDoB,bActive)
 	VALUES (@name,@surname,@adminLevel,@contactNumber,@password,@loginName,@dateOfBirth,@active)
 GO
+PRINT N'Creating [dbo].[GetMovieList]...';
+
+
+GO
+CREATE PROCEDURE [dbo].[GetMovieList]
+AS
+	SELECT *
+	FROM tblMovies
+GO
 PRINT N'Creating [dbo].[GetUserInformation]...';
 
 
@@ -594,11 +579,11 @@ AS
 		SELECT 'That username is invalid!'
 	END
 GO
-PRINT N'Creating [dbo].[GetUserLists]...';
+PRINT N'Creating [dbo].[GetUserList]...';
 
 
 GO
-CREATE PROCEDURE [dbo].[GetUserLists]
+CREATE PROCEDURE [dbo].[GetUserList]
 	@adminLevel INT
 AS
 	IF @adminLevel = 2
@@ -687,32 +672,104 @@ BEGIN
 	INSERT INTO tblUsers (UserName, UserSurname, UserDoB, AdminLevel, LoginUsername, LoginPassword)
 	VALUES ('Admin', '', GETDATE(), 2, 'Admin', 'p@ssw0rd!')
 END
+IF NOT EXISTS (SELECT * FROM tblUsers WHERE UserName = 'Eddie')
+BEGIN
+	INSERT INTO tblUsers (UserName, UserSurname, UserDoB, AdminLevel, LoginUsername, LoginPassword)
+	VALUES ('Eddie', 'Skinner', GETDATE(), 1, 'Chasso', 'chasso')
+END
+IF NOT EXISTS (SELECT * FROM tblUsers WHERE UserName = 'James')
+BEGIN
+	INSERT INTO tblUsers (UserName, UserSurname, UserDoB, AdminLevel, LoginUsername, LoginPassword)
+	VALUES ('James', 'Chen', GETDATE(), 0, 'Shogun', 'shogun')
+END
 
 --Create default movie data.
 IF NOT EXISTS (SELECT * FROM tblMovies WHERE Name = 'Transformers')
 BEGIN
-	INSERT INTO tblMovies (Name, Duration, Director, Producer, [Type], AgeRest, ExpectedAudience, BBFC_Rate,NumViewers,IsArchived, YearProduced)
-	VALUES ('Transformers','144', 'Michael Bay', 'DreamWorks SKG','Action,Sci-Fi,Thriller', '13PG', 'Average', '7.2', 0, 0, 2007 )
+	INSERT INTO tblMovies (Name, Duration, Director, Producer, [Type], ExpectedAudience, BBFC_Rate,IsArchived, YearProduced)
+	VALUES ('Transformers','144', 'Michael Bay', 'DreamWorks SKG','Action,Sci-Fi,Thriller', 'Average', '12', 0, 2007 )
 END
 IF NOT EXISTS (SELECT * FROM tblMovies WHERE Name = 'Transformers: Revenge of the Fallen')
 BEGIN
-	INSERT INTO tblMovies (Name, Duration, Director, Producer, [Type], AgeRest, ExpectedAudience, BBFC_Rate,NumViewers,IsArchived, YearProduced)
-	VALUES ('Transformers: Revenge of the Fallen','150', 'Michael Bay', 'DreamWorks SKG','Action,Adventure,Sci-Fi', '13PG', 'Below-Average', '5.9', 0, 0, 2009)
+	INSERT INTO tblMovies (Name, Duration, Director, Producer, [Type], ExpectedAudience, BBFC_Rate,IsArchived, YearProduced)
+	VALUES ('Transformers: Revenge of the Fallen','150', 'Michael Bay', 'DreamWorks SKG','Action,Adventure,Sci-Fi', 'Below-Average', '12', 0, 2009)
 END
 IF NOT EXISTS (SELECT * FROM tblMovies WHERE Name = 'The Avengers')
 BEGIN
-	INSERT INTO tblMovies (Name, Duration, Director, Producer, [Type], AgeRest, ExpectedAudience, BBFC_Rate,NumViewers,IsArchived, YearProduced)
-	VALUES ('The Avengers','143', 'Joss Whedon', 'Marvel Studios','Action,Adventure,Sci-Fi', '13PG', 'Mainstream', '8.6', 0, 0, 2012)
+	INSERT INTO tblMovies (Name, Duration, Director, Producer, [Type], ExpectedAudience, BBFC_Rate,IsArchived, YearProduced)
+	VALUES ('The Avengers','143', 'Joss Whedon', 'Marvel Studios','Action,Adventure,Sci-Fi', 'Mainstream', '12A', 0, 2012)
 END
 IF NOT EXISTS (SELECT * FROM tblMovies WHERE Name = 'Batman Begins')
 BEGIN
-	INSERT INTO tblMovies (Name, Duration, Director, Producer, [Type], AgeRest, ExpectedAudience, BBFC_Rate,NumViewers,IsArchived,YearProduced)
-	VALUES ('Batman Begins','140', 'Christopher Nolan', 'Warner Bros. Pictures','Action,Adventure,Drama', '13PG', 'Mainstream', '8.3', 0, 0, 2005)
+	INSERT INTO tblMovies (Name, Duration, Director, Producer, [Type], ExpectedAudience, BBFC_Rate,IsArchived,YearProduced)
+	VALUES ('Batman Begins','140', 'Christopher Nolan', 'Warner Bros. Pictures','Action,Adventure,Drama', 'Mainstream', '15', 0, 2005)
 END
 IF NOT EXISTS (SELECT * FROM tblMovies WHERE Name = 'Batman & Robin')
 BEGIN
-	INSERT INTO tblMovies (Name, Duration, Director, Producer, [Type], AgeRest, ExpectedAudience, BBFC_Rate,NumViewers,IsArchived, YearProduced)
-	VALUES ('Batman & Robin','125', 'Joel Schumacher', 'Warner Bros. Pictures','Action,Crime,Fantasy', '13PG', 'Below-Average', '3.6', 0, 1, 1949 )
+	INSERT INTO tblMovies (Name, Duration, Director, Producer, [Type], ExpectedAudience, BBFC_Rate,IsArchived, YearProduced)
+	VALUES ('Batman & Robin','125', 'Joel Schumacher', 'Warner Bros. Pictures','Action,Crime,Fantasy', 'Below-Average', 'PG', 1, 1949 )
+END
+
+--Default screens
+IF NOT EXISTS (SELECT * FROM tblScreen WHERE ScreenNum = 1)
+BEGIN
+	INSERT INTO tblScreen (ScreenNum, Seats)
+	VALUES (1, 1000)
+END
+IF NOT EXISTS (SELECT * FROM tblScreen WHERE ScreenNum = 2)
+BEGIN
+	INSERT INTO tblScreen (ScreenNum, Seats)
+	VALUES (2, 1000)
+END
+IF NOT EXISTS (SELECT * FROM tblScreen WHERE ScreenNum = 3)
+BEGIN
+	INSERT INTO tblScreen (ScreenNum, Seats)
+	VALUES (3, 500)
+END
+IF NOT EXISTS (SELECT * FROM tblScreen WHERE ScreenNum = 4)
+BEGIN
+	INSERT INTO tblScreen (ScreenNum, Seats)
+	VALUES (4, 500)
+END
+IF NOT EXISTS (SELECT * FROM tblScreen WHERE ScreenNum = 5)
+BEGIN
+	INSERT INTO tblScreen (ScreenNum, Seats)
+	VALUES (5, 500)
+END
+IF NOT EXISTS (SELECT * FROM tblScreen WHERE ScreenNum = 6)
+BEGIN
+	INSERT INTO tblScreen (ScreenNum, Seats)
+	VALUES (6, 500)
+END
+IF NOT EXISTS (SELECT * FROM tblScreen WHERE ScreenNum = 7)
+BEGIN
+	INSERT INTO tblScreen (ScreenNum, Seats)
+	VALUES (7, 200)
+END
+IF NOT EXISTS (SELECT * FROM tblScreen WHERE ScreenNum = 8)
+BEGIN
+	INSERT INTO tblScreen (ScreenNum, Seats)
+	VALUES (8, 200)
+END
+IF NOT EXISTS (SELECT * FROM tblScreen WHERE ScreenNum = 9)
+BEGIN
+	INSERT INTO tblScreen (ScreenNum, Seats)
+	VALUES (9, 200)
+END
+IF NOT EXISTS (SELECT * FROM tblScreen WHERE ScreenNum = 10)
+BEGIN
+	INSERT INTO tblScreen (ScreenNum, Seats)
+	VALUES (10, 200)
+END
+IF NOT EXISTS (SELECT * FROM tblScreen WHERE ScreenNum = 11)
+BEGIN
+	INSERT INTO tblScreen (ScreenNum, Seats)
+	VALUES (11, 100)
+END
+IF NOT EXISTS (SELECT * FROM tblScreen WHERE ScreenNum = 12)
+BEGIN
+	INSERT INTO tblScreen (ScreenNum, Seats)
+	VALUES (12, 100)
 END
 
 GO
@@ -733,18 +790,6 @@ CREATE TABLE [#__checkStatus] (
 );
 
 SET NOCOUNT ON;
-
-
-GO
-INSERT INTO [#__checkStatus]
-EXECUTE (N'DBCC CHECKCONSTRAINTS (N''[dbo].[tblMovieTime]'')
-    WITH NO_INFOMSGS');
-
-IF @@ROWCOUNT > 0
-    BEGIN
-        DROP TABLE [#__checkStatus];
-        RAISERROR (N'An error occured while verifying constraints on table [dbo].[tblMovieTime]', 16, 127);
-    END
 
 
 GO

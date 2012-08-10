@@ -14,23 +14,65 @@ namespace CinemaProject
 	{
 		#region Member Variables
 		private static List<UserDetails> _users = new List<UserDetails>();
+		private static List<MovieDetails> _movies = new List<MovieDetails>();
+		private static List<MovieDetails> _nonArchivedMovies = new List<MovieDetails>();
 		private static String connectionString = @"server=.\SQLEXPRESS; Database=CinemaDB; Integrated Security=SSPI;";
 		#endregion
 
 		#region General Events
 		public MainGUI()
 		{
+			//TODO:  Create logout.
 			InitializeComponent();
 		}
 
 
+		/// <summary>
+		/// Occurs when the form loads.
+		/// </summary>
 		private void MainGUI_Load( object sender, EventArgs e )
 		{
-			FillUserDropDown();
+			//Hide tabs based on Admin Level.
+			switch ( UserInformation.AdminLevel )
+			{
+				//User is an Employee.
+				case 0:
+					tbcUserRoles.TabPages.Remove( tbUserSettings );
+					tbcUserRoles.TabPages.Remove( tbMovieSettings );
+					tbcUserRoles.TabPages.Remove( tbDistributors );
+					break;
+				//User is a Manager.
+				case 1:
+					tbcUserRoles.TabPages.Remove( tbUserSettings );
+					tbcUserRoles.TabPages.Remove( tbDistributors );
+					FillMovieDropDown();
+					break;
+				//User is an Admin.
+				case 2:
+					FillUserDropDown();
+					FillMovieDropDown();
+					break;
+				//User is a Distributor.
+				case 3:
+					tbcUserRoles.TabPages.Remove( tbBookings );
+					tbcUserRoles.TabPages.Remove( tbUserSettings );
+					tbcUserRoles.TabPages.Remove( tbMovieSettings );
+					break;
+
+				default:
+					break;
+			}
 		}
 
+
+		/// <summary>
+		/// When the form closes the application is exited.
+		/// </summary>
+		/// <param name="sender"></param>
+		/// <param name="e"></param>
 		private void MainGUI_FormClosed( object sender, FormClosedEventArgs e )
 		{
+			//Exit the application.
 			Application.Exit();
 		}
 		#endregion
@@ -137,6 +179,13 @@ namespace CinemaProject
 						cmd.ExecuteNonQuery();
 
 						MessageBox.Show( "User successfully created.", "Create Success", MessageBoxButtons.OK, MessageBoxIcon.Information );
+
+						//Re-enables buttons.
+						btnCancelUserDetailsChange.Enabled = false;
+						btnAddUser.Enabled = true;
+						dropdownSelectUsers.Enabled = true;
+						//Fills the dropdown again.
+						FillUserDropDown();
 					}
 				}
 			}
@@ -229,14 +278,18 @@ namespace CinemaProject
 
 		#endregion
 
-
 		#region Methods
+		/// <summary>
+		/// Clears the current User list, refills it and then goes to the 1st item.
+		/// </summary>
 		private void FillUserDropDown()
 		{
 			try
 			{
 				//Clears the current list.
 				dropdownSelectUsers.Items.Clear();
+				//Clear the List object declared at the top.
+				_users.Clear();
 
 				//Create new connection.
 				using ( SqlConnection cn = new SqlConnection( connectionString ) )
@@ -245,7 +298,7 @@ namespace CinemaProject
 					if ( cn.State == ConnectionState.Closed ) cn.Open();
 
 					//Gets all the users that the logged in user is allowed to view and adds it to the dropdown list.
-					using ( SqlCommand cmd = new SqlCommand( "GetUserLists", cn ) )
+					using ( SqlCommand cmd = new SqlCommand( "GetUserList", cn ) )
 					{
 						cmd.CommandType = CommandType.StoredProcedure;
 						cmd.Parameters.Add( "@adminLevel", SqlDbType.Int ).Value = UserInformation.AdminLevel;
@@ -284,7 +337,89 @@ namespace CinemaProject
 								dropdownSelectUsers.Items.Add( user.ToString() );
 							}
 							//Always select the 1st item in the dropdown as default.
-							dropdownSelectUsers.SelectedIndex = 0;
+							if ( dropdownSelectUsers.Items.Count > 0 )
+							{
+								dropdownSelectUsers.SelectedIndex = 0;
+							}
+						}
+					}
+				}
+			}
+			catch ( Exception ex )
+			{
+				MessageBox.Show( "Error:  " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error );
+			}
+		}
+
+
+		/// <summary>
+		/// Clears the current Movie list, refills it and then goes to the 1st item.
+		/// </summary>
+		private void FillMovieDropDown()
+		{
+			try
+			{
+				//Clears the current list.
+				ddlMovies.Items.Clear();
+				//Clear the List object declared at the top.
+				_movies.Clear();
+
+				//Create new connection.
+				using ( SqlConnection cn = new SqlConnection( connectionString ) )
+				{
+					//If the connection is closed, open it.
+					if ( cn.State == ConnectionState.Closed ) cn.Open();
+
+					//Gets all the users that the logged in user is allowed to view and adds it to the dropdown list.
+					using ( SqlCommand cmd = new SqlCommand( "GetMovieList", cn ) )
+					{
+						cmd.CommandType = CommandType.StoredProcedure;
+
+						using ( SqlDataReader dr = cmd.ExecuteReader() )
+						{
+							while ( dr.Read() )
+							{
+								String name = dr.GetString( dr.GetOrdinal( "Name" ) );
+								Int32 duration = dr.GetInt32( dr.GetOrdinal( "Duration" ) );
+								Int32 releaseYear = dr.GetInt32( dr.GetOrdinal( "YearProduced" ) );
+								String director = dr.GetString( dr.GetOrdinal( "Director" ) );
+								String producer = dr.GetString( dr.GetOrdinal( "Producer" ) );
+								String type = dr.GetString( dr.GetOrdinal( "Type" ) );
+								String expectedAudience = dr.GetString( dr.GetOrdinal( "ExpectedAudience" ) );
+								String rating = dr.GetString( dr.GetOrdinal( "BBFC_Rate" ) );
+								Boolean archived = dr.GetBoolean( dr.GetOrdinal( "IsArchived" ) );
+								String description = dr.GetString( dr.GetOrdinal( "Description" ) );
+
+								//Create new movie instance
+								MovieDetails movie = new MovieDetails();
+								//Sets the movies details.
+								movie.MovieName = name;
+								movie.Duration = duration;
+								movie.YearReleased = releaseYear;
+								movie.Director = director;
+								movie.Producer = producer;
+								movie.Type = type;
+								movie.ExpectedAudience = expectedAudience;
+								movie.BbfcRate = rating;
+								movie.IsArchived = archived;
+								movie.Description = description;
+
+								//Adds non-archived movies to the list created above.
+								if ( !archived )
+								{
+									_nonArchivedMovies.Add( movie );
+									cbbMovieName.Items.Add( movie.MovieName );
+								}
+								//Adds the user to the list declared at the top.
+								_movies.Add( movie );
+								//Adds the user to the dropdown list.
+								ddlMovies.Items.Add( movie.MovieName );
+							}
+							//Always select the 1st item in the dropdown as default.
+							if ( ddlMovies.Items.Count > 0 )
+							{
+								ddlMovies.SelectedIndex = 0;
+							}
 						}
 					}
 				}

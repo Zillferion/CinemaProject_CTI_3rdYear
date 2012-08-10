@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
 			this.tbcUserRoles = new System.Windows.Forms.TabControl();
-			this.tbMovieSettings = new System.Windows.Forms.TabPage();
+			this.tbBookings = new System.Windows.Forms.TabPage();
 			this.btnBook = new System.Windows.Forms.Button();
 			this.btnMovieDetails = new System.Windows.Forms.Button();
 			this.txtNumOfTickets = new System.Windows.Forms.TextBox();
@@ -63,36 +63,36 @@
 			this.lblSelectUser = new System.Windows.Forms.Label();
 			this.btnAddUser = new System.Windows.Forms.Button();
 			this.dropdownSelectUsers = new System.Windows.Forms.ComboBox();
-			this.tabPage2 = new System.Windows.Forms.TabPage();
+			this.tbMovieSettings = new System.Windows.Forms.TabPage();
 			this.groupBox1 = new System.Windows.Forms.GroupBox();
-			this.textBox1 = new System.Windows.Forms.TextBox();
-			this.textBox2 = new System.Windows.Forms.TextBox();
-			this.textBox3 = new System.Windows.Forms.TextBox();
-			this.label1 = new System.Windows.Forms.Label();
-			this.label2 = new System.Windows.Forms.Label();
-			this.label3 = new System.Windows.Forms.Label();
-			this.textBox4 = new System.Windows.Forms.TextBox();
-			this.label4 = new System.Windows.Forms.Label();
-			this.comboBox1 = new System.Windows.Forms.ComboBox();
+			this.txtProducer = new System.Windows.Forms.TextBox();
+			this.lblProducer = new System.Windows.Forms.Label();
 			this.button1 = new System.Windows.Forms.Button();
 			this.button2 = new System.Windows.Forms.Button();
-			this.label5 = new System.Windows.Forms.Label();
-			this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
-			this.textBox5 = new System.Windows.Forms.TextBox();
-			this.textBox6 = new System.Windows.Forms.TextBox();
+			this.lblMovieName = new System.Windows.Forms.Label();
+			this.txtMovieName = new System.Windows.Forms.TextBox();
+			this.txtDirector = new System.Windows.Forms.TextBox();
 			this.checkBox1 = new System.Windows.Forms.CheckBox();
-			this.label6 = new System.Windows.Forms.Label();
+			this.lblDirector = new System.Windows.Forms.Label();
 			this.label7 = new System.Windows.Forms.Label();
-			this.label8 = new System.Windows.Forms.Label();
-			this.label9 = new System.Windows.Forms.Label();
+			this.lblDuration = new System.Windows.Forms.Label();
 			this.lblSelectMovie = new System.Windows.Forms.Label();
 			this.btnAddMovie = new System.Windows.Forms.Button();
 			this.ddlMovies = new System.Windows.Forms.ComboBox();
+			this.tbDistributors = new System.Windows.Forms.TabPage();
+			this.lblInfo = new System.Windows.Forms.Label();
+			this.txtDuration = new System.Windows.Forms.TextBox();
+			this.txtMovieType = new System.Windows.Forms.TextBox();
+			this.lblType = new System.Windows.Forms.Label();
+			this.lblExpectedAudience = new System.Windows.Forms.Label();
+			this.ddlExpectedAudience = new System.Windows.Forms.ComboBox();
+			this.ddlBBFCRating = new System.Windows.Forms.ComboBox();
+			this.lblBBFCRating = new System.Windows.Forms.Label();
 			this.tbcUserRoles.SuspendLayout();
-			this.tbMovieSettings.SuspendLayout();
+			this.tbBookings.SuspendLayout();
 			this.tbUserSettings.SuspendLayout();
 			this.grpUserDetails.SuspendLayout();
-			this.tabPage2.SuspendLayout();
+			this.tbMovieSettings.SuspendLayout();
 			this.groupBox1.SuspendLayout();
 			this.SuspendLayout();
 			// 
@@ -101,32 +101,33 @@
 			this.tbcUserRoles.Anchor = ( ( System.Windows.Forms.AnchorStyles )( ( ( ( System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom )
 						| System.Windows.Forms.AnchorStyles.Left )
 						| System.Windows.Forms.AnchorStyles.Right ) ) );
-			this.tbcUserRoles.Controls.Add( this.tbMovieSettings );
+			this.tbcUserRoles.Controls.Add( this.tbBookings );
 			this.tbcUserRoles.Controls.Add( this.tbUserSettings );
-			this.tbcUserRoles.Controls.Add( this.tabPage2 );
+			this.tbcUserRoles.Controls.Add( this.tbMovieSettings );
+			this.tbcUserRoles.Controls.Add( this.tbDistributors );
 			this.tbcUserRoles.Location = new System.Drawing.Point( 12, 12 );
 			this.tbcUserRoles.Name = "tbcUserRoles";
 			this.tbcUserRoles.SelectedIndex = 0;
 			this.tbcUserRoles.Size = new System.Drawing.Size( 608, 410 );
 			this.tbcUserRoles.TabIndex = 0;
 			// 
-			// tbMovieSettings
+			// tbBookings
 			// 
-			this.tbMovieSettings.BackColor = System.Drawing.SystemColors.Control;
-			this.tbMovieSettings.Controls.Add( this.btnBook );
-			this.tbMovieSettings.Controls.Add( this.btnMovieDetails );
-			this.tbMovieSettings.Controls.Add( this.txtNumOfTickets );
-			this.tbMovieSettings.Controls.Add( this.lblNumberOfTickets );
-			this.tbMovieSettings.Controls.Add( this.cbbSession );
-			this.tbMovieSettings.Controls.Add( this.lbl );
-			this.tbMovieSettings.Controls.Add( this.cbbMovieName );
-			this.tbMovieSettings.Controls.Add( this.lblMovie );
-			this.tbMovieSettings.Location = new System.Drawing.Point( 4, 22 );
-			this.tbMovieSettings.Name = "tbMovieSettings";
-			this.tbMovieSettings.Padding = new System.Windows.Forms.Padding( 3 );
-			this.tbMovieSettings.Size = new System.Drawing.Size( 600, 384 );
-			this.tbMovieSettings.TabIndex = 0;
-			this.tbMovieSettings.Text = "Bookings";
+			this.tbBookings.BackColor = System.Drawing.SystemColors.Control;
+			this.tbBookings.Controls.Add( this.btnBook );
+			this.tbBookings.Controls.Add( this.btnMovieDetails );
+			this.tbBookings.Controls.Add( this.txtNumOfTickets );
+			this.tbBookings.Controls.Add( this.lblNumberOfTickets );
+			this.tbBookings.Controls.Add( this.cbbSession );
+			this.tbBookings.Controls.Add( this.lbl );
+			this.tbBookings.Controls.Add( this.cbbMovieName );
+			this.tbBookings.Controls.Add( this.lblMovie );
+			this.tbBookings.Location = new System.Drawing.Point( 4, 22 );
+			this.tbBookings.Name = "tbBookings";
+			this.tbBookings.Padding = new System.Windows.Forms.Padding( 3 );
+			this.tbBookings.Size = new System.Drawing.Size( 600, 384 );
+			this.tbBookings.TabIndex = 0;
+			this.tbBookings.Text = "Bookings";
 			// 
 			// btnBook
 			// 
@@ -324,11 +325,13 @@
 			// 
 			this.cbAdminLevel.Anchor = ( ( System.Windows.Forms.AnchorStyles )( ( ( System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left )
 						| System.Windows.Forms.AnchorStyles.Right ) ) );
+			this.cbAdminLevel.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
 			this.cbAdminLevel.FormattingEnabled = true;
 			this.cbAdminLevel.Items.AddRange( new object[] {
             "Employee",
             "Manager",
-            "Administrator"} );
+            "Administrator",
+            "Distributor"} );
 			this.cbAdminLevel.Location = new System.Drawing.Point( 105, 117 );
 			this.cbAdminLevel.Name = "cbAdminLevel";
 			this.cbAdminLevel.Size = new System.Drawing.Size( 474, 21 );
@@ -462,6 +465,7 @@
 			// 
 			this.dropdownSelectUsers.Anchor = ( ( System.Windows.Forms.AnchorStyles )( ( ( System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left )
 						| System.Windows.Forms.AnchorStyles.Right ) ) );
+			this.dropdownSelectUsers.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
 			this.dropdownSelectUsers.FormattingEnabled = true;
 			this.dropdownSelectUsers.Location = new System.Drawing.Point( 74, 6 );
 			this.dropdownSelectUsers.Name = "dropdownSelectUsers";
@@ -469,45 +473,44 @@
 			this.dropdownSelectUsers.TabIndex = 1;
 			this.dropdownSelectUsers.SelectedIndexChanged += new System.EventHandler( this.dropdownSelectUsers_SelectedIndexChanged );
 			// 
-			// tabPage2
+			// tbMovieSettings
 			// 
-			this.tabPage2.BackColor = System.Drawing.SystemColors.Control;
-			this.tabPage2.Controls.Add( this.groupBox1 );
-			this.tabPage2.Controls.Add( this.lblSelectMovie );
-			this.tabPage2.Controls.Add( this.btnAddMovie );
-			this.tabPage2.Controls.Add( this.ddlMovies );
-			this.tabPage2.Location = new System.Drawing.Point( 4, 22 );
-			this.tabPage2.Name = "tabPage2";
-			this.tabPage2.Padding = new System.Windows.Forms.Padding( 3 );
-			this.tabPage2.Size = new System.Drawing.Size( 600, 384 );
-			this.tabPage2.TabIndex = 3;
-			this.tabPage2.Text = "Movie Settings";
+			this.tbMovieSettings.BackColor = System.Drawing.SystemColors.Control;
+			this.tbMovieSettings.Controls.Add( this.groupBox1 );
+			this.tbMovieSettings.Controls.Add( this.lblSelectMovie );
+			this.tbMovieSettings.Controls.Add( this.btnAddMovie );
+			this.tbMovieSettings.Controls.Add( this.ddlMovies );
+			this.tbMovieSettings.Location = new System.Drawing.Point( 4, 22 );
+			this.tbMovieSettings.Name = "tbMovieSettings";
+			this.tbMovieSettings.Padding = new System.Windows.Forms.Padding( 3 );
+			this.tbMovieSettings.Size = new System.Drawing.Size( 600, 384 );
+			this.tbMovieSettings.TabIndex = 3;
+			this.tbMovieSettings.Text = "Movie Settings";
 			// 
 			// groupBox1
 			// 
 			this.groupBox1.Anchor = ( ( System.Windows.Forms.AnchorStyles )( ( ( ( System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom )
 						| System.Windows.Forms.AnchorStyles.Left )
 						| System.Windows.Forms.AnchorStyles.Right ) ) );
-			this.groupBox1.Controls.Add( this.textBox1 );
-			this.groupBox1.Controls.Add( this.textBox2 );
-			this.groupBox1.Controls.Add( this.textBox3 );
-			this.groupBox1.Controls.Add( this.label1 );
-			this.groupBox1.Controls.Add( this.label2 );
-			this.groupBox1.Controls.Add( this.label3 );
-			this.groupBox1.Controls.Add( this.textBox4 );
-			this.groupBox1.Controls.Add( this.label4 );
-			this.groupBox1.Controls.Add( this.comboBox1 );
+			this.groupBox1.Controls.Add( this.ddlBBFCRating );
+			this.groupBox1.Controls.Add( this.lblBBFCRating );
+			this.groupBox1.Controls.Add( this.ddlExpectedAudience );
+			this.groupBox1.Controls.Add( this.lblExpectedAudience );
+			this.groupBox1.Controls.Add( this.txtMovieType );
+			this.groupBox1.Controls.Add( this.lblType );
+			this.groupBox1.Controls.Add( this.txtDuration );
+			this.groupBox1.Controls.Add( this.lblInfo );
+			this.groupBox1.Controls.Add( this.txtProducer );
+			this.groupBox1.Controls.Add( this.lblProducer );
 			this.groupBox1.Controls.Add( this.button1 );
 			this.groupBox1.Controls.Add( this.button2 );
-			this.groupBox1.Controls.Add( this.label5 );
-			this.groupBox1.Controls.Add( this.dateTimePicker1 );
-			this.groupBox1.Controls.Add( this.textBox5 );
-			this.groupBox1.Controls.Add( this.textBox6 );
+			this.groupBox1.Controls.Add( this.lblMovieName );
+			this.groupBox1.Controls.Add( this.txtMovieName );
+			this.groupBox1.Controls.Add( this.txtDirector );
 			this.groupBox1.Controls.Add( this.checkBox1 );
-			this.groupBox1.Controls.Add( this.label6 );
+			this.groupBox1.Controls.Add( this.lblDirector );
 			this.groupBox1.Controls.Add( this.label7 );
-			this.groupBox1.Controls.Add( this.label8 );
-			this.groupBox1.Controls.Add( this.label9 );
+			this.groupBox1.Controls.Add( this.lblDuration );
 			this.groupBox1.Location = new System.Drawing.Point( 9, 33 );
 			this.groupBox1.Name = "groupBox1";
 			this.groupBox1.Size = new System.Drawing.Size( 585, 345 );
@@ -515,93 +518,23 @@
 			this.groupBox1.TabStop = false;
 			this.groupBox1.Text = "Movie Details";
 			// 
-			// textBox1
+			// txtProducer
 			// 
-			this.textBox1.Anchor = ( ( System.Windows.Forms.AnchorStyles )( ( ( System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left )
+			this.txtProducer.Anchor = ( ( System.Windows.Forms.AnchorStyles )( ( ( System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left )
 						| System.Windows.Forms.AnchorStyles.Right ) ) );
-			this.textBox1.Location = new System.Drawing.Point( 103, 196 );
-			this.textBox1.Name = "textBox1";
-			this.textBox1.PasswordChar = '*';
-			this.textBox1.Size = new System.Drawing.Size( 474, 20 );
-			this.textBox1.TabIndex = 12;
+			this.txtProducer.Location = new System.Drawing.Point( 105, 86 );
+			this.txtProducer.Name = "txtProducer";
+			this.txtProducer.Size = new System.Drawing.Size( 474, 20 );
+			this.txtProducer.TabIndex = 7;
 			// 
-			// textBox2
+			// lblProducer
 			// 
-			this.textBox2.Anchor = ( ( System.Windows.Forms.AnchorStyles )( ( ( System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left )
-						| System.Windows.Forms.AnchorStyles.Right ) ) );
-			this.textBox2.Location = new System.Drawing.Point( 105, 170 );
-			this.textBox2.Name = "textBox2";
-			this.textBox2.PasswordChar = '*';
-			this.textBox2.Size = new System.Drawing.Size( 474, 20 );
-			this.textBox2.TabIndex = 11;
-			// 
-			// textBox3
-			// 
-			this.textBox3.Anchor = ( ( System.Windows.Forms.AnchorStyles )( ( ( System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left )
-						| System.Windows.Forms.AnchorStyles.Right ) ) );
-			this.textBox3.Location = new System.Drawing.Point( 105, 144 );
-			this.textBox3.Name = "textBox3";
-			this.textBox3.Size = new System.Drawing.Size( 474, 20 );
-			this.textBox3.TabIndex = 10;
-			// 
-			// label1
-			// 
-			this.label1.AutoSize = true;
-			this.label1.Location = new System.Drawing.Point( 6, 199 );
-			this.label1.Name = "label1";
-			this.label1.Size = new System.Drawing.Size( 91, 13 );
-			this.label1.TabIndex = 24;
-			this.label1.Text = "Confirm Password";
-			// 
-			// label2
-			// 
-			this.label2.AutoSize = true;
-			this.label2.Location = new System.Drawing.Point( 6, 173 );
-			this.label2.Name = "label2";
-			this.label2.Size = new System.Drawing.Size( 82, 13 );
-			this.label2.TabIndex = 23;
-			this.label2.Text = "Login Password";
-			// 
-			// label3
-			// 
-			this.label3.AutoSize = true;
-			this.label3.Location = new System.Drawing.Point( 6, 147 );
-			this.label3.Name = "label3";
-			this.label3.Size = new System.Drawing.Size( 84, 13 );
-			this.label3.TabIndex = 22;
-			this.label3.Text = "Login Username";
-			// 
-			// textBox4
-			// 
-			this.textBox4.Anchor = ( ( System.Windows.Forms.AnchorStyles )( ( ( System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left )
-						| System.Windows.Forms.AnchorStyles.Right ) ) );
-			this.textBox4.Location = new System.Drawing.Point( 105, 65 );
-			this.textBox4.Name = "textBox4";
-			this.textBox4.Size = new System.Drawing.Size( 474, 20 );
-			this.textBox4.TabIndex = 7;
-			// 
-			// label4
-			// 
-			this.label4.AutoSize = true;
-			this.label4.Location = new System.Drawing.Point( 6, 65 );
-			this.label4.Name = "label4";
-			this.label4.Size = new System.Drawing.Size( 84, 13 );
-			this.label4.TabIndex = 20;
-			this.label4.Text = "Contact Number";
-			// 
-			// comboBox1
-			// 
-			this.comboBox1.Anchor = ( ( System.Windows.Forms.AnchorStyles )( ( ( System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left )
-						| System.Windows.Forms.AnchorStyles.Right ) ) );
-			this.comboBox1.FormattingEnabled = true;
-			this.comboBox1.Items.AddRange( new object[] {
-            "Employee",
-            "Manager",
-            "Administrator"} );
-			this.comboBox1.Location = new System.Drawing.Point( 105, 117 );
-			this.comboBox1.Name = "comboBox1";
-			this.comboBox1.Size = new System.Drawing.Size( 474, 21 );
-			this.comboBox1.TabIndex = 9;
+			this.lblProducer.AutoSize = true;
+			this.lblProducer.Location = new System.Drawing.Point( 6, 86 );
+			this.lblProducer.Name = "lblProducer";
+			this.lblProducer.Size = new System.Drawing.Size( 61, 13 );
+			this.lblProducer.TabIndex = 20;
+			this.lblProducer.Text = "Producer(s)";
 			// 
 			// button1
 			// 
@@ -624,86 +557,68 @@
 			this.button2.Text = "Save";
 			this.button2.UseVisualStyleBackColor = true;
 			// 
-			// label5
+			// lblMovieName
 			// 
-			this.label5.AutoSize = true;
-			this.label5.Location = new System.Drawing.Point( 6, 16 );
-			this.label5.Name = "label5";
-			this.label5.Size = new System.Drawing.Size( 35, 13 );
-			this.label5.TabIndex = 5;
-			this.label5.Text = "Name";
+			this.lblMovieName.AutoSize = true;
+			this.lblMovieName.Location = new System.Drawing.Point( 6, 16 );
+			this.lblMovieName.Name = "lblMovieName";
+			this.lblMovieName.Size = new System.Drawing.Size( 35, 13 );
+			this.lblMovieName.TabIndex = 5;
+			this.lblMovieName.Text = "Name";
 			// 
-			// dateTimePicker1
+			// txtMovieName
 			// 
-			this.dateTimePicker1.Anchor = ( ( System.Windows.Forms.AnchorStyles )( ( ( System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left )
+			this.txtMovieName.Anchor = ( ( System.Windows.Forms.AnchorStyles )( ( ( System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left )
 						| System.Windows.Forms.AnchorStyles.Right ) ) );
-			this.dateTimePicker1.Location = new System.Drawing.Point( 105, 91 );
-			this.dateTimePicker1.Name = "dateTimePicker1";
-			this.dateTimePicker1.Size = new System.Drawing.Size( 474, 20 );
-			this.dateTimePicker1.TabIndex = 8;
+			this.txtMovieName.Location = new System.Drawing.Point( 105, 13 );
+			this.txtMovieName.Name = "txtMovieName";
+			this.txtMovieName.Size = new System.Drawing.Size( 474, 20 );
+			this.txtMovieName.TabIndex = 4;
 			// 
-			// textBox5
+			// txtDirector
 			// 
-			this.textBox5.Anchor = ( ( System.Windows.Forms.AnchorStyles )( ( ( System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left )
+			this.txtDirector.Anchor = ( ( System.Windows.Forms.AnchorStyles )( ( ( System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left )
 						| System.Windows.Forms.AnchorStyles.Right ) ) );
-			this.textBox5.Location = new System.Drawing.Point( 105, 13 );
-			this.textBox5.Name = "textBox5";
-			this.textBox5.Size = new System.Drawing.Size( 474, 20 );
-			this.textBox5.TabIndex = 4;
-			// 
-			// textBox6
-			// 
-			this.textBox6.Anchor = ( ( System.Windows.Forms.AnchorStyles )( ( ( System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left )
-						| System.Windows.Forms.AnchorStyles.Right ) ) );
-			this.textBox6.Location = new System.Drawing.Point( 105, 39 );
-			this.textBox6.Name = "textBox6";
-			this.textBox6.Size = new System.Drawing.Size( 474, 20 );
-			this.textBox6.TabIndex = 6;
+			this.txtDirector.Location = new System.Drawing.Point( 105, 60 );
+			this.txtDirector.Name = "txtDirector";
+			this.txtDirector.Size = new System.Drawing.Size( 474, 20 );
+			this.txtDirector.TabIndex = 6;
 			// 
 			// checkBox1
 			// 
 			this.checkBox1.AutoSize = true;
-			this.checkBox1.Location = new System.Drawing.Point( 105, 222 );
+			this.checkBox1.Location = new System.Drawing.Point( 105, 220 );
 			this.checkBox1.Name = "checkBox1";
 			this.checkBox1.Size = new System.Drawing.Size( 15, 14 );
 			this.checkBox1.TabIndex = 13;
 			this.checkBox1.UseVisualStyleBackColor = true;
 			// 
-			// label6
+			// lblDirector
 			// 
-			this.label6.AutoSize = true;
-			this.label6.Location = new System.Drawing.Point( 6, 42 );
-			this.label6.Name = "label6";
-			this.label6.Size = new System.Drawing.Size( 49, 13 );
-			this.label6.TabIndex = 7;
-			this.label6.Text = "Surname";
+			this.lblDirector.AutoSize = true;
+			this.lblDirector.Location = new System.Drawing.Point( 6, 63 );
+			this.lblDirector.Name = "lblDirector";
+			this.lblDirector.Size = new System.Drawing.Size( 55, 13 );
+			this.lblDirector.TabIndex = 7;
+			this.lblDirector.Text = "Director(s)";
 			// 
 			// label7
 			// 
 			this.label7.AutoSize = true;
-			this.label7.Location = new System.Drawing.Point( 6, 222 );
+			this.label7.Location = new System.Drawing.Point( -1, 221 );
 			this.label7.Name = "label7";
 			this.label7.Size = new System.Drawing.Size( 37, 13 );
 			this.label7.TabIndex = 13;
 			this.label7.Text = "Active";
 			// 
-			// label8
+			// lblDuration
 			// 
-			this.label8.AutoSize = true;
-			this.label8.Location = new System.Drawing.Point( 6, 97 );
-			this.label8.Name = "label8";
-			this.label8.Size = new System.Drawing.Size( 66, 13 );
-			this.label8.TabIndex = 9;
-			this.label8.Text = "Date of Birth";
-			// 
-			// label9
-			// 
-			this.label9.AutoSize = true;
-			this.label9.Location = new System.Drawing.Point( 6, 123 );
-			this.label9.Name = "label9";
-			this.label9.Size = new System.Drawing.Size( 61, 13 );
-			this.label9.TabIndex = 11;
-			this.label9.Text = "Admin level";
+			this.lblDuration.AutoSize = true;
+			this.lblDuration.Location = new System.Drawing.Point( 8, 143 );
+			this.lblDuration.Name = "lblDuration";
+			this.lblDuration.Size = new System.Drawing.Size( 92, 13 );
+			this.lblDuration.TabIndex = 11;
+			this.lblDuration.Text = "Duration (minutes)";
 			// 
 			// lblSelectMovie
 			// 
@@ -721,18 +636,119 @@
 			this.btnAddMovie.Name = "btnAddMovie";
 			this.btnAddMovie.Size = new System.Drawing.Size( 75, 23 );
 			this.btnAddMovie.TabIndex = 2;
-			this.btnAddMovie.Text = "Add User";
+			this.btnAddMovie.Text = "Add Movie";
 			this.btnAddMovie.UseVisualStyleBackColor = true;
 			// 
 			// ddlMovies
 			// 
 			this.ddlMovies.Anchor = ( ( System.Windows.Forms.AnchorStyles )( ( ( System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left )
 						| System.Windows.Forms.AnchorStyles.Right ) ) );
+			this.ddlMovies.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
 			this.ddlMovies.FormattingEnabled = true;
 			this.ddlMovies.Location = new System.Drawing.Point( 74, 6 );
 			this.ddlMovies.Name = "ddlMovies";
 			this.ddlMovies.Size = new System.Drawing.Size( 439, 21 );
 			this.ddlMovies.TabIndex = 1;
+			// 
+			// tbDistributors
+			// 
+			this.tbDistributors.Location = new System.Drawing.Point( 4, 22 );
+			this.tbDistributors.Name = "tbDistributors";
+			this.tbDistributors.Padding = new System.Windows.Forms.Padding( 3 );
+			this.tbDistributors.Size = new System.Drawing.Size( 600, 384 );
+			this.tbDistributors.TabIndex = 4;
+			this.tbDistributors.Text = "Distributor Section";
+			this.tbDistributors.UseVisualStyleBackColor = true;
+			// 
+			// lblInfo
+			// 
+			this.lblInfo.AutoSize = true;
+			this.lblInfo.Font = new System.Drawing.Font( "Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ( ( byte )( 0 ) ) );
+			this.lblInfo.Location = new System.Drawing.Point( 8, 39 );
+			this.lblInfo.Name = "lblInfo";
+			this.lblInfo.Size = new System.Drawing.Size( 434, 13 );
+			this.lblInfo.TabIndex = 25;
+			this.lblInfo.Text = "*For multiple directors or producers please seperate them using a comma (,)";
+			// 
+			// txtDuration
+			// 
+			this.txtDuration.Anchor = ( ( System.Windows.Forms.AnchorStyles )( ( ( System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left )
+						| System.Windows.Forms.AnchorStyles.Right ) ) );
+			this.txtDuration.Location = new System.Drawing.Point( 105, 140 );
+			this.txtDuration.Name = "txtDuration";
+			this.txtDuration.Size = new System.Drawing.Size( 474, 20 );
+			this.txtDuration.TabIndex = 26;
+			// 
+			// txtMovieType
+			// 
+			this.txtMovieType.Anchor = ( ( System.Windows.Forms.AnchorStyles )( ( ( System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left )
+						| System.Windows.Forms.AnchorStyles.Right ) ) );
+			this.txtMovieType.Location = new System.Drawing.Point( 105, 112 );
+			this.txtMovieType.Name = "txtMovieType";
+			this.txtMovieType.Size = new System.Drawing.Size( 474, 20 );
+			this.txtMovieType.TabIndex = 27;
+			// 
+			// lblType
+			// 
+			this.lblType.AutoSize = true;
+			this.lblType.Location = new System.Drawing.Point( 6, 112 );
+			this.lblType.Name = "lblType";
+			this.lblType.Size = new System.Drawing.Size( 31, 13 );
+			this.lblType.TabIndex = 28;
+			this.lblType.Text = "Type";
+			// 
+			// lblExpectedAudience
+			// 
+			this.lblExpectedAudience.AutoSize = true;
+			this.lblExpectedAudience.Location = new System.Drawing.Point( 3, 169 );
+			this.lblExpectedAudience.Name = "lblExpectedAudience";
+			this.lblExpectedAudience.Size = new System.Drawing.Size( 100, 13 );
+			this.lblExpectedAudience.TabIndex = 29;
+			this.lblExpectedAudience.Text = "Expected Audience";
+			// 
+			// ddlExpectedAudience
+			// 
+			this.ddlExpectedAudience.Anchor = ( ( System.Windows.Forms.AnchorStyles )( ( ( System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left )
+						| System.Windows.Forms.AnchorStyles.Right ) ) );
+			this.ddlExpectedAudience.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+			this.ddlExpectedAudience.FormattingEnabled = true;
+			this.ddlExpectedAudience.Items.AddRange( new object[] {
+            "Mainstream",
+            "Average",
+            "Below-Average",
+            "Specialist",
+            "Non-Mainstream"} );
+			this.ddlExpectedAudience.Location = new System.Drawing.Point( 105, 166 );
+			this.ddlExpectedAudience.Name = "ddlExpectedAudience";
+			this.ddlExpectedAudience.Size = new System.Drawing.Size( 465, 21 );
+			this.ddlExpectedAudience.TabIndex = 18;
+			// 
+			// ddlBBFCRating
+			// 
+			this.ddlBBFCRating.Anchor = ( ( System.Windows.Forms.AnchorStyles )( ( ( System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left )
+						| System.Windows.Forms.AnchorStyles.Right ) ) );
+			this.ddlBBFCRating.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+			this.ddlBBFCRating.FormattingEnabled = true;
+			this.ddlBBFCRating.Items.AddRange( new object[] {
+            "U",
+            "PG",
+            "12",
+            "12A",
+            "15",
+            "18"} );
+			this.ddlBBFCRating.Location = new System.Drawing.Point( 105, 193 );
+			this.ddlBBFCRating.Name = "ddlBBFCRating";
+			this.ddlBBFCRating.Size = new System.Drawing.Size( 465, 21 );
+			this.ddlBBFCRating.TabIndex = 30;
+			// 
+			// lblBBFCRating
+			// 
+			this.lblBBFCRating.AutoSize = true;
+			this.lblBBFCRating.Location = new System.Drawing.Point( -1, 196 );
+			this.lblBBFCRating.Name = "lblBBFCRating";
+			this.lblBBFCRating.Size = new System.Drawing.Size( 68, 13 );
+			this.lblBBFCRating.TabIndex = 31;
+			this.lblBBFCRating.Text = "BBFC Rating";
 			// 
 			// MainGUI
 			// 
@@ -746,14 +762,14 @@
 			this.FormClosed += new System.Windows.Forms.FormClosedEventHandler( this.MainGUI_FormClosed );
 			this.Load += new System.EventHandler( this.MainGUI_Load );
 			this.tbcUserRoles.ResumeLayout( false );
-			this.tbMovieSettings.ResumeLayout( false );
-			this.tbMovieSettings.PerformLayout();
+			this.tbBookings.ResumeLayout( false );
+			this.tbBookings.PerformLayout();
 			this.tbUserSettings.ResumeLayout( false );
 			this.tbUserSettings.PerformLayout();
 			this.grpUserDetails.ResumeLayout( false );
 			this.grpUserDetails.PerformLayout();
-			this.tabPage2.ResumeLayout( false );
-			this.tabPage2.PerformLayout();
+			this.tbMovieSettings.ResumeLayout( false );
+			this.tbMovieSettings.PerformLayout();
 			this.groupBox1.ResumeLayout( false );
 			this.groupBox1.PerformLayout();
 			this.ResumeLayout( false );
@@ -763,7 +779,7 @@
         #endregion
 
         private System.Windows.Forms.TabControl tbcUserRoles;
-        private System.Windows.Forms.TabPage tbMovieSettings;
+        private System.Windows.Forms.TabPage tbBookings;
         private System.Windows.Forms.TabPage tbUserSettings;
         private System.Windows.Forms.Label lblSelectUser;
         private System.Windows.Forms.Button btnAddUser;
@@ -797,31 +813,31 @@
 		private System.Windows.Forms.TextBox txtLoginUserName;
 		private System.Windows.Forms.TextBox txtPassword;
 		private System.Windows.Forms.TextBox txtConfirmPassword;
-		private System.Windows.Forms.TabPage tabPage2;
+		private System.Windows.Forms.TabPage tbMovieSettings;
 		private System.Windows.Forms.GroupBox groupBox1;
-		private System.Windows.Forms.TextBox textBox1;
-		private System.Windows.Forms.TextBox textBox2;
-		private System.Windows.Forms.TextBox textBox3;
-		private System.Windows.Forms.Label label1;
-		private System.Windows.Forms.Label label2;
-		private System.Windows.Forms.Label label3;
-		private System.Windows.Forms.TextBox textBox4;
-		private System.Windows.Forms.Label label4;
-		private System.Windows.Forms.ComboBox comboBox1;
+		private System.Windows.Forms.TextBox txtProducer;
+		private System.Windows.Forms.Label lblProducer;
 		private System.Windows.Forms.Button button1;
 		private System.Windows.Forms.Button button2;
-		private System.Windows.Forms.Label label5;
-		private System.Windows.Forms.DateTimePicker dateTimePicker1;
-		private System.Windows.Forms.TextBox textBox5;
-		private System.Windows.Forms.TextBox textBox6;
+		private System.Windows.Forms.Label lblMovieName;
+		private System.Windows.Forms.TextBox txtMovieName;
+		private System.Windows.Forms.TextBox txtDirector;
 		private System.Windows.Forms.CheckBox checkBox1;
-		private System.Windows.Forms.Label label6;
+		private System.Windows.Forms.Label lblDirector;
 		private System.Windows.Forms.Label label7;
-		private System.Windows.Forms.Label label8;
-		private System.Windows.Forms.Label label9;
+		private System.Windows.Forms.Label lblDuration;
 		private System.Windows.Forms.Label lblSelectMovie;
 		private System.Windows.Forms.Button btnAddMovie;
 		private System.Windows.Forms.ComboBox ddlMovies;
+		private System.Windows.Forms.TabPage tbDistributors;
+		private System.Windows.Forms.Label lblInfo;
+		private System.Windows.Forms.TextBox txtDuration;
+		private System.Windows.Forms.TextBox txtMovieType;
+		private System.Windows.Forms.Label lblType;
+		private System.Windows.Forms.ComboBox ddlExpectedAudience;
+		private System.Windows.Forms.Label lblExpectedAudience;
+		private System.Windows.Forms.ComboBox ddlBBFCRating;
+		private System.Windows.Forms.Label lblBBFCRating;
     }
 }
 
