@@ -37,7 +37,7 @@
 			// 
 			// btnLogin
 			// 
-			this.btnLogin.Location = new System.Drawing.Point( 167, 91 );
+			this.btnLogin.Location = new System.Drawing.Point( 143, 96 );
 			this.btnLogin.Name = "btnLogin";
 			this.btnLogin.Size = new System.Drawing.Size( 179, 32 );
 			this.btnLogin.TabIndex = 9;
@@ -83,7 +83,7 @@
 			this.AcceptButton = this.btnLogin;
 			this.AutoScaleDimensions = new System.Drawing.SizeF( 6F, 13F );
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size( 430, 172 );
+			this.ClientSize = new System.Drawing.Size( 430, 140 );
 			this.Controls.Add( this.btnLogin );
 			this.Controls.Add( this.txtPassword );
 			this.Controls.Add( this.txtUsername );

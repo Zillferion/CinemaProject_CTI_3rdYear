@@ -12,6 +12,35 @@ namespace CinemaProject
 {
 	public partial class MainGUI : Form
 	{
+		#region Enums
+		private enum UserType
+		{
+			Employee = 0,
+			Managrer = 1,
+			Admin = 2
+		}
+
+		private enum ExpectedAudience
+		{
+			Mainstream = 0,
+			Average = 1,
+			Below_Average = 2,
+			Specialist = 3,
+			Non_Mainstream = 4
+		}
+
+		private enum BBFC_Rating
+		{
+			_U = 0,
+			_PG = 1,
+			_12 = 2,
+			_12A = 3,
+			_15 = 4,
+			_18 = 5,
+			_R18 = 6
+		}
+		#endregion
+
 		#region Member Variables
 		private static List<UserDetails> _users = new List<UserDetails>();
 		private static List<MovieDetails> _movies = new List<MovieDetails>();
@@ -40,7 +69,7 @@ namespace CinemaProject
 					tbcUserRoles.TabPages.Remove( tbUserSettings );
 					tbcUserRoles.TabPages.Remove( tbMovieSettings );
 					tbcUserRoles.TabPages.Remove( tbDistributors );
-                    FillMovieDropDown();
+					FillMovieDropDown();
 					break;
 				//User is a Manager.
 				case 1:
@@ -52,12 +81,7 @@ namespace CinemaProject
 				case 2:
 					FillUserDropDown();
 					FillMovieDropDown();
-					break;
-				//User is a Distributor.
-				case 3:
-					tbcUserRoles.TabPages.Remove( tbBookings );
-					tbcUserRoles.TabPages.Remove( tbUserSettings );
-					tbcUserRoles.TabPages.Remove( tbMovieSettings );
+					//TODO:  FillDistributorDropDown();
 					break;
 
 				default:
@@ -274,7 +298,117 @@ namespace CinemaProject
 		#endregion
 
 		#region Movie Setting Events
+		private void btnAddMovie_Click( object sender, EventArgs e )
+		{
+			// Enable/disable controls.
+			ddlMovies.Enabled = false;
+			btnAddMovie.Enabled = false;
+			btnCancelMovieCreate.Enabled = true;
 
+			// Set default values.
+			grpMovieDetails.Text = "New Movie";
+			txtMovieName.Text = String.Empty;
+			txtDirector.Text = String.Empty;
+			txtProducer.Text = String.Empty;
+			txtMovieType.Text = String.Empty;
+			cbArchived.Checked = false;
+			txtDuration.Text = String.Empty;
+			ddlExpectedAudience.SelectedIndex = 0;
+			ddlBBFCRating.SelectedIndex = 0;
+			txtDescription.Text = String.Empty;
+			btnSaveMovieChanges.Text = "Add Movie";
+		}
+
+
+		private void btnCancelMovieCreate_Click( object sender, EventArgs e )
+		{
+			// Enable/disable controls.
+			ddlMovies.Enabled = true;
+			btnAddMovie.Enabled = true;
+			btnCancelMovieCreate.Enabled = false;
+			//Refills the users list.
+			FillMovieDropDown();
+		}
+
+
+		private void ddlMovies_SelectedIndexChanged( object sender, EventArgs e )
+		{
+			MovieDetails selectedMovie = _movies[ ddlMovies.SelectedIndex ];
+
+			txtMovieName.Text = selectedMovie.MovieName;
+			txtDirector.Text = selectedMovie.Director;
+			txtProducer.Text = selectedMovie.Producer;
+			ddlBBFCRating.SelectedIndex = ddlBBFCRating.Items.IndexOf( selectedMovie.BbfcRate );
+			ddlExpectedAudience.SelectedIndex = ddlExpectedAudience.Items.IndexOf( selectedMovie.ExpectedAudience );
+			cbArchived.Checked = selectedMovie.IsArchived;
+			txtMovieType.Text = selectedMovie.Type;
+			txtDescription.Text = selectedMovie.Description;
+			txtDuration.Text = selectedMovie.Duration.ToString();
+			btnSaveMovieChanges.Text = "Update Movie";
+		}
+
+
+		private void btnSaveMovieChanges_Click( object sender, EventArgs e )
+		{
+			if ( btnSave.Text.Equals( "Update Movie" ) )
+			{
+				using ( SqlConnection cn = new SqlConnection( connectionString ) )
+				{
+					if ( cn.State == ConnectionState.Closed ) cn.Open();
+
+					using ( SqlCommand cmd = new SqlCommand( "UpdateMovie", cn ) )
+					{
+						cmd.CommandType = CommandType.StoredProcedure;
+						cmd.Parameters.Add( "@movieGuid", SqlDbType.UniqueIdentifier ).Value = _movies[ ddlMovies.SelectedIndex ].MovieGuid;
+						cmd.Parameters.Add( "@name", SqlDbType.NVarChar ).Value = txtMovieName.Text.Trim();
+						cmd.Parameters.Add( "@type", SqlDbType.NVarChar ).Value = txtMovieType.Text.Trim();
+						cmd.Parameters.Add( "@directors", SqlDbType.NVarChar ).Value = txtDirector.Text.Trim();
+						cmd.Parameters.Add( "@producers", SqlDbType.NVarChar ).Value = txtProducer.Text.Trim();
+						cmd.Parameters.Add( "@duration", SqlDbType.Int ).Value = Convert.ToInt32( txtDuration.Text.Trim() );
+						cmd.Parameters.Add( "@expectedAudience", SqlDbType.NVarChar ).Value = ddlExpectedAudience.SelectedItem;
+						cmd.Parameters.Add( "@rating", SqlDbType.NVarChar ).Value = ddlBBFCRating.SelectedItem;
+						cmd.Parameters.Add( "@description", SqlDbType.NVarChar ).Value = txtDescription.Text.Trim();
+						cmd.Parameters.Add( "@archived", SqlDbType.Bit ).Value = cbArchived.Checked;
+						cmd.Parameters.Add( "@year", SqlDbType.Int ).Value = DateTime.Now.Year;
+						cmd.ExecuteNonQuery();
+
+						MessageBox.Show( "Movie successfully updated.", "Update Success", MessageBoxButtons.OK, MessageBoxIcon.Information );
+					}
+				}
+			}
+			else
+			{
+				using ( SqlConnection cn = new SqlConnection( connectionString ) )
+				{
+					if ( cn.State == ConnectionState.Closed ) cn.Open();
+
+					using ( SqlCommand cmd = new SqlCommand( "CreateMovie", cn ) )
+					{
+						cmd.CommandType = CommandType.StoredProcedure;
+						cmd.Parameters.Add( "@name", SqlDbType.NVarChar ).Value = txtMovieName.Text.Trim();
+						cmd.Parameters.Add( "@type", SqlDbType.NVarChar ).Value = txtMovieType.Text.Trim();
+						cmd.Parameters.Add( "@directors", SqlDbType.NVarChar ).Value = txtDirector.Text.Trim();
+						cmd.Parameters.Add( "@producers", SqlDbType.NVarChar ).Value = txtProducer.Text.Trim();
+						cmd.Parameters.Add( "@duration", SqlDbType.Int ).Value = Convert.ToInt32( txtDuration.Text.Trim() );
+						cmd.Parameters.Add( "@expectedAudience", SqlDbType.NVarChar ).Value = ddlExpectedAudience.SelectedItem;
+						cmd.Parameters.Add( "@rating", SqlDbType.NVarChar ).Value = ddlBBFCRating.SelectedItem;
+						cmd.Parameters.Add( "@description", SqlDbType.NVarChar ).Value = txtDescription.Text.Trim();
+						cmd.Parameters.Add( "@archived", SqlDbType.Bit ).Value = cbArchived.Checked;
+						cmd.Parameters.Add( "@year", SqlDbType.Int ).Value = DateTime.Now.Year;
+						cmd.ExecuteNonQuery();
+
+						MessageBox.Show( "Movie successfully created.", "Create Success", MessageBoxButtons.OK, MessageBoxIcon.Information );
+
+						//Re-enables buttons.
+						btnCancelMovieCreate.Enabled = false;
+						btnAddMovie.Enabled = true;
+						ddlMovies.Enabled = true;
+						//Fills the dropdown again.
+						FillMovieDropDown();
+					}
+				}
+			}
+		}
 		#endregion
 
 		#region Methods
@@ -358,15 +492,15 @@ namespace CinemaProject
 		{
 			try
 			{
-                //Clears the current list.
-                ddlMovies.Items.Clear();
-                //Clear the List object declared at the top.
-                _movies.Clear();
+				//Clears the current list.
+				ddlMovies.Items.Clear();
+				//Clear the List object declared at the top.
+				_movies.Clear();
 
-                //Clears the current list.
-                cbbMovieName.Items.Clear();
-                //Clear the List object declared at the top.
-                _nonArchivedMovies.Clear();
+				//Clears the current list.
+				cbbMovieName.Items.Clear();
+				//Clear the List object declared at the top.
+				_nonArchivedMovies.Clear();
 
 				//Create new connection.
 				using ( SqlConnection cn = new SqlConnection( connectionString ) )
@@ -393,6 +527,7 @@ namespace CinemaProject
 								String rating = dr.GetString( dr.GetOrdinal( "BBFC_Rate" ) );
 								Boolean archived = dr.GetBoolean( dr.GetOrdinal( "IsArchived" ) );
 								String description = dr.GetString( dr.GetOrdinal( "Description" ) );
+								Guid movieGuid = dr.GetGuid( dr.GetOrdinal( "MovieId" ) );
 
 								//Create new movie instance
 								MovieDetails movie = new MovieDetails();
@@ -407,6 +542,7 @@ namespace CinemaProject
 								movie.BbfcRate = rating;
 								movie.IsArchived = archived;
 								movie.Description = description;
+								movie.MovieGuid = movieGuid;
 
 								//Adds non-archived movies to the list created above.
 								if ( !archived )
@@ -434,21 +570,21 @@ namespace CinemaProject
 			}
 		}
 
-        public void SetMovieDetailsBlank()
-        {
-            lblMovie.Text = "";
-            lblMovieDesc.Text = "";
-            lblMovieDirector.Text = "";
-            lblMovieDuration.Text = "";
-            lblMovieProducer.Text = "";
-            lblMovieTitle.Text = "";
-            lblMovieType.Text = "";
-        }
+		public void SetMovieDetailsBlank()
+		{
+			lblMovie.Text = "";
+			lblMovieDesc.Text = "";
+			lblMovieDirector.Text = "";
+			lblMovieDuration.Text = "";
+			lblMovieProducer.Text = "";
+			lblMovieTitle.Text = "";
+			lblMovieType.Text = "";
+		}
 
-        public void SetMovieDetails(int movieID)
-        {
+		public void SetMovieDetails( int movieID )
+		{
 
-        }
+		}
 
 		#endregion
 	}

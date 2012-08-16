@@ -7,6 +7,7 @@ namespace CinemaProject
 {
 	class MovieDetails
 	{
+		public Guid MovieGuid { get; set; }
 		public String MovieName { get; set; }
 		public Int32 Duration { get; set; }
 		public Int32 YearReleased { get; set; }

@@ -441,22 +441,6 @@
 		</Element>
 		<Element Type="ISql90DefaultConstraint">
 			<Property Name="DefaultExpressionScript">
-				<Value><![CDATA[0]]></Value>
-			</Property>
-			<Relationship Name="DefiningTable">
-				<Entry>
-					<References Name="[dbo].[tlnkScreenMovie]" />
-				</Entry>
-			</Relationship>
-			<Relationship Name="ForColumn">
-				<Entry>
-					<References Name="[dbo].[tlnkScreenMovie].[BookedNum]" />
-				</Entry>
-			</Relationship>
-			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="27" />
-		</Element>
-		<Element Type="ISql90DefaultConstraint">
-			<Property Name="DefaultExpressionScript">
 				<Value><![CDATA[1]]></Value>
 			</Property>
 			<Relationship Name="DefiningTable">
@@ -469,7 +453,7 @@
 					<References Name="[dbo].[tblUsers].[bActive]" />
 				</Entry>
 			</Relationship>
-			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="28" />
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="27" />
 		</Element>
 		<Element Type="ISql90DefaultConstraint">
 			<Property Name="DefaultExpressionScript">
@@ -483,6 +467,22 @@
 			<Relationship Name="ForColumn">
 				<Entry>
 					<References Name="[dbo].[tblUsers].[AdminLevel]" />
+				</Entry>
+			</Relationship>
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="28" />
+		</Element>
+		<Element Type="ISql90DefaultConstraint">
+			<Property Name="DefaultExpressionScript">
+				<Value><![CDATA[0]]></Value>
+			</Property>
+			<Relationship Name="DefiningTable">
+				<Entry>
+					<References Name="[dbo].[tlnkScreenMovie]" />
+				</Entry>
+			</Relationship>
+			<Relationship Name="ForColumn">
+				<Entry>
+					<References Name="[dbo].[tlnkScreenMovie].[BookedNum]" />
 				</Entry>
 			</Relationship>
 			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="29" />
@@ -657,19 +657,76 @@ RETURN 0]]></Value>
 				<Property Name="HeaderContents" Value="CREATE PROCEDURE [dbo].[ArchiveNewMovie]&#xD;&#xA;&#x9;@param1 int = 0, &#xD;&#xA;&#x9;@param2 int&#xD;&#xA;AS" />
 			</Annotation>
 		</Element>
-		<Element Type="ISql100Procedure" Name="[dbo].[CreateUpdateMovie]">
+		<Element Type="ISql100Procedure" Name="[dbo].[CreateMovie]">
 			<Property Name="IsAnsiNullsOn" Value="True" />
 			<Property Name="BodyScript">
 				<Value><![CDATA[
-	SELECT @param1, @param2
-RETURN 0]]></Value>
+	INSERT INTO tblMovies (Name, [Type], Director, Producer, Duration, ExpectedAudience, BBFC_Rate, [Description], IsArchived, YearProduced)
+	VALUES(@name, @type,@directors,@producers,@duration,@expectedAudience,@rating,@description,@archived,@year)]]></Value>
 			</Property>
 			<Relationship Name="BodyDependencies">
 				<Entry>
-					<References Name="[dbo].[CreateUpdateMovie].[@param1]" />
+					<References Name="[dbo].[tblMovies]" />
 				</Entry>
 				<Entry>
-					<References Name="[dbo].[CreateUpdateMovie].[@param2]" />
+					<References Name="[dbo].[tblMovies].[Name]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[tblMovies].[Type]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[tblMovies].[Director]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[tblMovies].[Producer]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[tblMovies].[Duration]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[tblMovies].[ExpectedAudience]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[tblMovies].[BBFC_Rate]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[tblMovies].[Description]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[tblMovies].[IsArchived]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[tblMovies].[YearProduced]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[CreateMovie].[@name]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[CreateMovie].[@type]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[CreateMovie].[@directors]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[CreateMovie].[@producers]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[CreateMovie].[@duration]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[CreateMovie].[@expectedAudience]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[CreateMovie].[@rating]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[CreateMovie].[@description]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[CreateMovie].[@archived]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[CreateMovie].[@year]" />
 				</Entry>
 			</Relationship>
 			<Relationship Name="Owner">
@@ -679,10 +736,71 @@ RETURN 0]]></Value>
 			</Relationship>
 			<Relationship Name="Parameters">
 				<Entry>
-					<Element Type="ISql100SubroutineParameter" Name="[dbo].[CreateUpdateMovie].[@param1]">
-						<Property Name="DefaultExpressionScript">
-							<Value><![CDATA[0]]></Value>
-						</Property>
+					<Element Type="ISql100SubroutineParameter" Name="[dbo].[CreateMovie].[@name]">
+						<Relationship Name="Type">
+							<Entry>
+								<Element Type="ISql90TypeSpecifier">
+									<Property Name="Length" Value="255" />
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[nvarchar]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="ISql100SubroutineParameter" Name="[dbo].[CreateMovie].[@type]">
+						<Relationship Name="Type">
+							<Entry>
+								<Element Type="ISql90TypeSpecifier">
+									<Property Name="Length" Value="255" />
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[nvarchar]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="ISql100SubroutineParameter" Name="[dbo].[CreateMovie].[@directors]">
+						<Relationship Name="Type">
+							<Entry>
+								<Element Type="ISql90TypeSpecifier">
+									<Property Name="Length" Value="255" />
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[nvarchar]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="ISql100SubroutineParameter" Name="[dbo].[CreateMovie].[@producers]">
+						<Relationship Name="Type">
+							<Entry>
+								<Element Type="ISql90TypeSpecifier">
+									<Property Name="Length" Value="255" />
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[nvarchar]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="ISql100SubroutineParameter" Name="[dbo].[CreateMovie].[@duration]">
 						<Relationship Name="Type">
 							<Entry>
 								<Element Type="ISql90TypeSpecifier">
@@ -697,7 +815,70 @@ RETURN 0]]></Value>
 					</Element>
 				</Entry>
 				<Entry>
-					<Element Type="ISql100SubroutineParameter" Name="[dbo].[CreateUpdateMovie].[@param2]">
+					<Element Type="ISql100SubroutineParameter" Name="[dbo].[CreateMovie].[@expectedAudience]">
+						<Relationship Name="Type">
+							<Entry>
+								<Element Type="ISql90TypeSpecifier">
+									<Property Name="Length" Value="255" />
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[nvarchar]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="ISql100SubroutineParameter" Name="[dbo].[CreateMovie].[@rating]">
+						<Relationship Name="Type">
+							<Entry>
+								<Element Type="ISql90TypeSpecifier">
+									<Property Name="Length" Value="255" />
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[nvarchar]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="ISql100SubroutineParameter" Name="[dbo].[CreateMovie].[@description]">
+						<Relationship Name="Type">
+							<Entry>
+								<Element Type="ISql90TypeSpecifier">
+									<Property Name="IsMax" Value="True" />
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[nvarchar]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="ISql100SubroutineParameter" Name="[dbo].[CreateMovie].[@archived]">
+						<Relationship Name="Type">
+							<Entry>
+								<Element Type="ISql90TypeSpecifier">
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[bit]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="ISql100SubroutineParameter" Name="[dbo].[CreateMovie].[@year]">
 						<Relationship Name="Type">
 							<Entry>
 								<Element Type="ISql90TypeSpecifier">
@@ -713,10 +894,10 @@ RETURN 0]]></Value>
 				</Entry>
 			</Relationship>
 			<Annotation Type="SysCommentsObjectAnnotation">
-				<Property Name="Length" Value="116" />
+				<Property Name="Length" Value="527" />
 				<Property Name="StartLine" Value="1" />
 				<Property Name="StartColumn" Value="1" />
-				<Property Name="HeaderContents" Value="CREATE PROCEDURE [dbo].[CreateUpdateMovie]&#xD;&#xA;&#x9;@param1 int = 0, &#xD;&#xA;&#x9;@param2 int&#xD;&#xA;AS" />
+				<Property Name="HeaderContents" Value="CREATE PROCEDURE [dbo].[CreateMovie]&#xD;&#xA;&#x9;@name NVARCHAR(255),&#xD;&#xA;&#x9;@type NVARCHAR(255),&#xD;&#xA;&#x9;@directors NVARCHAR(255),&#xD;&#xA;&#x9;@producers NVARCHAR(255),&#xD;&#xA;&#x9;@duration INT,&#xD;&#xA;&#x9;@expectedAudience NVARCHAR(255),&#xD;&#xA;&#x9;@rating NVARCHAR(255),&#xD;&#xA;&#x9;@description NVARCHAR(MAX),&#xD;&#xA;&#x9;@archived BIT,&#xD;&#xA;&#x9;@year INT&#xD;&#xA;AS" />
 			</Annotation>
 		</Element>
 		<Element Type="ISql100Procedure" Name="[dbo].[CreateUser]">
@@ -1701,7 +1882,7 @@ RETURN 0]]></Value>
 								</Element>
 							</Entry>
 						</Relationship>
-						<AttachedAnnotation Disambiguator="28" />
+						<AttachedAnnotation Disambiguator="27" />
 					</Element>
 				</Entry>
 				<Entry>
@@ -1719,7 +1900,7 @@ RETURN 0]]></Value>
 							</Entry>
 						</Relationship>
 						<AttachedAnnotation Disambiguator="11" />
-						<AttachedAnnotation Disambiguator="29" />
+						<AttachedAnnotation Disambiguator="28" />
 					</Element>
 				</Entry>
 			</Relationship>
@@ -1928,7 +2109,7 @@ RETURN 0]]></Value>
 								</Element>
 							</Entry>
 						</Relationship>
-						<AttachedAnnotation Disambiguator="27" />
+						<AttachedAnnotation Disambiguator="29" />
 					</Element>
 				</Entry>
 			</Relationship>
@@ -1937,6 +2118,280 @@ RETURN 0]]></Value>
 					<References ExternalSource="BuiltIns" Name="[dbo]" />
 				</Entry>
 			</Relationship>
+		</Element>
+		<Element Type="ISql100Procedure" Name="[dbo].[UpdateMovie]">
+			<Property Name="IsAnsiNullsOn" Value="True" />
+			<Property Name="BodyScript">
+				<Value><![CDATA[
+	UPDATE tblMovies
+	SET Name = @name,
+		[Type] = @type,
+		Director = @directors,
+		Producer = @producers,
+		Duration = @duration,
+		ExpectedAudience = @expectedAudience,
+		BBFC_Rate = @rating,
+		[Description] = @description,
+		IsArchived = @archived,
+		YearProduced = @year
+	WHERE MovieId = @movieGuid]]></Value>
+			</Property>
+			<Relationship Name="BodyDependencies">
+				<Entry>
+					<References Name="[dbo].[tblMovies]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[tblMovies].[Name]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[UpdateMovie].[@name]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[tblMovies].[Type]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[UpdateMovie].[@type]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[tblMovies].[Director]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[UpdateMovie].[@directors]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[tblMovies].[Producer]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[UpdateMovie].[@producers]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[tblMovies].[Duration]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[UpdateMovie].[@duration]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[tblMovies].[ExpectedAudience]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[UpdateMovie].[@expectedAudience]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[tblMovies].[BBFC_Rate]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[UpdateMovie].[@rating]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[tblMovies].[Description]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[UpdateMovie].[@description]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[tblMovies].[IsArchived]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[UpdateMovie].[@archived]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[tblMovies].[YearProduced]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[UpdateMovie].[@year]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[tblMovies].[MovieId]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[UpdateMovie].[@movieGuid]" />
+				</Entry>
+			</Relationship>
+			<Relationship Name="Owner">
+				<Entry>
+					<References ExternalSource="BuiltIns" Name="[dbo]" />
+				</Entry>
+			</Relationship>
+			<Relationship Name="Parameters">
+				<Entry>
+					<Element Type="ISql100SubroutineParameter" Name="[dbo].[UpdateMovie].[@movieGuid]">
+						<Relationship Name="Type">
+							<Entry>
+								<Element Type="ISql90TypeSpecifier">
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[uniqueidentifier]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="ISql100SubroutineParameter" Name="[dbo].[UpdateMovie].[@name]">
+						<Relationship Name="Type">
+							<Entry>
+								<Element Type="ISql90TypeSpecifier">
+									<Property Name="Length" Value="255" />
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[nvarchar]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="ISql100SubroutineParameter" Name="[dbo].[UpdateMovie].[@type]">
+						<Relationship Name="Type">
+							<Entry>
+								<Element Type="ISql90TypeSpecifier">
+									<Property Name="Length" Value="255" />
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[nvarchar]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="ISql100SubroutineParameter" Name="[dbo].[UpdateMovie].[@directors]">
+						<Relationship Name="Type">
+							<Entry>
+								<Element Type="ISql90TypeSpecifier">
+									<Property Name="Length" Value="255" />
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[nvarchar]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="ISql100SubroutineParameter" Name="[dbo].[UpdateMovie].[@producers]">
+						<Relationship Name="Type">
+							<Entry>
+								<Element Type="ISql90TypeSpecifier">
+									<Property Name="Length" Value="255" />
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[nvarchar]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="ISql100SubroutineParameter" Name="[dbo].[UpdateMovie].[@duration]">
+						<Relationship Name="Type">
+							<Entry>
+								<Element Type="ISql90TypeSpecifier">
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[int]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="ISql100SubroutineParameter" Name="[dbo].[UpdateMovie].[@expectedAudience]">
+						<Relationship Name="Type">
+							<Entry>
+								<Element Type="ISql90TypeSpecifier">
+									<Property Name="Length" Value="255" />
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[nvarchar]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="ISql100SubroutineParameter" Name="[dbo].[UpdateMovie].[@rating]">
+						<Relationship Name="Type">
+							<Entry>
+								<Element Type="ISql90TypeSpecifier">
+									<Property Name="Length" Value="255" />
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[nvarchar]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="ISql100SubroutineParameter" Name="[dbo].[UpdateMovie].[@description]">
+						<Relationship Name="Type">
+							<Entry>
+								<Element Type="ISql90TypeSpecifier">
+									<Property Name="IsMax" Value="True" />
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[nvarchar]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="ISql100SubroutineParameter" Name="[dbo].[UpdateMovie].[@archived]">
+						<Relationship Name="Type">
+							<Entry>
+								<Element Type="ISql90TypeSpecifier">
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[bit]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="ISql100SubroutineParameter" Name="[dbo].[UpdateMovie].[@year]">
+						<Relationship Name="Type">
+							<Entry>
+								<Element Type="ISql90TypeSpecifier">
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[int]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+			</Relationship>
+			<Annotation Type="SysCommentsObjectAnnotation">
+				<Property Name="Length" Value="623" />
+				<Property Name="StartLine" Value="1" />
+				<Property Name="StartColumn" Value="1" />
+				<Property Name="HeaderContents" Value="CREATE PROCEDURE [dbo].[UpdateMovie]&#xD;&#xA;&#x9;@movieGuid UNIQUEIDENTIFIER, &#xD;&#xA;&#x9;@name NVARCHAR(255),&#xD;&#xA;&#x9;@type NVARCHAR(255),&#xD;&#xA;&#x9;@directors NVARCHAR(255),&#xD;&#xA;&#x9;@producers NVARCHAR(255),&#xD;&#xA;&#x9;@duration INT,&#xD;&#xA;&#x9;@expectedAudience NVARCHAR(255),&#xD;&#xA;&#x9;@rating NVARCHAR(255),&#xD;&#xA;&#x9;@description NVARCHAR(MAX),&#xD;&#xA;&#x9;@archived BIT,&#xD;&#xA;&#x9;@year INT&#xD;&#xA;AS" />
+			</Annotation>
 		</Element>
 		<Element Type="ISql100Procedure" Name="[dbo].[UpdateUser]">
 			<Property Name="IsAnsiNullsOn" Value="True" />
