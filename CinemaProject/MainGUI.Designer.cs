@@ -703,7 +703,7 @@
 			this.txtDescription.Multiline = true;
 			this.txtDescription.Name = "txtDescription";
 			this.txtDescription.Size = new System.Drawing.Size( 474, 71 );
-			this.txtDescription.TabIndex = 33;
+			this.txtDescription.TabIndex = 13;
 			// 
 			// lblMovieDescription
 			// 
@@ -731,7 +731,7 @@
 			this.ddlBBFCRating.Location = new System.Drawing.Point( 105, 193 );
 			this.ddlBBFCRating.Name = "ddlBBFCRating";
 			this.ddlBBFCRating.Size = new System.Drawing.Size( 474, 21 );
-			this.ddlBBFCRating.TabIndex = 30;
+			this.ddlBBFCRating.TabIndex = 11;
 			// 
 			// lblBBFCRating
 			// 
@@ -757,7 +757,7 @@
 			this.ddlExpectedAudience.Location = new System.Drawing.Point( 105, 166 );
 			this.ddlExpectedAudience.Name = "ddlExpectedAudience";
 			this.ddlExpectedAudience.Size = new System.Drawing.Size( 474, 21 );
-			this.ddlExpectedAudience.TabIndex = 18;
+			this.ddlExpectedAudience.TabIndex = 10;
 			// 
 			// lblExpectedAudience
 			// 
@@ -775,7 +775,7 @@
 			this.txtMovieType.Location = new System.Drawing.Point( 105, 112 );
 			this.txtMovieType.Name = "txtMovieType";
 			this.txtMovieType.Size = new System.Drawing.Size( 474, 20 );
-			this.txtMovieType.TabIndex = 27;
+			this.txtMovieType.TabIndex = 8;
 			// 
 			// lblType
 			// 
@@ -793,7 +793,7 @@
 			this.txtDuration.Location = new System.Drawing.Point( 105, 140 );
 			this.txtDuration.Name = "txtDuration";
 			this.txtDuration.Size = new System.Drawing.Size( 474, 20 );
-			this.txtDuration.TabIndex = 26;
+			this.txtDuration.TabIndex = 9;
 			// 
 			// lblInfo
 			// 
@@ -880,7 +880,7 @@
 			this.cbArchived.Location = new System.Drawing.Point( 105, 220 );
 			this.cbArchived.Name = "cbArchived";
 			this.cbArchived.Size = new System.Drawing.Size( 15, 14 );
-			this.cbArchived.TabIndex = 13;
+			this.cbArchived.TabIndex = 12;
 			this.cbArchived.UseVisualStyleBackColor = true;
 			// 
 			// lblDirector
