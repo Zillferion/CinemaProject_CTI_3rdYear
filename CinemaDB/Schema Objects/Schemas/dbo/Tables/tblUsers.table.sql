@@ -9,5 +9,5 @@
 	LoginUsername NVARCHAR(255) NOT NULL,
 	LoginPassword NVARCHAR(255) NOT NULL,
 	bActive BIT NOT NULL DEFAULT 1,
-	AdminLevel INT NOT NULL DEFAULT 0 CHECK (AdminLevel = 0 OR AdminLevel = 1 OR AdminLevel = 2 ) --0=Normal employee. 1=Admin. 2=Boss
+	AdminLevel INT NOT NULL DEFAULT 0 CHECK (AdminLevel = 0 OR AdminLevel = 1 OR AdminLevel = 2 OR AdminLevel = 3 ) --0=Normal employee. 1=Manager. 2=Admin.  3=Distributor
 )
