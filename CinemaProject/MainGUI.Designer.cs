@@ -843,7 +843,7 @@
 			this.btnSaveMovieChanges.Name = "btnSaveMovieChanges";
 			this.btnSaveMovieChanges.Size = new System.Drawing.Size( 75, 23 );
 			this.btnSaveMovieChanges.TabIndex = 14;
-			this.btnSaveMovieChanges.Text = "Save";
+			this.btnSaveMovieChanges.Text = "Update Movie";
 			this.btnSaveMovieChanges.UseVisualStyleBackColor = true;
 			this.btnSaveMovieChanges.Click += new System.EventHandler( this.btnSaveMovieChanges_Click );
 			// 

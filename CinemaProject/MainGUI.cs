@@ -350,7 +350,7 @@ namespace CinemaProject
 
 		private void btnSaveMovieChanges_Click( object sender, EventArgs e )
 		{
-			if ( btnSave.Text.Equals( "Update Movie" ) )
+			if ( btnSaveMovieChanges.Text.Equals( "Update Movie" ) )
 			{
 				using ( SqlConnection cn = new SqlConnection( connectionString ) )
 				{
