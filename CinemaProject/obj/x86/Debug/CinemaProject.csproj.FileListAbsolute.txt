@@ -27,3 +27,13 @@ E:\Third Year Project\CinemaProject\obj\x86\Debug\CinemaProject.MainGUI.resource
 E:\Third Year Project\CinemaProject\obj\x86\Debug\CinemaProject.Properties.Resources.resources
 E:\Third Year Project\CinemaProject\obj\x86\Debug\GenerateResource.read.1.tlog
 E:\Third Year Project\CinemaProject\obj\x86\Debug\GenerateResource.write.1.tlog
+C:\Users\deathknight\Documents\GIT_Projects\CinemaProject\CinemaProject\obj\x86\Debug\CinemaProject.exe
+C:\Users\deathknight\Documents\GIT_Projects\CinemaProject\CinemaProject\obj\x86\Debug\CinemaProject.pdb
+C:\Users\deathknight\Documents\GIT_Projects\CinemaProject\CinemaProject\bin\Debug\CinemaProject.exe
+C:\Users\deathknight\Documents\GIT_Projects\CinemaProject\CinemaProject\bin\Debug\CinemaProject.pdb
+C:\Users\deathknight\Documents\GIT_Projects\CinemaProject\CinemaProject\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Users\deathknight\Documents\GIT_Projects\CinemaProject\CinemaProject\obj\x86\Debug\CinemaProject.Login.resources
+C:\Users\deathknight\Documents\GIT_Projects\CinemaProject\CinemaProject\obj\x86\Debug\CinemaProject.MainGUI.resources
+C:\Users\deathknight\Documents\GIT_Projects\CinemaProject\CinemaProject\obj\x86\Debug\CinemaProject.Properties.Resources.resources
+C:\Users\deathknight\Documents\GIT_Projects\CinemaProject\CinemaProject\obj\x86\Debug\GenerateResource.read.1.tlog
+C:\Users\deathknight\Documents\GIT_Projects\CinemaProject\CinemaProject\obj\x86\Debug\GenerateResource.write.1.tlog
