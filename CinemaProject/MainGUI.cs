@@ -331,6 +331,7 @@ namespace CinemaProject
             ddlBBFCRating.SelectedIndex = 0;
             txtDescription.Text = String.Empty;
             btnSaveMovieChanges.Text = "Add Movie";
+            spnrMovieYear.Value = DateTime.Today.Year;
         }
 
 
@@ -360,6 +361,7 @@ namespace CinemaProject
             cbArchived.Checked = selectedMovie.IsArchived;
             txtDescription.Text = selectedMovie.Description;
             btnSaveMovieChanges.Text = "Update Movie";
+            spnrMovieYear.Value = selectedMovie.YearReleased;
         }
 
 
@@ -440,6 +442,13 @@ namespace CinemaProject
         {
             try
             {
+                int selectedIndex = 0;
+
+                if (dropdownSelectUsers.Items.Count > 0)
+                {
+                    selectedIndex = dropdownSelectUsers.SelectedIndex;
+                }
+
                 //Clears the current list.
                 dropdownSelectUsers.Items.Clear();
                 //Clear the List object declared at the top.
@@ -493,7 +502,7 @@ namespace CinemaProject
                             //Always select the 1st item in the dropdown as default.
                             if (dropdownSelectUsers.Items.Count > 0)
                             {
-                                dropdownSelectUsers.SelectedIndex = 0;
+                                dropdownSelectUsers.SelectedIndex = selectedIndex;
                             }
                         }
                     }
@@ -513,6 +522,13 @@ namespace CinemaProject
         {
             try
             {
+                int selectedIndex = 0;
+
+                if (ddlMovies.Items.Count > 0)
+                {
+                    selectedIndex = ddlMovies.SelectedIndex;
+                }
+
                 //Clears the current list.
                 ddlMovies.Items.Clear();
                 //Clear the List object declared at the top.
@@ -580,12 +596,7 @@ namespace CinemaProject
                             //Always select the 1st item in the dropdown as default.
                             if (ddlMovies.Items.Count > 0)
                             {
-                                ddlMovies.SelectedIndex = 0;
-                            }
-
-                            if (cbbMovieName.Items.Count > 0)
-                            {
-                                cbbMovieName.SelectedIndex = 0;
+                                ddlMovies.SelectedIndex = selectedIndex;
                             }
                         }
                     }

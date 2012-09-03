@@ -105,12 +105,15 @@
             this.btnAddMovie = new System.Windows.Forms.Button();
             this.ddlMovies = new System.Windows.Forms.ComboBox();
             this.tbDistributors = new System.Windows.Forms.TabPage();
+            this.lblMovieYear = new System.Windows.Forms.Label();
+            this.spnrMovieYear = new System.Windows.Forms.NumericUpDown();
             this.tbcUserRoles.SuspendLayout();
             this.tbBookings.SuspendLayout();
             this.tbUserSettings.SuspendLayout();
             this.grpUserDetails.SuspendLayout();
             this.tbMovieSettings.SuspendLayout();
             this.grpMovieDetails.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.spnrMovieYear)).BeginInit();
             this.SuspendLayout();
             // 
             // tbcUserRoles
@@ -673,7 +676,7 @@
             this.tbMovieSettings.Location = new System.Drawing.Point(4, 22);
             this.tbMovieSettings.Name = "tbMovieSettings";
             this.tbMovieSettings.Padding = new System.Windows.Forms.Padding(3);
-            this.tbMovieSettings.Size = new System.Drawing.Size(600, 384);
+            this.tbMovieSettings.Size = new System.Drawing.Size(592, 392);
             this.tbMovieSettings.TabIndex = 3;
             this.tbMovieSettings.Text = "Movie Settings";
             // 
@@ -682,6 +685,8 @@
             this.grpMovieDetails.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
                         | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
+            this.grpMovieDetails.Controls.Add(this.spnrMovieYear);
+            this.grpMovieDetails.Controls.Add(this.lblMovieYear);
             this.grpMovieDetails.Controls.Add(this.txtDescription);
             this.grpMovieDetails.Controls.Add(this.lblMovieDescription);
             this.grpMovieDetails.Controls.Add(this.ddlBBFCRating);
@@ -877,7 +882,7 @@
                         | System.Windows.Forms.AnchorStyles.Right)));
             this.txtMovieName.Location = new System.Drawing.Point(105, 13);
             this.txtMovieName.Name = "txtMovieName";
-            this.txtMovieName.Size = new System.Drawing.Size(474, 20);
+            this.txtMovieName.Size = new System.Drawing.Size(364, 20);
             this.txtMovieName.TabIndex = 4;
             // 
             // txtDirector
@@ -962,10 +967,43 @@
             this.tbDistributors.Location = new System.Drawing.Point(4, 22);
             this.tbDistributors.Name = "tbDistributors";
             this.tbDistributors.Padding = new System.Windows.Forms.Padding(3);
-            this.tbDistributors.Size = new System.Drawing.Size(600, 384);
+            this.tbDistributors.Size = new System.Drawing.Size(592, 392);
             this.tbDistributors.TabIndex = 4;
             this.tbDistributors.Text = "Distributor Section";
             this.tbDistributors.UseVisualStyleBackColor = true;
+            // 
+            // lblMovieYear
+            // 
+            this.lblMovieYear.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblMovieYear.AutoSize = true;
+            this.lblMovieYear.Location = new System.Drawing.Point(475, 16);
+            this.lblMovieYear.Name = "lblMovieYear";
+            this.lblMovieYear.Size = new System.Drawing.Size(29, 13);
+            this.lblMovieYear.TabIndex = 33;
+            this.lblMovieYear.Text = "Year";
+            // 
+            // spnrMovieYear
+            // 
+            this.spnrMovieYear.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.spnrMovieYear.Location = new System.Drawing.Point(510, 14);
+            this.spnrMovieYear.Maximum = new decimal(new int[] {
+            2200,
+            0,
+            0,
+            0});
+            this.spnrMovieYear.Minimum = new decimal(new int[] {
+            1900,
+            0,
+            0,
+            0});
+            this.spnrMovieYear.Name = "spnrMovieYear";
+            this.spnrMovieYear.Size = new System.Drawing.Size(67, 20);
+            this.spnrMovieYear.TabIndex = 34;
+            this.spnrMovieYear.Value = new decimal(new int[] {
+            2000,
+            0,
+            0,
+            0});
             // 
             // MainGUI
             // 
@@ -989,6 +1027,7 @@
             this.tbMovieSettings.PerformLayout();
             this.grpMovieDetails.ResumeLayout(false);
             this.grpMovieDetails.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.spnrMovieYear)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1072,6 +1111,8 @@
         private System.Windows.Forms.Button btnBook;
 		private System.Windows.Forms.TextBox txtDescription;
         private System.Windows.Forms.Label lblMovieDescription;
+        private System.Windows.Forms.NumericUpDown spnrMovieYear;
+        private System.Windows.Forms.Label lblMovieYear;
     }
 }
 
