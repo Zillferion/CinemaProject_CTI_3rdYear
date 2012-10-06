@@ -9,6 +9,8 @@ using System.Windows.Forms;
 using System.Data.SqlClient;
 using CinemaProject.Classes;
 using System.Collections;
+using Microsoft.Office.Interop.Excel;
+using Excel = Microsoft.Office.Interop.Excel;
 
 namespace CinemaProject
 {
@@ -80,6 +82,15 @@ namespace CinemaProject
 		/// </summary>
 		private static List<MovieDetails> _nonArchivedMovies = new List<MovieDetails>();
 
+        /// <summary>
+        /// Creates a worksheet to generate report
+        /// </summary>
+        private Microsoft.Office.Interop.Excel.Application app = null;
+        private Microsoft.Office.Interop.Excel.Workbook workbook = null;
+        private Microsoft.Office.Interop.Excel.Worksheet worksheet = null;
+        private Microsoft.Office.Interop.Excel.Range range = null;
+        object misValue = System.Reflection.Missing.Value;
+
 		/// <summary>
 		/// ConnectionString for the database.
 		/// </summary>
@@ -136,7 +147,7 @@ namespace CinemaProject
 		private void MainGUI_FormClosed( object sender, FormClosedEventArgs e )
 		{
 			//Exit the application.
-			Application.Exit();
+			System.Windows.Forms.Application.Exit();
 		}
 		#endregion General Events
 
@@ -1029,6 +1040,43 @@ namespace CinemaProject
 			lblMovieTitle.Text = "";
 			lblMovieType.Text = "";
 		}
+
+        public void CreateReport()
+        {
+            try
+            {
+                app = new Excel.Application();
+                app.Visible = false;
+                workbook = app.Workbooks.Add(2);
+                //workbook = app.Workbooks.Add(2);
+                worksheet = (Microsoft.Office.Interop.Excel.Worksheet)workbook.Sheets[1];
+            }
+            catch (Exception e)
+            {
+                Console.Write("Error: " + e);
+            }
+            finally
+            {
+            }
+        }
+
+        public void WriteReport()
+        {
+            workbook = app.Workbooks.Add(misValue);
+            worksheet = (Excel.Worksheet)workbook.Worksheets.get_Item(1);
+
+            range = worksheet.get_Range("A1", "ZZ2");
+            range.ColumnWidth = 20;
+            range.Font.Bold = true;
+            range = worksheet.get_Range("A1", "A18");
+            range.Font.Bold = true;
+            range = worksheet.get_Range("A1", "ZZ1000");
+            range.EntireColumn.NumberFormat = "@";
+
+            worksheet.Cells[3, 1] = "example1";
+            worksheet.Cells[4, 1] = "example2";
+
+        }
 		#endregion Methods
 	}
 }
