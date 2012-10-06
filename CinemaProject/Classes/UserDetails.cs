@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace CinemaProject
+namespace CinemaProject.Classes
 {
 	public class UserDetails
 	{

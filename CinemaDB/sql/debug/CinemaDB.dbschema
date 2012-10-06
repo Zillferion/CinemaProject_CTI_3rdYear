@@ -43,7 +43,7 @@
 					<Element Type="ISqlIndexedColumnSpecification">
 						<Relationship Name="Column">
 							<Entry>
-								<References Name="[dbo].[tblMovies].[MovieId]" />
+								<References Name="[dbo].[tblUsers].[UserGuid]" />
 							</Entry>
 						</Relationship>
 					</Element>
@@ -51,7 +51,7 @@
 			</Relationship>
 			<Relationship Name="DefiningTable">
 				<Entry>
-					<References Name="[dbo].[tblMovies]" />
+					<References Name="[dbo].[tblUsers]" />
 				</Entry>
 			</Relationship>
 			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="3" />
@@ -119,7 +119,7 @@
 					<Element Type="ISqlIndexedColumnSpecification">
 						<Relationship Name="Column">
 							<Entry>
-								<References Name="[dbo].[tblDistributors].[DistributorId]" />
+								<References Name="[dbo].[tblDistributors].[DistributorGuid]" />
 							</Entry>
 						</Relationship>
 					</Element>
@@ -138,7 +138,7 @@
 					<Element Type="ISqlIndexedColumnSpecification">
 						<Relationship Name="Column">
 							<Entry>
-								<References Name="[dbo].[tblUsers].[UserGuid]" />
+								<References Name="[dbo].[tblMovies].[MovieId]" />
 							</Entry>
 						</Relationship>
 					</Element>
@@ -146,42 +146,10 @@
 			</Relationship>
 			<Relationship Name="DefiningTable">
 				<Entry>
-					<References Name="[dbo].[tblUsers]" />
+					<References Name="[dbo].[tblMovies]" />
 				</Entry>
 			</Relationship>
 			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="8" />
-		</Element>
-		<Element Type="ISql90CheckConstraint">
-			<Property Name="CheckExpressionScript">
-				<Value><![CDATA[ExpectedAudience = 'Mainstream' OR ExpectedAudience = 'Average' OR ExpectedAudience = 'Below-Average' OR ExpectedAudience = 'Specialist' OR ExpectedAudience = 'Non-Mainstream']]></Value>
-			</Property>
-			<Relationship Name="CheckExpressionDependencies">
-				<Entry>
-					<References Name="[dbo].[tblMovies].[ExpectedAudience]" />
-				</Entry>
-			</Relationship>
-			<Relationship Name="DefiningTable">
-				<Entry>
-					<References Name="[dbo].[tblMovies]" />
-				</Entry>
-			</Relationship>
-			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="9" />
-		</Element>
-		<Element Type="ISql90CheckConstraint">
-			<Property Name="CheckExpressionScript">
-				<Value><![CDATA[BBFC_Rate='U' OR BBFC_Rate = 'PG' OR BBFC_Rate = '12' OR BBFC_Rate = '12A' OR BBFC_Rate = '15' OR BBFC_Rate = '18' OR BBFC_Rate = 'R18']]></Value>
-			</Property>
-			<Relationship Name="CheckExpressionDependencies">
-				<Entry>
-					<References Name="[dbo].[tblMovies].[BBFC_Rate]" />
-				</Entry>
-			</Relationship>
-			<Relationship Name="DefiningTable">
-				<Entry>
-					<References Name="[dbo].[tblMovies]" />
-				</Entry>
-			</Relationship>
-			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="10" />
 		</Element>
 		<Element Type="ISql90CheckConstraint">
 			<Property Name="CheckExpressionScript">
@@ -197,6 +165,38 @@
 					<References Name="[dbo].[tblUsers]" />
 				</Entry>
 			</Relationship>
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="9" />
+		</Element>
+		<Element Type="ISql90CheckConstraint">
+			<Property Name="CheckExpressionScript">
+				<Value><![CDATA[ExpectedAudience = 'Mainstream' OR ExpectedAudience = 'Average' OR ExpectedAudience = 'Below-Average' OR ExpectedAudience = 'Specialist' OR ExpectedAudience = 'Non-Mainstream']]></Value>
+			</Property>
+			<Relationship Name="CheckExpressionDependencies">
+				<Entry>
+					<References Name="[dbo].[tblMovies].[ExpectedAudience]" />
+				</Entry>
+			</Relationship>
+			<Relationship Name="DefiningTable">
+				<Entry>
+					<References Name="[dbo].[tblMovies]" />
+				</Entry>
+			</Relationship>
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="10" />
+		</Element>
+		<Element Type="ISql90CheckConstraint">
+			<Property Name="CheckExpressionScript">
+				<Value><![CDATA[BBFC_Rate='U' OR BBFC_Rate = 'PG' OR BBFC_Rate = '12' OR BBFC_Rate = '12A' OR BBFC_Rate = '15' OR BBFC_Rate = '18' OR BBFC_Rate = 'R18']]></Value>
+			</Property>
+			<Relationship Name="CheckExpressionDependencies">
+				<Entry>
+					<References Name="[dbo].[tblMovies].[BBFC_Rate]" />
+				</Entry>
+			</Relationship>
+			<Relationship Name="DefiningTable">
+				<Entry>
+					<References Name="[dbo].[tblMovies]" />
+				</Entry>
+			</Relationship>
 			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="11" />
 		</Element>
 		<Element Type="ISql90DefaultConstraint">
@@ -205,12 +205,12 @@
 			</Property>
 			<Relationship Name="DefiningTable">
 				<Entry>
-					<References Name="[dbo].[tblMovies]" />
+					<References Name="[dbo].[tblUsers]" />
 				</Entry>
 			</Relationship>
 			<Relationship Name="ForColumn">
 				<Entry>
-					<References Name="[dbo].[tblMovies].[MovieId]" />
+					<References Name="[dbo].[tblUsers].[UserGuid]" />
 				</Entry>
 			</Relationship>
 			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="12" />
@@ -221,15 +221,47 @@
 			</Property>
 			<Relationship Name="DefiningTable">
 				<Entry>
-					<References Name="[dbo].[tblMovies]" />
+					<References Name="[dbo].[tblUsers]" />
 				</Entry>
 			</Relationship>
 			<Relationship Name="ForColumn">
 				<Entry>
-					<References Name="[dbo].[tblMovies].[Created]" />
+					<References Name="[dbo].[tblUsers].[Created]" />
 				</Entry>
 			</Relationship>
 			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="13" />
+		</Element>
+		<Element Type="ISql90DefaultConstraint">
+			<Property Name="DefaultExpressionScript">
+				<Value><![CDATA[1]]></Value>
+			</Property>
+			<Relationship Name="DefiningTable">
+				<Entry>
+					<References Name="[dbo].[tblUsers]" />
+				</Entry>
+			</Relationship>
+			<Relationship Name="ForColumn">
+				<Entry>
+					<References Name="[dbo].[tblUsers].[bActive]" />
+				</Entry>
+			</Relationship>
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="14" />
+		</Element>
+		<Element Type="ISql90DefaultConstraint">
+			<Property Name="DefaultExpressionScript">
+				<Value><![CDATA[0]]></Value>
+			</Property>
+			<Relationship Name="DefiningTable">
+				<Entry>
+					<References Name="[dbo].[tblUsers]" />
+				</Entry>
+			</Relationship>
+			<Relationship Name="ForColumn">
+				<Entry>
+					<References Name="[dbo].[tblUsers].[AdminLevel]" />
+				</Entry>
+			</Relationship>
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="15" />
 		</Element>
 		<Element Type="ISql90DefaultConstraint">
 			<Property Name="DefaultExpressionScript">
@@ -245,7 +277,7 @@
 					<References Name="[dbo].[tlnkScreenMovie].[linkId]" />
 				</Entry>
 			</Relationship>
-			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="14" />
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="16" />
 		</Element>
 		<Element Type="ISql90DefaultConstraint">
 			<Property Name="DefaultExpressionScript">
@@ -261,7 +293,23 @@
 					<References Name="[dbo].[tlnkScreenMovie].[Created]" />
 				</Entry>
 			</Relationship>
-			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="15" />
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="17" />
+		</Element>
+		<Element Type="ISql90DefaultConstraint">
+			<Property Name="DefaultExpressionScript">
+				<Value><![CDATA[0]]></Value>
+			</Property>
+			<Relationship Name="DefiningTable">
+				<Entry>
+					<References Name="[dbo].[tlnkScreenMovie]" />
+				</Entry>
+			</Relationship>
+			<Relationship Name="ForColumn">
+				<Entry>
+					<References Name="[dbo].[tlnkScreenMovie].[BookedNum]" />
+				</Entry>
+			</Relationship>
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="18" />
 		</Element>
 		<Element Type="ISql90DefaultConstraint">
 			<Property Name="DefaultExpressionScript">
@@ -277,7 +325,7 @@
 					<References Name="[dbo].[tblScreen].[ScreenId]" />
 				</Entry>
 			</Relationship>
-			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="16" />
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="19" />
 		</Element>
 		<Element Type="ISql90DefaultConstraint">
 			<Property Name="DefaultExpressionScript">
@@ -293,7 +341,7 @@
 					<References Name="[dbo].[tlnkMovieDistributor].[linkId]" />
 				</Entry>
 			</Relationship>
-			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="17" />
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="20" />
 		</Element>
 		<Element Type="ISql90DefaultConstraint">
 			<Property Name="DefaultExpressionScript">
@@ -309,7 +357,7 @@
 					<References Name="[dbo].[tlnkMovieDistributor].[Created]" />
 				</Entry>
 			</Relationship>
-			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="18" />
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="21" />
 		</Element>
 		<Element Type="ISql90DefaultConstraint">
 			<Property Name="DefaultExpressionScript">
@@ -322,55 +370,7 @@
 			</Relationship>
 			<Relationship Name="ForColumn">
 				<Entry>
-					<References Name="[dbo].[tblDistributors].[DistributorId]" />
-				</Entry>
-			</Relationship>
-			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="19" />
-		</Element>
-		<Element Type="ISql90DefaultConstraint">
-			<Property Name="DefaultExpressionScript">
-				<Value><![CDATA[1]]></Value>
-			</Property>
-			<Relationship Name="DefiningTable">
-				<Entry>
-					<References Name="[dbo].[tblDistributors]" />
-				</Entry>
-			</Relationship>
-			<Relationship Name="ForColumn">
-				<Entry>
-					<References Name="[dbo].[tblDistributors].[Permission]" />
-				</Entry>
-			</Relationship>
-			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="20" />
-		</Element>
-		<Element Type="ISql90DefaultConstraint">
-			<Property Name="DefaultExpressionScript">
-				<Value><![CDATA[1]]></Value>
-			</Property>
-			<Relationship Name="DefiningTable">
-				<Entry>
-					<References Name="[dbo].[tblDistributors]" />
-				</Entry>
-			</Relationship>
-			<Relationship Name="ForColumn">
-				<Entry>
-					<References Name="[dbo].[tblDistributors].[IsActive]" />
-				</Entry>
-			</Relationship>
-			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="21" />
-		</Element>
-		<Element Type="ISql90DefaultConstraint">
-			<Property Name="DefaultExpressionScript">
-				<Value><![CDATA[0]]></Value>
-			</Property>
-			<Relationship Name="DefiningTable">
-				<Entry>
-					<References Name="[dbo].[tblDistributors]" />
-				</Entry>
-			</Relationship>
-			<Relationship Name="ForColumn">
-				<Entry>
-					<References Name="[dbo].[tblDistributors].[IsAdmin]" />
+					<References Name="[dbo].[tblDistributors].[DistributorGuid]" />
 				</Entry>
 			</Relationship>
 			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="22" />
@@ -393,6 +393,54 @@
 		</Element>
 		<Element Type="ISql90DefaultConstraint">
 			<Property Name="DefaultExpressionScript">
+				<Value><![CDATA[1]]></Value>
+			</Property>
+			<Relationship Name="DefiningTable">
+				<Entry>
+					<References Name="[dbo].[tblDistributors]" />
+				</Entry>
+			</Relationship>
+			<Relationship Name="ForColumn">
+				<Entry>
+					<References Name="[dbo].[tblDistributors].[IsActive]" />
+				</Entry>
+			</Relationship>
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="24" />
+		</Element>
+		<Element Type="ISql90DefaultConstraint">
+			<Property Name="DefaultExpressionScript">
+				<Value><![CDATA[NEWSEQUENTIALID()]]></Value>
+			</Property>
+			<Relationship Name="DefiningTable">
+				<Entry>
+					<References Name="[dbo].[tblMovies]" />
+				</Entry>
+			</Relationship>
+			<Relationship Name="ForColumn">
+				<Entry>
+					<References Name="[dbo].[tblMovies].[MovieId]" />
+				</Entry>
+			</Relationship>
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="25" />
+		</Element>
+		<Element Type="ISql90DefaultConstraint">
+			<Property Name="DefaultExpressionScript">
+				<Value><![CDATA[GETDATE()]]></Value>
+			</Property>
+			<Relationship Name="DefiningTable">
+				<Entry>
+					<References Name="[dbo].[tblMovies]" />
+				</Entry>
+			</Relationship>
+			<Relationship Name="ForColumn">
+				<Entry>
+					<References Name="[dbo].[tblMovies].[Created]" />
+				</Entry>
+			</Relationship>
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="26" />
+		</Element>
+		<Element Type="ISql90DefaultConstraint">
+			<Property Name="DefaultExpressionScript">
 				<Value><![CDATA['']]></Value>
 			</Property>
 			<Relationship Name="DefiningTable">
@@ -405,87 +453,7 @@
 					<References Name="[dbo].[tblMovies].[Description]" />
 				</Entry>
 			</Relationship>
-			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="24" />
-		</Element>
-		<Element Type="ISql90DefaultConstraint">
-			<Property Name="DefaultExpressionScript">
-				<Value><![CDATA[NEWSEQUENTIALID()]]></Value>
-			</Property>
-			<Relationship Name="DefiningTable">
-				<Entry>
-					<References Name="[dbo].[tblUsers]" />
-				</Entry>
-			</Relationship>
-			<Relationship Name="ForColumn">
-				<Entry>
-					<References Name="[dbo].[tblUsers].[UserGuid]" />
-				</Entry>
-			</Relationship>
-			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="25" />
-		</Element>
-		<Element Type="ISql90DefaultConstraint">
-			<Property Name="DefaultExpressionScript">
-				<Value><![CDATA[GETDATE()]]></Value>
-			</Property>
-			<Relationship Name="DefiningTable">
-				<Entry>
-					<References Name="[dbo].[tblUsers]" />
-				</Entry>
-			</Relationship>
-			<Relationship Name="ForColumn">
-				<Entry>
-					<References Name="[dbo].[tblUsers].[Created]" />
-				</Entry>
-			</Relationship>
-			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="26" />
-		</Element>
-		<Element Type="ISql90DefaultConstraint">
-			<Property Name="DefaultExpressionScript">
-				<Value><![CDATA[1]]></Value>
-			</Property>
-			<Relationship Name="DefiningTable">
-				<Entry>
-					<References Name="[dbo].[tblUsers]" />
-				</Entry>
-			</Relationship>
-			<Relationship Name="ForColumn">
-				<Entry>
-					<References Name="[dbo].[tblUsers].[bActive]" />
-				</Entry>
-			</Relationship>
 			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="27" />
-		</Element>
-		<Element Type="ISql90DefaultConstraint">
-			<Property Name="DefaultExpressionScript">
-				<Value><![CDATA[0]]></Value>
-			</Property>
-			<Relationship Name="DefiningTable">
-				<Entry>
-					<References Name="[dbo].[tblUsers]" />
-				</Entry>
-			</Relationship>
-			<Relationship Name="ForColumn">
-				<Entry>
-					<References Name="[dbo].[tblUsers].[AdminLevel]" />
-				</Entry>
-			</Relationship>
-			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="28" />
-		</Element>
-		<Element Type="ISql90DefaultConstraint">
-			<Property Name="DefaultExpressionScript">
-				<Value><![CDATA[0]]></Value>
-			</Property>
-			<Relationship Name="DefiningTable">
-				<Entry>
-					<References Name="[dbo].[tlnkScreenMovie]" />
-				</Entry>
-			</Relationship>
-			<Relationship Name="ForColumn">
-				<Entry>
-					<References Name="[dbo].[tlnkScreenMovie].[BookedNum]" />
-				</Entry>
-			</Relationship>
-			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="29" />
 		</Element>
 		<Element Type="ISql90DefaultConstraint">
 			<Property Name="DefaultExpressionScript">
@@ -501,7 +469,71 @@
 					<References Name="[dbo].[tblMovies].[IsArchived]" />
 				</Entry>
 			</Relationship>
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="28" />
+		</Element>
+		<Element Type="ISql90DefaultConstraint">
+			<Property Name="DefaultExpressionScript">
+				<Value><![CDATA[0]]></Value>
+			</Property>
+			<Relationship Name="DefiningTable">
+				<Entry>
+					<References Name="[dbo].[tblDistributors]" />
+				</Entry>
+			</Relationship>
+			<Relationship Name="ForColumn">
+				<Entry>
+					<References Name="[dbo].[tblDistributors].[ReceiveMontly]" />
+				</Entry>
+			</Relationship>
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="29" />
+		</Element>
+		<Element Type="ISql90DefaultConstraint">
+			<Property Name="DefaultExpressionScript">
+				<Value><![CDATA[0]]></Value>
+			</Property>
+			<Relationship Name="DefiningTable">
+				<Entry>
+					<References Name="[dbo].[tblDistributors]" />
+				</Entry>
+			</Relationship>
+			<Relationship Name="ForColumn">
+				<Entry>
+					<References Name="[dbo].[tblDistributors].[ReceiveQuaterly]" />
+				</Entry>
+			</Relationship>
 			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="30" />
+		</Element>
+		<Element Type="ISql90DefaultConstraint">
+			<Property Name="DefaultExpressionScript">
+				<Value><![CDATA[0]]></Value>
+			</Property>
+			<Relationship Name="DefiningTable">
+				<Entry>
+					<References Name="[dbo].[tblDistributors]" />
+				</Entry>
+			</Relationship>
+			<Relationship Name="ForColumn">
+				<Entry>
+					<References Name="[dbo].[tblDistributors].[ReceiveHalfYearly]" />
+				</Entry>
+			</Relationship>
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="31" />
+		</Element>
+		<Element Type="ISql90DefaultConstraint">
+			<Property Name="DefaultExpressionScript">
+				<Value><![CDATA[0]]></Value>
+			</Property>
+			<Relationship Name="DefiningTable">
+				<Entry>
+					<References Name="[dbo].[tblDistributors]" />
+				</Entry>
+			</Relationship>
+			<Relationship Name="ForColumn">
+				<Entry>
+					<References Name="[dbo].[tblDistributors].[ReceiveYearly]" />
+				</Entry>
+			</Relationship>
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="32" />
 		</Element>
 		<Element Type="ISql90ForeignKeyConstraint">
 			<Relationship Name="Columns">
@@ -524,7 +556,7 @@
 					<References Name="[dbo].[tblMovies]" />
 				</Entry>
 			</Relationship>
-			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="31" />
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="33" />
 		</Element>
 		<Element Type="ISql90ForeignKeyConstraint">
 			<Relationship Name="Columns">
@@ -547,7 +579,7 @@
 					<References Name="[dbo].[tblScreen]" />
 				</Entry>
 			</Relationship>
-			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="32" />
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="34" />
 		</Element>
 		<Element Type="ISql90ForeignKeyConstraint">
 			<Relationship Name="Columns">
@@ -570,7 +602,7 @@
 					<References Name="[dbo].[tblMovies]" />
 				</Entry>
 			</Relationship>
-			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="33" />
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="35" />
 		</Element>
 		<Element Type="ISql90ForeignKeyConstraint">
 			<Relationship Name="Columns">
@@ -585,7 +617,7 @@
 			</Relationship>
 			<Relationship Name="ForeignColumns">
 				<Entry>
-					<References Name="[dbo].[tblDistributors].[DistributorId]" />
+					<References Name="[dbo].[tblDistributors].[DistributorGuid]" />
 				</Entry>
 			</Relationship>
 			<Relationship Name="ForeignTable">
@@ -593,7 +625,30 @@
 					<References Name="[dbo].[tblDistributors]" />
 				</Entry>
 			</Relationship>
-			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="34" />
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="36" />
+		</Element>
+		<Element Type="ISql90ForeignKeyConstraint">
+			<Relationship Name="Columns">
+				<Entry>
+					<References Name="[dbo].[tblMovies].[DistributorId]" />
+				</Entry>
+			</Relationship>
+			<Relationship Name="DefiningTable">
+				<Entry>
+					<References Name="[dbo].[tblMovies]" />
+				</Entry>
+			</Relationship>
+			<Relationship Name="ForeignColumns">
+				<Entry>
+					<References Name="[dbo].[tblDistributors].[DistributorGuid]" />
+				</Entry>
+			</Relationship>
+			<Relationship Name="ForeignTable">
+				<Entry>
+					<References Name="[dbo].[tblDistributors]" />
+				</Entry>
+			</Relationship>
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="37" />
 		</Element>
 		<Element Type="ISql100Procedure" Name="[dbo].[ArchiveNewMovie]">
 			<Property Name="IsAnsiNullsOn" Value="True" />
@@ -900,6 +955,304 @@ RETURN 0]]></Value>
 				<Property Name="HeaderContents" Value="CREATE PROCEDURE [dbo].[CreateMovie]&#xD;&#xA;&#x9;@name NVARCHAR(255),&#xD;&#xA;&#x9;@type NVARCHAR(255),&#xD;&#xA;&#x9;@directors NVARCHAR(255),&#xD;&#xA;&#x9;@producers NVARCHAR(255),&#xD;&#xA;&#x9;@duration INT,&#xD;&#xA;&#x9;@expectedAudience NVARCHAR(255),&#xD;&#xA;&#x9;@rating NVARCHAR(255),&#xD;&#xA;&#x9;@description NVARCHAR(MAX),&#xD;&#xA;&#x9;@archived BIT,&#xD;&#xA;&#x9;@year INT&#xD;&#xA;AS" />
 			</Annotation>
 		</Element>
+		<Element Type="ISql100Procedure" Name="[dbo].[CreateUpdateDistributor]">
+			<Property Name="IsAnsiNullsOn" Value="True" />
+			<Property Name="BodyScript">
+				<Value><![CDATA[
+	DECLARE @canContinue BIT = 1
+	--Checks that the name is not already in use.
+	IF EXISTS (SELECT * FROM tblDistributors WHERE Name = @name AND DistributorGuid <> @id)
+	BEGIN
+		RAISERROR ('Name not available.', 16, 16)
+		SET @canContinue = 0
+	END
+	--Checks that the contact number is not already in use.
+	IF EXISTS (SELECT * FROM tblDistributors WHERE ContactNumber = @contactNumber AND DistributorGuid <> @id)
+	BEGIN
+		RAISERROR ('Contact number not available.', 16, 16)
+		SET @canContinue = 0
+	END
+	--Checks that the email address does not already exist.
+	IF EXISTS (SELECT * FROM tblDistributors WHERE Email = @email AND DistributorGuid <> @id)
+	BEGIN
+		RAISERROR ('Email Address not available.', 16, 16)
+		SET @canContinue = 0
+	END
+
+	IF @canContinue = 1
+	BEGIN
+		IF EXISTS (SELECT * FROM tblDistributors WHERE DistributorGuid = @id)
+	BEGIN
+		UPDATE tblDistributors
+		SET Name = @name,
+			IsActive = @active,
+			Email = @email,
+			ContactNumber = @contactNumber,
+			PhysicalAddress = @address,
+			ReceiveMontly = @monthly,
+			ReceiveQuaterly = @quaterly,
+			ReceiveHalfYearly = @halfYearly,
+			ReceiveYearly = @yearly
+		WHERE DistributorGuid = @id
+	END
+	ELSE
+	BEGIN
+		INSERT INTO tblDistributors (DistributorGuid, Name, IsActive, Email, ContactNumber, PhysicalAddress, ReceiveMontly, ReceiveQuaterly, ReceiveHalfYearly, ReceiveYearly)
+		VALUES (@id, @name, @active, @email, @contactNumber, @address, @monthly, @quaterly, @halfYearly, @yearly)
+	END
+	END]]></Value>
+			</Property>
+			<Relationship Name="BodyDependencies">
+				<Entry>
+					<References ExternalSource="BuiltIns" Name="[bit]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[tblDistributors]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[tblDistributors].[Name]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[CreateUpdateDistributor].[@name]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[tblDistributors].[DistributorGuid]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[CreateUpdateDistributor].[@id]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[tblDistributors].[ContactNumber]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[CreateUpdateDistributor].[@contactNumber]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[tblDistributors].[Email]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[CreateUpdateDistributor].[@email]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[tblDistributors]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[tblDistributors].[Name]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[tblDistributors].[IsActive]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[CreateUpdateDistributor].[@active]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[tblDistributors].[Email]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[tblDistributors].[ContactNumber]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[tblDistributors].[PhysicalAddress]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[CreateUpdateDistributor].[@address]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[tblDistributors].[ReceiveMontly]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[CreateUpdateDistributor].[@monthly]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[tblDistributors].[ReceiveQuaterly]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[CreateUpdateDistributor].[@quaterly]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[tblDistributors].[ReceiveHalfYearly]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[CreateUpdateDistributor].[@halfYearly]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[tblDistributors].[ReceiveYearly]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[CreateUpdateDistributor].[@yearly]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[tblDistributors].[DistributorGuid]" />
+				</Entry>
+			</Relationship>
+			<Relationship Name="Owner">
+				<Entry>
+					<References ExternalSource="BuiltIns" Name="[dbo]" />
+				</Entry>
+			</Relationship>
+			<Relationship Name="Parameters">
+				<Entry>
+					<Element Type="ISql100SubroutineParameter" Name="[dbo].[CreateUpdateDistributor].[@id]">
+						<Relationship Name="Type">
+							<Entry>
+								<Element Type="ISql90TypeSpecifier">
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[uniqueidentifier]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="ISql100SubroutineParameter" Name="[dbo].[CreateUpdateDistributor].[@name]">
+						<Relationship Name="Type">
+							<Entry>
+								<Element Type="ISql90TypeSpecifier">
+									<Property Name="Length" Value="255" />
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[nvarchar]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="ISql100SubroutineParameter" Name="[dbo].[CreateUpdateDistributor].[@active]">
+						<Relationship Name="Type">
+							<Entry>
+								<Element Type="ISql90TypeSpecifier">
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[bit]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="ISql100SubroutineParameter" Name="[dbo].[CreateUpdateDistributor].[@email]">
+						<Relationship Name="Type">
+							<Entry>
+								<Element Type="ISql90TypeSpecifier">
+									<Property Name="Length" Value="255" />
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[nvarchar]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="ISql100SubroutineParameter" Name="[dbo].[CreateUpdateDistributor].[@contactNumber]">
+						<Relationship Name="Type">
+							<Entry>
+								<Element Type="ISql90TypeSpecifier">
+									<Property Name="Length" Value="50" />
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[nvarchar]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="ISql100SubroutineParameter" Name="[dbo].[CreateUpdateDistributor].[@address]">
+						<Relationship Name="Type">
+							<Entry>
+								<Element Type="ISql90TypeSpecifier">
+									<Property Name="Length" Value="255" />
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[nvarchar]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="ISql100SubroutineParameter" Name="[dbo].[CreateUpdateDistributor].[@monthly]">
+						<Relationship Name="Type">
+							<Entry>
+								<Element Type="ISql90TypeSpecifier">
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[bit]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="ISql100SubroutineParameter" Name="[dbo].[CreateUpdateDistributor].[@quaterly]">
+						<Relationship Name="Type">
+							<Entry>
+								<Element Type="ISql90TypeSpecifier">
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[bit]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="ISql100SubroutineParameter" Name="[dbo].[CreateUpdateDistributor].[@halfYearly]">
+						<Relationship Name="Type">
+							<Entry>
+								<Element Type="ISql90TypeSpecifier">
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[bit]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="ISql100SubroutineParameter" Name="[dbo].[CreateUpdateDistributor].[@yearly]">
+						<Relationship Name="Type">
+							<Entry>
+								<Element Type="ISql90TypeSpecifier">
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[bit]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+			</Relationship>
+			<Annotation Type="SysCommentsObjectAnnotation">
+				<Property Name="Length" Value="1759" />
+				<Property Name="StartLine" Value="1" />
+				<Property Name="StartColumn" Value="1" />
+				<Property Name="HeaderContents" Value="CREATE PROCEDURE [dbo].[CreateUpdateDistributor]&#xD;&#xA;&#x9;@id UNIQUEIDENTIFIER,&#xD;&#xA;&#x9;@name NVARCHAR(255),&#xD;&#xA;&#x9;@active BIT,&#xD;&#xA;&#x9;@email NVARCHAR(255),&#xD;&#xA;&#x9;@contactNumber NVARCHAR(50),&#xD;&#xA;&#x9;@address NVARCHAR(255),&#xD;&#xA;&#x9;@monthly BIT,&#xD;&#xA;&#x9;@quaterly BIT,&#xD;&#xA;&#x9;@halfYearly BIT,&#xD;&#xA;&#x9;@yearly BIT&#xD;&#xA;&#xD;&#xA;AS" />
+			</Annotation>
+		</Element>
 		<Element Type="ISql100Procedure" Name="[dbo].[CreateUser]">
 			<Property Name="IsAnsiNullsOn" Value="True" />
 			<Property Name="BodyScript">
@@ -1099,16 +1452,20 @@ RETURN 0]]></Value>
 				<Property Name="HeaderContents" Value="CREATE PROCEDURE [dbo].[CreateUser]&#xD;&#xA;&#x9;@name NVARCHAR(MAX),&#xD;&#xA;&#x9;@surname NVARCHAR(MAX),&#xD;&#xA;&#x9;@adminLevel INT,&#xD;&#xA;&#x9;@contactNumber NVARCHAR(25),&#xD;&#xA;&#x9;@password NVARCHAR(MAX),&#xD;&#xA;&#x9;@loginName NVARCHAR(MAX),&#xD;&#xA;&#x9;@dateOfBirth DATETIME,&#xD;&#xA;&#x9;@active BIT&#xD;&#xA;AS" />
 			</Annotation>
 		</Element>
-		<Element Type="ISql100Procedure" Name="[dbo].[GetMovieList]">
+		<Element Type="ISql100Procedure" Name="[dbo].[GetDistributorList]">
 			<Property Name="IsAnsiNullsOn" Value="True" />
 			<Property Name="BodyScript">
 				<Value><![CDATA[
 	SELECT *
-	FROM tblMovies]]></Value>
+	FROM tblDistributors
+	ORDER BY Name]]></Value>
 			</Property>
 			<Relationship Name="BodyDependencies">
 				<Entry>
-					<References Name="[dbo].[tblMovies]" />
+					<References Name="[dbo].[tblDistributors]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[tblDistributors].[Name]" />
 				</Entry>
 			</Relationship>
 			<Relationship Name="Owner">
@@ -1117,7 +1474,87 @@ RETURN 0]]></Value>
 				</Entry>
 			</Relationship>
 			<Annotation Type="SysCommentsObjectAnnotation">
-				<Property Name="Length" Value="69" />
+				<Property Name="Length" Value="97" />
+				<Property Name="StartLine" Value="1" />
+				<Property Name="StartColumn" Value="1" />
+				<Property Name="HeaderContents" Value="CREATE PROCEDURE [dbo].[GetDistributorList]&#xD;&#xA;AS" />
+			</Annotation>
+		</Element>
+		<Element Type="ISql100Procedure" Name="[dbo].[GetMovieList]">
+			<Property Name="IsAnsiNullsOn" Value="True" />
+			<Property Name="BodyScript">
+				<Value><![CDATA[
+	SELECT
+		MovieId
+		, Created
+		, Name
+		, Duration
+		, YearProduced
+		, Director
+		, Producer
+		, [Type]
+		, [Description]
+		, ExpectedAudience
+		, BBFC_Rate
+		, IsArchived
+		, ISNULL(CAST(DistributorId AS NVARCHAR(255)), '') AS DistributorId
+	FROM tblMovies
+	ORDER BY Name]]></Value>
+			</Property>
+			<Relationship Name="BodyDependencies">
+				<Entry>
+					<References Name="[dbo].[tblMovies]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[tblMovies].[MovieId]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[tblMovies].[Created]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[tblMovies].[Name]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[tblMovies].[Duration]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[tblMovies].[YearProduced]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[tblMovies].[Director]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[tblMovies].[Producer]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[tblMovies].[Type]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[tblMovies].[Description]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[tblMovies].[ExpectedAudience]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[tblMovies].[BBFC_Rate]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[tblMovies].[IsArchived]" />
+				</Entry>
+				<Entry>
+					<References ExternalSource="BuiltIns" Name="[nvarchar]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[tblMovies].[DistributorId]" />
+				</Entry>
+			</Relationship>
+			<Relationship Name="Owner">
+				<Entry>
+					<References ExternalSource="BuiltIns" Name="[dbo]" />
+				</Entry>
+			</Relationship>
+			<Annotation Type="SysCommentsObjectAnnotation">
+				<Property Name="Length" Value="332" />
 				<Property Name="StartLine" Value="1" />
 				<Property Name="StartColumn" Value="1" />
 				<Property Name="HeaderContents" Value="CREATE PROCEDURE [dbo].[GetMovieList]&#xD;&#xA;AS" />
@@ -1338,11 +1775,107 @@ RETURN 0]]></Value>
 				<Property Name="HeaderContents" Value="CREATE PROCEDURE [dbo].[GetUserList]&#xD;&#xA;&#x9;@adminLevel INT&#xD;&#xA;AS" />
 			</Annotation>
 		</Element>
+		<Element Type="ISql100Procedure" Name="[dbo].[LinkMovieDistributor]">
+			<Property Name="IsAnsiNullsOn" Value="True" />
+			<Property Name="BodyScript">
+				<Value><![CDATA[
+	IF EXISTS(SELECT * FROM tblMovies WHERE Name = @movieName AND IsArchived = 0)
+	BEGIN
+		IF EXISTS (SELECT * FROM tblMovies WHERE Name = @movieName AND IsArchived = 0 AND DistributorId IS NULL)
+		BEGIN
+			UPDATE tblMovies
+			SET DistributorId = @distributorGuid
+			WHERE Name = @movieName
+		END
+		ELSE
+		BEGIN
+			RAISERROR ('Movie already linked to another distributor.', 16, 16)
+		END
+	END
+	ELSE
+	BEGIN
+		RAISERROR('Movie is no longer active.', 16, 16)
+	END]]></Value>
+			</Property>
+			<Relationship Name="BodyDependencies">
+				<Entry>
+					<References Name="[dbo].[tblMovies]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[tblMovies].[Name]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[LinkMovieDistributor].[@movieName]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[tblMovies].[IsArchived]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[tblMovies].[DistributorId]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[tblMovies]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[tblMovies].[DistributorId]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[LinkMovieDistributor].[@distributorGuid]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[tblMovies].[Name]" />
+				</Entry>
+			</Relationship>
+			<Relationship Name="Owner">
+				<Entry>
+					<References ExternalSource="BuiltIns" Name="[dbo]" />
+				</Entry>
+			</Relationship>
+			<Relationship Name="Parameters">
+				<Entry>
+					<Element Type="ISql100SubroutineParameter" Name="[dbo].[LinkMovieDistributor].[@movieName]">
+						<Relationship Name="Type">
+							<Entry>
+								<Element Type="ISql90TypeSpecifier">
+									<Property Name="Length" Value="255" />
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[nvarchar]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="ISql100SubroutineParameter" Name="[dbo].[LinkMovieDistributor].[@distributorGuid]">
+						<Relationship Name="Type">
+							<Entry>
+								<Element Type="ISql90TypeSpecifier">
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[uniqueidentifier]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+			</Relationship>
+			<Annotation Type="SysCommentsObjectAnnotation">
+				<Property Name="Length" Value="589" />
+				<Property Name="StartLine" Value="1" />
+				<Property Name="StartColumn" Value="1" />
+				<Property Name="HeaderContents" Value="CREATE PROCEDURE [dbo].[LinkMovieDistributor]&#xD;&#xA;&#x9;@movieName NVARCHAR(255), &#xD;&#xA;&#x9;@distributorGuid UNIQUEIDENTIFIER&#xD;&#xA;AS" />
+			</Annotation>
+		</Element>
 		<Element Type="ISql100Table" Name="[dbo].[tblDistributors]">
 			<Property Name="IsAnsiNullsOn" Value="True" />
 			<Relationship Name="Columns">
 				<Entry>
-					<Element Type="ISql100SimpleColumn" Name="[dbo].[tblDistributors].[DistributorId]">
+					<Element Type="ISql100SimpleColumn" Name="[dbo].[tblDistributors].[DistributorGuid]">
 						<Property Name="IsNullable" Value="False" />
 						<Property Name="IsRowGuidColumn" Value="True" />
 						<Relationship Name="TypeSpecifier">
@@ -1357,7 +1890,24 @@ RETURN 0]]></Value>
 							</Entry>
 						</Relationship>
 						<AttachedAnnotation Disambiguator="7" />
-						<AttachedAnnotation Disambiguator="19" />
+						<AttachedAnnotation Disambiguator="22" />
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="ISql100SimpleColumn" Name="[dbo].[tblDistributors].[Created]">
+						<Property Name="IsNullable" Value="False" />
+						<Relationship Name="TypeSpecifier">
+							<Entry>
+								<Element Type="ISql90TypeSpecifier">
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[datetime]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+						<AttachedAnnotation Disambiguator="23" />
 					</Element>
 				</Entry>
 				<Entry>
@@ -1378,23 +1928,6 @@ RETURN 0]]></Value>
 					</Element>
 				</Entry>
 				<Entry>
-					<Element Type="ISql100SimpleColumn" Name="[dbo].[tblDistributors].[Permission]">
-						<Property Name="IsNullable" Value="False" />
-						<Relationship Name="TypeSpecifier">
-							<Entry>
-								<Element Type="ISql90TypeSpecifier">
-									<Relationship Name="Type">
-										<Entry>
-											<References ExternalSource="BuiltIns" Name="[int]" />
-										</Entry>
-									</Relationship>
-								</Element>
-							</Entry>
-						</Relationship>
-						<AttachedAnnotation Disambiguator="20" />
-					</Element>
-				</Entry>
-				<Entry>
 					<Element Type="ISql100SimpleColumn" Name="[dbo].[tblDistributors].[IsActive]">
 						<Property Name="IsNullable" Value="False" />
 						<Relationship Name="TypeSpecifier">
@@ -1408,41 +1941,125 @@ RETURN 0]]></Value>
 								</Element>
 							</Entry>
 						</Relationship>
-						<AttachedAnnotation Disambiguator="21" />
+						<AttachedAnnotation Disambiguator="24" />
 					</Element>
 				</Entry>
 				<Entry>
-					<Element Type="ISql100SimpleColumn" Name="[dbo].[tblDistributors].[IsAdmin]">
+					<Element Type="ISql100SimpleColumn" Name="[dbo].[tblDistributors].[Email]">
+						<Property Name="IsNullable" Value="False" />
+						<Relationship Name="TypeSpecifier">
+							<Entry>
+								<Element Type="ISql90TypeSpecifier">
+									<Property Name="Length" Value="255" />
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[nvarchar]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="ISql100SimpleColumn" Name="[dbo].[tblDistributors].[ContactNumber]">
+						<Property Name="IsNullable" Value="False" />
+						<Relationship Name="TypeSpecifier">
+							<Entry>
+								<Element Type="ISql90TypeSpecifier">
+									<Property Name="Length" Value="50" />
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[nvarchar]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="ISql100SimpleColumn" Name="[dbo].[tblDistributors].[PhysicalAddress]">
+						<Relationship Name="TypeSpecifier">
+							<Entry>
+								<Element Type="ISql90TypeSpecifier">
+									<Property Name="Length" Value="255" />
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[nvarchar]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="ISql100SimpleColumn" Name="[dbo].[tblDistributors].[ReceiveMontly]">
 						<Property Name="IsNullable" Value="False" />
 						<Relationship Name="TypeSpecifier">
 							<Entry>
 								<Element Type="ISql90TypeSpecifier">
 									<Relationship Name="Type">
 										<Entry>
-											<References ExternalSource="BuiltIns" Name="[int]" />
+											<References ExternalSource="BuiltIns" Name="[bit]" />
 										</Entry>
 									</Relationship>
 								</Element>
 							</Entry>
 						</Relationship>
-						<AttachedAnnotation Disambiguator="22" />
+						<AttachedAnnotation Disambiguator="29" />
 					</Element>
 				</Entry>
 				<Entry>
-					<Element Type="ISql100SimpleColumn" Name="[dbo].[tblDistributors].[Created]">
+					<Element Type="ISql100SimpleColumn" Name="[dbo].[tblDistributors].[ReceiveQuaterly]">
 						<Property Name="IsNullable" Value="False" />
 						<Relationship Name="TypeSpecifier">
 							<Entry>
 								<Element Type="ISql90TypeSpecifier">
 									<Relationship Name="Type">
 										<Entry>
-											<References ExternalSource="BuiltIns" Name="[datetime]" />
+											<References ExternalSource="BuiltIns" Name="[bit]" />
 										</Entry>
 									</Relationship>
 								</Element>
 							</Entry>
 						</Relationship>
-						<AttachedAnnotation Disambiguator="23" />
+						<AttachedAnnotation Disambiguator="30" />
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="ISql100SimpleColumn" Name="[dbo].[tblDistributors].[ReceiveHalfYearly]">
+						<Property Name="IsNullable" Value="False" />
+						<Relationship Name="TypeSpecifier">
+							<Entry>
+								<Element Type="ISql90TypeSpecifier">
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[bit]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+						<AttachedAnnotation Disambiguator="31" />
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="ISql100SimpleColumn" Name="[dbo].[tblDistributors].[ReceiveYearly]">
+						<Property Name="IsNullable" Value="False" />
+						<Relationship Name="TypeSpecifier">
+							<Entry>
+								<Element Type="ISql90TypeSpecifier">
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[bit]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+						<AttachedAnnotation Disambiguator="32" />
 					</Element>
 				</Entry>
 			</Relationship>
@@ -1470,8 +2087,8 @@ RETURN 0]]></Value>
 								</Element>
 							</Entry>
 						</Relationship>
-						<AttachedAnnotation Disambiguator="3" />
-						<AttachedAnnotation Disambiguator="12" />
+						<AttachedAnnotation Disambiguator="8" />
+						<AttachedAnnotation Disambiguator="25" />
 					</Element>
 				</Entry>
 				<Entry>
@@ -1488,7 +2105,7 @@ RETURN 0]]></Value>
 								</Element>
 							</Entry>
 						</Relationship>
-						<AttachedAnnotation Disambiguator="13" />
+						<AttachedAnnotation Disambiguator="26" />
 					</Element>
 				</Entry>
 				<Entry>
@@ -1605,7 +2222,7 @@ RETURN 0]]></Value>
 								</Element>
 							</Entry>
 						</Relationship>
-						<AttachedAnnotation Disambiguator="24" />
+						<AttachedAnnotation Disambiguator="27" />
 					</Element>
 				</Entry>
 				<Entry>
@@ -1623,7 +2240,7 @@ RETURN 0]]></Value>
 								</Element>
 							</Entry>
 						</Relationship>
-						<AttachedAnnotation Disambiguator="9" />
+						<AttachedAnnotation Disambiguator="10" />
 					</Element>
 				</Entry>
 				<Entry>
@@ -1641,7 +2258,7 @@ RETURN 0]]></Value>
 								</Element>
 							</Entry>
 						</Relationship>
-						<AttachedAnnotation Disambiguator="10" />
+						<AttachedAnnotation Disambiguator="11" />
 					</Element>
 				</Entry>
 				<Entry>
@@ -1658,7 +2275,23 @@ RETURN 0]]></Value>
 								</Element>
 							</Entry>
 						</Relationship>
-						<AttachedAnnotation Disambiguator="30" />
+						<AttachedAnnotation Disambiguator="28" />
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="ISql100SimpleColumn" Name="[dbo].[tblMovies].[DistributorId]">
+						<Relationship Name="TypeSpecifier">
+							<Entry>
+								<Element Type="ISql90TypeSpecifier">
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[uniqueidentifier]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+						<AttachedAnnotation Disambiguator="37" />
 					</Element>
 				</Entry>
 			</Relationship>
@@ -1687,7 +2320,7 @@ RETURN 0]]></Value>
 							</Entry>
 						</Relationship>
 						<AttachedAnnotation Disambiguator="5" />
-						<AttachedAnnotation Disambiguator="16" />
+						<AttachedAnnotation Disambiguator="19" />
 					</Element>
 				</Entry>
 				<Entry>
@@ -1747,8 +2380,8 @@ RETURN 0]]></Value>
 								</Element>
 							</Entry>
 						</Relationship>
-						<AttachedAnnotation Disambiguator="8" />
-						<AttachedAnnotation Disambiguator="25" />
+						<AttachedAnnotation Disambiguator="3" />
+						<AttachedAnnotation Disambiguator="12" />
 					</Element>
 				</Entry>
 				<Entry>
@@ -1765,7 +2398,7 @@ RETURN 0]]></Value>
 								</Element>
 							</Entry>
 						</Relationship>
-						<AttachedAnnotation Disambiguator="26" />
+						<AttachedAnnotation Disambiguator="13" />
 					</Element>
 				</Entry>
 				<Entry>
@@ -1882,7 +2515,7 @@ RETURN 0]]></Value>
 								</Element>
 							</Entry>
 						</Relationship>
-						<AttachedAnnotation Disambiguator="27" />
+						<AttachedAnnotation Disambiguator="14" />
 					</Element>
 				</Entry>
 				<Entry>
@@ -1899,8 +2532,8 @@ RETURN 0]]></Value>
 								</Element>
 							</Entry>
 						</Relationship>
-						<AttachedAnnotation Disambiguator="11" />
-						<AttachedAnnotation Disambiguator="28" />
+						<AttachedAnnotation Disambiguator="9" />
+						<AttachedAnnotation Disambiguator="15" />
 					</Element>
 				</Entry>
 			</Relationship>
@@ -1929,7 +2562,7 @@ RETURN 0]]></Value>
 							</Entry>
 						</Relationship>
 						<AttachedAnnotation Disambiguator="6" />
-						<AttachedAnnotation Disambiguator="17" />
+						<AttachedAnnotation Disambiguator="20" />
 					</Element>
 				</Entry>
 				<Entry>
@@ -1946,7 +2579,7 @@ RETURN 0]]></Value>
 								</Element>
 							</Entry>
 						</Relationship>
-						<AttachedAnnotation Disambiguator="33" />
+						<AttachedAnnotation Disambiguator="35" />
 					</Element>
 				</Entry>
 				<Entry>
@@ -1963,7 +2596,7 @@ RETURN 0]]></Value>
 								</Element>
 							</Entry>
 						</Relationship>
-						<AttachedAnnotation Disambiguator="34" />
+						<AttachedAnnotation Disambiguator="36" />
 					</Element>
 				</Entry>
 				<Entry>
@@ -1980,7 +2613,7 @@ RETURN 0]]></Value>
 								</Element>
 							</Entry>
 						</Relationship>
-						<AttachedAnnotation Disambiguator="18" />
+						<AttachedAnnotation Disambiguator="21" />
 					</Element>
 				</Entry>
 			</Relationship>
@@ -2009,7 +2642,7 @@ RETURN 0]]></Value>
 							</Entry>
 						</Relationship>
 						<AttachedAnnotation Disambiguator="4" />
-						<AttachedAnnotation Disambiguator="14" />
+						<AttachedAnnotation Disambiguator="16" />
 					</Element>
 				</Entry>
 				<Entry>
@@ -2026,7 +2659,7 @@ RETURN 0]]></Value>
 								</Element>
 							</Entry>
 						</Relationship>
-						<AttachedAnnotation Disambiguator="15" />
+						<AttachedAnnotation Disambiguator="17" />
 					</Element>
 				</Entry>
 				<Entry>
@@ -2043,7 +2676,7 @@ RETURN 0]]></Value>
 								</Element>
 							</Entry>
 						</Relationship>
-						<AttachedAnnotation Disambiguator="31" />
+						<AttachedAnnotation Disambiguator="33" />
 					</Element>
 				</Entry>
 				<Entry>
@@ -2060,7 +2693,7 @@ RETURN 0]]></Value>
 								</Element>
 							</Entry>
 						</Relationship>
-						<AttachedAnnotation Disambiguator="32" />
+						<AttachedAnnotation Disambiguator="34" />
 					</Element>
 				</Entry>
 				<Entry>
@@ -2109,7 +2742,7 @@ RETURN 0]]></Value>
 								</Element>
 							</Entry>
 						</Relationship>
-						<AttachedAnnotation Disambiguator="29" />
+						<AttachedAnnotation Disambiguator="18" />
 					</Element>
 				</Entry>
 			</Relationship>
