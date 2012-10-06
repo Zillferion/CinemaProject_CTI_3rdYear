@@ -17,6 +17,7 @@ namespace CinemaProject
 	 * 2.  Optimize code to get rid of un-needed Member Variables.
 	 * 3.  Make new movie/user/distributor the selected user after creation.
 	 * 4.  Show list of movies a distributor is linked to so that items can be removed.
+	 * 5.  Add log-out button.
 	 */
 	public partial class MainGUI : Form
 	{
