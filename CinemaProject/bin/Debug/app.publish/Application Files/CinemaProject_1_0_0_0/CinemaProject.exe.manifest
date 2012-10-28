@@ -1,0 +1,61 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<asmv1:assembly xsi:schemaLocation="urn:schemas-microsoft-com:asm.v1 assembly.adaptive.xsd" manifestVersion="1.0" xmlns:asmv3="urn:schemas-microsoft-com:asm.v3" xmlns:dsig="http://www.w3.org/2000/09/xmldsig#" xmlns:co.v2="urn:schemas-microsoft-com:clickonce.v2" xmlns="urn:schemas-microsoft-com:asm.v2" xmlns:asmv1="urn:schemas-microsoft-com:asm.v1" xmlns:asmv2="urn:schemas-microsoft-com:asm.v2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:co.v1="urn:schemas-microsoft-com:clickonce.v1">
+  <asmv1:assemblyIdentity name="CinemaProject.exe" version="1.0.0.0" publicKeyToken="0835f9f24106b61d" language="neutral" processorArchitecture="x86" type="win32" />
+  <application />
+  <entryPoint>
+    <assemblyIdentity name="CinemaProject" version="1.0.0.0" language="neutral" processorArchitecture="x86" />
+    <commandLine file="CinemaProject.exe" parameters="" />
+  </entryPoint>
+  <trustInfo>
+    <security>
+      <applicationRequestMinimum>
+        <PermissionSet Unrestricted="true" ID="Custom" SameSite="site" />
+        <defaultAssemblyRequest permissionSetReference="Custom" />
+      </applicationRequestMinimum>
+      <requestedPrivileges xmlns="urn:schemas-microsoft-com:asm.v3">
+        <!--
+          UAC Manifest Options
+          If you want to change the Windows User Account Control level replace the 
+          requestedExecutionLevel node with one of the following.
+
+        <requestedExecutionLevel  level="asInvoker" uiAccess="false" />
+        <requestedExecutionLevel  level="requireAdministrator" uiAccess="false" />
+        <requestedExecutionLevel  level="highestAvailable" uiAccess="false" />
+
+         If you want to utilize File and Registry Virtualization for backward 
+         compatibility then delete the requestedExecutionLevel node.
+    -->
+        <requestedExecutionLevel level="asInvoker" uiAccess="false" />
+      </requestedPrivileges>
+    </security>
+  </trustInfo>
+  <dependency>
+    <dependentOS>
+      <osVersionInfo>
+        <os majorVersion="5" minorVersion="1" buildNumber="2600" servicePackMajor="0" />
+      </osVersionInfo>
+    </dependentOS>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="preRequisite" allowDelayedBinding="true">
+      <assemblyIdentity name="Microsoft.Windows.CommonLanguageRuntime" version="4.0.30319.0" />
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="preRequisite" allowDelayedBinding="true">
+      <assemblyIdentity name="Microsoft.VisualBasic.PowerPacks.Vs" version="10.0.0.0" publicKeyToken="B03F5F7F11D50A3A" language="neutral" processorArchitecture="msil" />
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="CinemaProject.exe" size="45056">
+      <assemblyIdentity name="CinemaProject" version="1.0.0.0" language="neutral" processorArchitecture="x86" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+        <dsig:DigestValue>U72egZA2vMJo9Rycc7VFur6JCqk=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+<publisherIdentity name="CN=deathknight-PC\deathknight" issuerKeyHash="a4cd7c638135b6503090558d5f0f171f30e7a373" /><Signature Id="StrongNameSignature" xmlns="http://www.w3.org/2000/09/xmldsig#"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /><SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha1" /><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature" /><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /></Transforms><DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" /><DigestValue>pVpt8CwV37ANvWBtXBPPEzjCqwU=</DigestValue></Reference></SignedInfo><SignatureValue>QByLzoZgyI29tnjhteCRDQ2MusJQ6rWEwkR9LK4SYw3KuLVrtlXsN3qIYrPgWe3nmiYwfW/y9Rn3pmx+T6qwVPaRwPjMShoFTkbdKc9QbIJTqs8qyYimQgeb1e6e9NJOBgR6Ocv9Px5qIj7wgQHyYeCh9p4jpHdfAkyTNgfwjlA=</SignatureValue><KeyInfo Id="StrongNameKeyInfo"><KeyValue><RSAKeyValue><Modulus>nEaqPIZxR/fI8A3cGszclBod2gIczYrdOtm1eEexZtdI34CnaXkIvuOUHXmuXxiNu+j18mhApls4r/nNT3nYuhgOmL41I0i/XxaAuxhmisF6uIuhrXPegvy2YAzKbs4XPdfyEh6kIairaRNksRSHxe3WmoZMqRDcLnn6aTck+LU=</Modulus><Exponent>AQAB</Exponent></RSAKeyValue></KeyValue><msrel:RelData xmlns:msrel="http://schemas.microsoft.com/windows/rel/2005/reldata"><r:license xmlns:r="urn:mpeg:mpeg21:2003:01-REL-R-NS" xmlns:as="http://schemas.microsoft.com/windows/pki/2005/Authenticode"><r:grant><as:ManifestInformation Hash="05abc23813cf135c6d60bd0db0df152cf06d5aa5" Description="" Url=""><as:assemblyIdentity name="CinemaProject.exe" version="1.0.0.0" publicKeyToken="0835f9f24106b61d" language="neutral" processorArchitecture="x86" type="win32" /></as:ManifestInformation><as:SignedBy /><as:AuthenticodePublisher><as:X509SubjectName>CN=deathknight-PC\deathknight</as:X509SubjectName></as:AuthenticodePublisher></r:grant><r:issuer><Signature Id="AuthenticodeSignature" xmlns="http://www.w3.org/2000/09/xmldsig#"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /><SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha1" /><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature" /><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /></Transforms><DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" /><DigestValue>kbeNyrh7DLMqg3ZSVaFg/HG6eos=</DigestValue></Reference></SignedInfo><SignatureValue>g1wxF7HrIXw7pxf+foLbwBAskBqH78RH29cLWIaEScaUkpr9r8DCHvkcLD3ne0zMACE/xiTIA8gOAmmWUlJvGWr3Yg7PBNyMVfQCLuAIhQuotrxmvdZd1iFZWD8g6foq1Os/dnK3+68kLQNxuwEn52wAvbq8jkfb4qfJd+P3nEQ=</SignatureValue><KeyInfo><KeyValue><RSAKeyValue><Modulus>nEaqPIZxR/fI8A3cGszclBod2gIczYrdOtm1eEexZtdI34CnaXkIvuOUHXmuXxiNu+j18mhApls4r/nNT3nYuhgOmL41I0i/XxaAuxhmisF6uIuhrXPegvy2YAzKbs4XPdfyEh6kIairaRNksRSHxe3WmoZMqRDcLnn6aTck+LU=</Modulus><Exponent>AQAB</Exponent></RSAKeyValue></KeyValue><X509Data><X509Certificate>MIICATCCAWqgAwIBAgIQUwhtH2d5mYZEXDS/FlKomjANBgkqhkiG9w0BAQUFADA/MT0wOwYDVQQDHjQAZABlAGEAdABoAGsAbgBpAGcAaAB0AC0AUABDAFwAZABlAGEAdABoAGsAbgBpAGcAaAB0MB4XDTEyMDkxNjE3NDEyNloXDTEzMDkxNjIzNDEyNlowPzE9MDsGA1UEAx40AGQAZQBhAHQAaABrAG4AaQBnAGgAdAAtAFAAQwBcAGQAZQBhAHQAaABrAG4AaQBnAGgAdDCBnzANBgkqhkiG9w0BAQEFAAOBjQAwgYkCgYEAnEaqPIZxR/fI8A3cGszclBod2gIczYrdOtm1eEexZtdI34CnaXkIvuOUHXmuXxiNu+j18mhApls4r/nNT3nYuhgOmL41I0i/XxaAuxhmisF6uIuhrXPegvy2YAzKbs4XPdfyEh6kIairaRNksRSHxe3WmoZMqRDcLnn6aTck+LUCAwEAATANBgkqhkiG9w0BAQUFAAOBgQBMbJVZiOEfBYWDj+oJkOzdFJivUHM1erBMR6nGCMvncVQ0L5q9MrG+m5Y4ZgKmMT1ohcS9uwIiMBDfGSJBiNBrVfmdBOZ/TTHkhG8kcbh2P6kZtHQUpkXTNfJrUHJIAPjaBPQz5G7NiHSuwoTBd77csFMjHTHf1Za7T+s4pjdFNQ==</X509Certificate></X509Data></KeyInfo></Signature></r:issuer></r:license></msrel:RelData></KeyInfo></Signature></asmv1:assembly>

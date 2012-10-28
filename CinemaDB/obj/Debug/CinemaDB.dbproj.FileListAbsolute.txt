@@ -22,3 +22,11 @@ D:\CTICinemaProject\CinemaProject_CTI_3rdYear\CinemaDB\sql\debug\CinemaDB_Databa
 D:\CTICinemaProject\CinemaProject_CTI_3rdYear\CinemaDB\sql\debug\CinemaDB.deploymanifest
 D:\CTICinemaProject\CinemaProject_CTI_3rdYear\CinemaDB\sql\debug\CinemaDB.dbschema
 D:\CTICinemaProject\CinemaProject_CTI_3rdYear\CinemaDB\obj\Debug\CinemaDB.dbschema
+C:\Users\deathknight\Documents\GIT_Projects\CinemaProject\CinemaDB\sql\debug\CinemaDB_Script.PreDeployment.sql
+C:\Users\deathknight\Documents\GIT_Projects\CinemaProject\CinemaDB\sql\debug\CinemaDB_Script.PostDeployment.sql
+C:\Users\deathknight\Documents\GIT_Projects\CinemaProject\CinemaDB\sql\debug\CinemaDB_Database.sqlsettings
+C:\Users\deathknight\Documents\GIT_Projects\CinemaProject\CinemaDB\sql\debug\CinemaDB_Database.sqldeployment
+C:\Users\deathknight\Documents\GIT_Projects\CinemaProject\CinemaDB\sql\debug\CinemaDB_Database.sqlcmdvars
+C:\Users\deathknight\Documents\GIT_Projects\CinemaProject\CinemaDB\sql\debug\CinemaDB.deploymanifest
+C:\Users\deathknight\Documents\GIT_Projects\CinemaProject\CinemaDB\sql\debug\CinemaDB.dbschema
+C:\Users\deathknight\Documents\GIT_Projects\CinemaProject\CinemaDB\obj\Debug\CinemaDB.dbschema
