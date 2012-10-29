@@ -9,6 +9,7 @@ namespace CinemaProject.Classes
     {
         public string MovieName { get; set; }
         public int ScreenNum { get; set; }
+        public int Seats { get; set; }
         public string Date { get; set; }
         public List<string> ScreeningsList { get; set; }
         public string Screenings

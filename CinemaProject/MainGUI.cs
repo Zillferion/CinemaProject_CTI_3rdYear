@@ -63,6 +63,7 @@ namespace CinemaProject
         #endregion Enums
 
         #region Member Variables
+
         /// <summary>
         /// Contains a list of the current users.
         /// </summary>
@@ -82,6 +83,8 @@ namespace CinemaProject
         /// Contains a list of all the current non-archived movies.
         /// </summary>
         private static List<MovieDetails> _nonArchivedMovies = new List<MovieDetails>();
+
+        private static List<SessionDetails> _sessionList = new List<SessionDetails>();
 
         /// <summary>
         /// Creates a worksheet to generate report
@@ -133,7 +136,7 @@ namespace CinemaProject
                 {
                     //_workbook = App.Workbooks.Add(2);
                     _workbook = App.Workbooks.Add(XlWBATemplate.xlWBATWorksheet);
-                                    }
+                }
 
                 return _workbook;
             }
@@ -207,6 +210,7 @@ namespace CinemaProject
         /// ConnectionString for the database.
         /// </summary>
         private const String connectionString = @"server=.\SQLEXPRESS; Database=CinemaDB; Integrated Security=SSPI;";
+
         #endregion Member Variables
 
         #region General Events
@@ -420,6 +424,7 @@ namespace CinemaProject
         #endregion User Setting Events
 
         #region Attendance Events
+
         /// <summary>
         /// 
         /// </summary>
@@ -430,7 +435,6 @@ namespace CinemaProject
 
         }
 
-
         /// <summary>
         /// 
         /// </summary>
@@ -438,37 +442,94 @@ namespace CinemaProject
         /// <param name="e"></param>
         private void cbbMovieName_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (String.IsNullOrWhiteSpace(cbAttendanceSelectMovie.SelectedItem.ToString()))
+            try
             {
-                EnableMovieButtonControl(false);
-            }
-            else
-            {
-                //Load Movie Session Info from tInkScreenMovie table
-                MovieDetails selectedMovie = null;
-
-                selectedMovie = _nonArchivedMovies[cbAttendanceSelectMovie.SelectedIndex];
-
-                lblMovieTitle.Text = selectedMovie.MovieName;
-                lblMovieDuration.Text = selectedMovie.Duration.ToString();
-                lblMovieType.Text = selectedMovie.Type;
-                lblMovieDirector.Text = selectedMovie.Director;
-                lblMovieProducer.Text = selectedMovie.Producer;
-                lblMovieBBFCRating.Text = selectedMovie.BbfcRate;
-                lblMovieDesc.Text = selectedMovie.Description;
-
-                //Load items into the session list
-                List<string> sessionList = new List<string>();
-
-                foreach (string item in sessionList)
+                if (String.IsNullOrWhiteSpace(cbAttendanceSelectMovie.SelectedItem.ToString()))
                 {
-                    cbbSession.Items.Add(sessionList);
+                    EnableMovieButtonControl(false);
                 }
+                else
+                {
+                    //Load Movie Session Info from tInkScreenMovie table
+                    MovieDetails selectedMovie = null;
 
-                EnableMovieButtonControl(true);
+                    selectedMovie = _nonArchivedMovies[cbAttendanceSelectMovie.SelectedIndex];
+
+                    lblMovieTitle.Text = selectedMovie.MovieName;
+                    lblMovieDuration.Text = selectedMovie.Duration.ToString();
+                    lblMovieType.Text = selectedMovie.Type;
+                    lblMovieDirector.Text = selectedMovie.Director;
+                    lblMovieProducer.Text = selectedMovie.Producer;
+                    lblMovieBBFCRating.Text = selectedMovie.BbfcRate;
+                    lblMovieDesc.Text = selectedMovie.Description;
+
+                    //Load items into the session list
+                    _sessionList.Clear();
+                    cbbSession.Items.Clear();
+
+                    #region Get Sessions
+
+                    //Create new connection.
+                    using (SqlConnection cn = new SqlConnection(connectionString))
+                    {
+                        //If the connection is closed, open it.
+                        if (cn.State == ConnectionState.Closed) cn.Open();
+
+                        using (SqlCommand cmd = new SqlCommand("GetMovieScreenings", cn))
+                        {
+                            cmd.CommandType = CommandType.StoredProcedure;
+                            cmd.Parameters.Add("@StartScreen", SqlDbType.DateTime).Value = DateTime.Today;
+                            cmd.Parameters.Add("@EndScreen", SqlDbType.DateTime).Value = DateTime.Today.AddDays(1);
+
+                            using (SqlDataReader dr = cmd.ExecuteReader())
+                            {
+                                while (dr.Read())
+                                {
+                                    string movieName = dr.GetString(dr.GetOrdinal("Name"));
+                                    Guid screenId = dr.GetGuid(dr.GetOrdinal("ScreenId"));
+                                    int screenNum = dr.GetInt32(dr.GetOrdinal("ScreenNum"));
+                                    int seats = dr.GetInt32(dr.GetOrdinal("Seats"));
+                                    DateTime startScreen = dr.GetDateTime(dr.GetOrdinal("StartScreen"));
+                                    DateTime endScreen = dr.GetDateTime(dr.GetOrdinal("EndScreen"));
+
+                                    if (movieName == selectedMovie.MovieName)
+                                    {
+                                        SessionDetails session = new SessionDetails()
+                                        {
+                                            MovieId = selectedMovie.MovieGuid,
+                                            ScreenId = screenId,
+                                            StartScreen = startScreen,
+                                            EndScreen = endScreen,
+                                            ScreenNum = screenNum,
+                                            Seats = seats
+                                        };
+
+                                        _sessionList.Add(session);
+                                    }
+                                }
+                            }
+                        }
+                    }
+
+                    #endregion Get Sessions
+
+                    foreach (SessionDetails item in _sessionList)
+                    {
+                        cbbSession.Items.Add(String.Format("{0:HH:mm} - {1:HH:mm}, Theatre {2:00} ({3} seats)",
+                                                           item.StartScreen,
+                                                           item.EndScreen,
+                                                           item.ScreenNum,
+                                                           item.Seats));
+                    }
+
+                    EnableMovieButtonControl(true);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error:  " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
 
         /// <summary>
         /// 
@@ -478,24 +539,59 @@ namespace CinemaProject
         private void btnBook_Click(object sender, EventArgs e)
         {
             int NumOfTickets;
-            if (cbAttendanceSelectMovie.SelectedText == "")
+            int selectedMovieIndex = cbAttendanceSelectMovie.SelectedIndex;
+            int selectedSessionIndex = cbbSession.SelectedIndex;
+
+            if (selectedMovieIndex == -1)
             {
                 MessageBox.Show("No movie selected for booking!");
             }
-            else if (cbbSession.SelectedText == "")
+            else if (selectedSessionIndex == -1)
             {
                 MessageBox.Show("No session selected for booking!");
             }
             else if (!int.TryParse(txtNumOfTickets.Text, out NumOfTickets))
             {
                 MessageBox.Show("Please enter a correct number of tickets");
+                txtNumOfTickets.Focus();
+            }
+            else if ((NumOfTickets < 0) || (NumOfTickets > _sessionList[selectedSessionIndex].Seats))
+            {
+                MessageBox.Show("Please enter a correct number of tickets");
+                txtNumOfTickets.Focus();
             }
             else
             {
-                //Write to database
+                try
+                {
+
+                    //Create new connection.
+                    using (SqlConnection cn = new SqlConnection(connectionString))
+                    {
+                        //If the connection is closed, open it.
+                        if (cn.State == ConnectionState.Closed) cn.Open();
+
+                        // Adds the scheduling to the database.
+                        using (SqlCommand cmd = new SqlCommand("SetBookingNum", cn))
+                        {
+                            cmd.CommandType = CommandType.StoredProcedure;
+                            cmd.Parameters.Add("@MovieId", SqlDbType.UniqueIdentifier).Value = _nonArchivedMovies[selectedMovieIndex].MovieGuid;
+                            cmd.Parameters.Add("@ScreenId", SqlDbType.UniqueIdentifier).Value = _sessionList[selectedSessionIndex].ScreenId;
+                            cmd.Parameters.Add("@StartScreen", SqlDbType.DateTime).Value = _sessionList[selectedSessionIndex].StartScreen;
+                            cmd.Parameters.Add("@EndScreen", SqlDbType.DateTime).Value = _sessionList[selectedSessionIndex].EndScreen;
+                            cmd.Parameters.Add("@BookedNum", SqlDbType.Int).Value = NumOfTickets;
+                            cmd.ExecuteNonQuery();
+
+                            MessageBox.Show("Booking successfully updated.");
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error:  " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
         }
-
 
         /// <summary>
         /// 
@@ -509,9 +605,11 @@ namespace CinemaProject
             btnBook.Enabled = enabled;
 
         }
+
         #endregion Attendance Events
 
         #region Movie Setting Events
+
         /// <summary>
         /// 
         /// </summary>
@@ -539,7 +637,6 @@ namespace CinemaProject
             spnrMovieYear.Value = DateTime.Today.Year;
         }
 
-
         /// <summary>
         /// 
         /// </summary>
@@ -555,7 +652,6 @@ namespace CinemaProject
             //Refills the users list.
             FillMovieDropDown();
         }
-
 
         /// <summary>
         /// 
@@ -579,7 +675,6 @@ namespace CinemaProject
             spnrMovieYear.Value = selectedMovie.YearReleased;
         }
 
-
         /// <summary>
         /// 
         /// </summary>
@@ -595,13 +690,21 @@ namespace CinemaProject
 
                     using (SqlCommand cmd = new SqlCommand("UpdateMovie", cn))
                     {
+                        int duration = 0;
+
+                        try
+                        {
+                            duration = Convert.ToInt32(txtDuration.Text.Trim());
+                        }
+                        catch { }
+
                         cmd.CommandType = CommandType.StoredProcedure;
                         cmd.Parameters.Add("@movieGuid", SqlDbType.UniqueIdentifier).Value = _movies[cbSelectEditMovie.SelectedIndex].MovieGuid;
                         cmd.Parameters.Add("@name", SqlDbType.NVarChar).Value = txtMovieName.Text.Trim();
                         cmd.Parameters.Add("@directors", SqlDbType.NVarChar).Value = txtDirector.Text.Trim();
                         cmd.Parameters.Add("@producers", SqlDbType.NVarChar).Value = txtProducer.Text.Trim();
                         cmd.Parameters.Add("@type", SqlDbType.NVarChar).Value = txtMovieType.Text.Trim();
-                        cmd.Parameters.Add("@duration", SqlDbType.Int).Value = Convert.ToInt32(txtDuration.Text.Trim());
+                        cmd.Parameters.Add("@duration", SqlDbType.Int).Value = duration;
                         cmd.Parameters.Add("@expectedAudience", SqlDbType.NVarChar).Value = ddlExpectedAudience.SelectedItem;
                         cmd.Parameters.Add("@rating", SqlDbType.NVarChar).Value = ddlBBFCRating.SelectedItem;
                         cmd.Parameters.Add("@archived", SqlDbType.Bit).Value = cbArchived.Checked;
@@ -624,12 +727,20 @@ namespace CinemaProject
 
                     using (SqlCommand cmd = new SqlCommand("CreateMovie", cn))
                     {
+                        int duration = 0;
+
+                        try
+                        {
+                            duration = Convert.ToInt32(txtDuration.Text.Trim());
+                        }
+                        catch { }
+
                         cmd.CommandType = CommandType.StoredProcedure;
                         cmd.Parameters.Add("@name", SqlDbType.NVarChar).Value = txtMovieName.Text.Trim();
                         cmd.Parameters.Add("@directors", SqlDbType.NVarChar).Value = txtDirector.Text.Trim();
                         cmd.Parameters.Add("@producers", SqlDbType.NVarChar).Value = txtProducer.Text.Trim();
                         cmd.Parameters.Add("@type", SqlDbType.NVarChar).Value = txtMovieType.Text.Trim();
-                        cmd.Parameters.Add("@duration", SqlDbType.Int).Value = Convert.ToInt32(txtDuration.Text.Trim());
+                        cmd.Parameters.Add("@duration", SqlDbType.Int).Value = duration;
                         cmd.Parameters.Add("@expectedAudience", SqlDbType.NVarChar).Value = ddlExpectedAudience.SelectedItem;
                         cmd.Parameters.Add("@rating", SqlDbType.NVarChar).Value = ddlBBFCRating.SelectedItem;
                         cmd.Parameters.Add("@archived", SqlDbType.Bit).Value = cbArchived.Checked;
@@ -650,9 +761,11 @@ namespace CinemaProject
                 }
             }
         }
+
         #endregion Movie Setting Events
 
         #region Distributor Setting Events
+
         /// <summary>
         /// 
         /// </summary>
@@ -674,7 +787,6 @@ namespace CinemaProject
 
             btnDistrSave.Text = "Update Distributor";
         }
-
 
         /// <summary>
         /// 
@@ -703,7 +815,6 @@ namespace CinemaProject
             ckbYearly.Checked = false;
             btnDistrSave.Text = "Add Distributor";
         }
-
 
         /// <summary>
         /// 
@@ -763,7 +874,6 @@ namespace CinemaProject
             }
         }
 
-
         /// <summary>
         /// 
         /// </summary>
@@ -779,7 +889,6 @@ namespace CinemaProject
             //Refills the users list.
             FillDistributorDropDown();
         }
-
 
         /// <summary>
         /// 
@@ -814,9 +923,6 @@ namespace CinemaProject
                 MessageBox.Show("Error:  " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-        #endregion Distributor Setting Events
-
-        #region Managment Tasks Events
 
         private void btnGenerateReport_Click(object sender, EventArgs e)
         {
@@ -866,6 +972,10 @@ namespace CinemaProject
             }
         }
 
+        #endregion Distributor Setting Events
+
+        #region Managment Tasks Events
+
         private void btnScheduleMovies_Click(object sender, EventArgs e)
         {
             DateTime fromDate = dateScheduleFrom.Value.Date;
@@ -899,9 +1009,43 @@ namespace CinemaProject
             ScheduleMovies(fromDate, toDate);
         }
 
+        private void btnViewSchedule_Click(object sender, EventArgs e)
+        {
+            DateTime fromDate = dateScheduleFrom.Value.Date;
+            DateTime toDate = dateScheduleTo.Value.Date;
+
+            #region Validation
+
+            if (fromDate < DateTime.Today)
+            {
+                MessageBox.Show("From Date cannot be in the past.");
+                dateScheduleFrom.Focus();
+                return;
+            }
+
+            if (toDate < DateTime.Today)
+            {
+                MessageBox.Show("To Date cannot be in the past.");
+                dateScheduleTo.Focus();
+                return;
+            }
+
+            if (toDate < fromDate)
+            {
+                MessageBox.Show("To Date cannot be before From Date.");
+                dateScheduleFrom.Focus();
+                return;
+            }
+
+            #endregion Validation
+
+            ViewSchedule(fromDate, toDate);
+        }
+
         #endregion Managment Tasks Events
 
         #region Methods
+
         /// <summary>
         /// 
         /// </summary>
@@ -982,7 +1126,6 @@ namespace CinemaProject
                 MessageBox.Show("Error:  " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
 
         /// <summary>
         /// 
@@ -1079,7 +1222,6 @@ namespace CinemaProject
             }
         }
 
-
         /// <summary>
         /// 
         /// </summary>
@@ -1174,7 +1316,6 @@ namespace CinemaProject
             }
         }
 
-
         /// <summary>
         /// Gets all the active movies that have not been linked to a distributor.
         /// </summary>
@@ -1214,7 +1355,6 @@ namespace CinemaProject
             }
         }
 
-
         /// <summary>
         /// Resets all the movie detail fieds.
         /// </summary>
@@ -1244,7 +1384,7 @@ namespace CinemaProject
 
             Worksheet.Cells[1, 1] = "Distributor Name:";
             Worksheet.Cells[1, 2] = distributor;
-            
+
             Worksheet.Cells[2, 1] = "Movie Name";
             Worksheet.Cells[2, 2] = "Number of Seats";
             Worksheet.Cells[2, 3] = "Archived";
@@ -1255,18 +1395,18 @@ namespace CinemaProject
                 Worksheet.Cells[i + 3, 2] = seatsList[i];
                 Worksheet.Cells[i + 3, 3] = archivedList[i];
             }
-            
-            Workbook.SaveAs(path, 
-                            Type.Missing, 
-                            Type.Missing, 
-                            Type.Missing, 
-                            Type.Missing, 
-                            Type.Missing, 
-                            Excel.XlSaveAsAccessMode.xlNoChange, 
-                            Type.Missing, 
-                            Type.Missing, 
-                            Type.Missing, 
-                            Type.Missing, 
+
+            Workbook.SaveAs(path,
+                            Type.Missing,
+                            Type.Missing,
+                            Type.Missing,
+                            Type.Missing,
+                            Type.Missing,
+                            Excel.XlSaveAsAccessMode.xlNoChange,
+                            Type.Missing,
+                            Type.Missing,
+                            Type.Missing,
+                            Type.Missing,
                             Type.Missing);
             Workbook.Close();
             MessageBox.Show("File saved under " + path);
@@ -1278,15 +1418,6 @@ namespace CinemaProject
 
         private void ScheduleMovies(DateTime fromDate, DateTime toDate)
         {
-            foreach (ScreenDetails screen in ScreenList)
-            {
-                //string str = "ScreenID:  " + screen.ScreenID + Environment.NewLine +
-                //             "ScreenNum: " + screen.ScreenNum + Environment.NewLine +
-                //             "Seats:     " + screen.Seats;
-
-                //MessageBox.Show(str);
-            }
-
             try
             {
                 // Mainstream     = 0
@@ -1436,6 +1567,7 @@ namespace CinemaProject
                                 MovieName = movie.MovieName,
                                 Date = dateIterator.ToString("yyyy-MM-dd"),
                                 ScreenNum = screen.ScreenNum,
+                                Seats = screen.Seats,
                                 ScreeningsList = new List<string>()
                             };
 
@@ -1462,7 +1594,80 @@ namespace CinemaProject
 
                         } while ((dateIterator = dateIterator.AddDays(1).Date) <= toDate);
                     }
-                    
+
+                    dataMovieSchedule.DataSource = schedule;
+                    dataMovieSchedule.Visible = true;
+
+                }
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error:  " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void ViewSchedule(DateTime fromDate, DateTime toDate)
+        {
+            try
+            {
+                //Create new connection.
+                using (SqlConnection cn = new SqlConnection(connectionString))
+                {
+                    //If the connection is closed, open it.
+                    if (cn.State == ConnectionState.Closed) cn.Open();
+
+                    List<MovieScreeningSchedule> schedule = new List<MovieScreeningSchedule>();
+
+                    using (SqlCommand cmd = new SqlCommand("GetMovieScreenings", cn))
+                    {
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        cmd.Parameters.Add("@StartScreen", SqlDbType.DateTime).Value = fromDate.Date;
+                        cmd.Parameters.Add("@EndScreen", SqlDbType.DateTime).Value = toDate.Date.AddDays(1);
+
+                        using (SqlDataReader dr = cmd.ExecuteReader())
+                        {
+                            while (dr.Read())
+                            {
+                                string movieName = dr.GetString(dr.GetOrdinal("Name"));
+                                int screenNum = dr.GetInt32(dr.GetOrdinal("ScreenNum"));
+                                int seats = dr.GetInt32(dr.GetOrdinal("Seats"));
+                                DateTime startScreen = dr.GetDateTime(dr.GetOrdinal("StartScreen"));
+                                DateTime endScreen = dr.GetDateTime(dr.GetOrdinal("EndScreen"));
+
+                                MovieScreeningSchedule daySchedule = new MovieScreeningSchedule()
+                                {
+                                    MovieName = movieName,
+                                    Date = startScreen.ToString("yyyy-MM-dd"),
+                                    ScreenNum = screenNum,
+                                    Seats = seats,
+                                    ScreeningsList = new List<string>()
+                                };
+
+                                bool isNewRecord = true;
+
+                                // If the current record already exist, add the time to it.
+                                foreach (MovieScreeningSchedule mss in schedule)
+                                {
+                                    if ((mss.MovieName == daySchedule.MovieName) &&
+                                        (mss.ScreenNum == daySchedule.ScreenNum) &&
+                                        (mss.Date == daySchedule.Date))
+                                    {
+                                        mss.ScreeningsList.Add(String.Format("{0:HH:mm} - {1:HH:mm}", startScreen, endScreen));
+                                        isNewRecord = false;
+                                        break;
+                                    }
+                                }
+
+                                if (isNewRecord)
+                                {
+                                    daySchedule.ScreeningsList.Add(String.Format("{0:HH:mm} - {1:HH:mm}", startScreen, endScreen));
+                                    schedule.Add(daySchedule);
+                                }
+                            }
+                        }
+                    }
+
                     dataMovieSchedule.DataSource = schedule;
                     dataMovieSchedule.Visible = true;
 

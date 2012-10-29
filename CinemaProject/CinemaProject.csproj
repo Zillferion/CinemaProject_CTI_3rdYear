@@ -57,6 +57,7 @@
     <Compile Include="Classes\DistributorDetails.cs" />
     <Compile Include="Classes\MovieScreeningSchedule.cs" />
     <Compile Include="Classes\ScreenDetails.cs" />
+    <Compile Include="Classes\SessionDetails.cs" />
     <Compile Include="Login.cs">
       <SubType>Form</SubType>
     </Compile>

@@ -1,0 +1,10 @@
+C:\Users\deathknight\Documents\GIT_Projects\CinemaProject\CinemaProject\bin\Release\CinemaProject.exe
+C:\Users\deathknight\Documents\GIT_Projects\CinemaProject\CinemaProject\bin\Release\CinemaProject.pdb
+C:\Users\deathknight\Documents\GIT_Projects\CinemaProject\CinemaProject\obj\x86\Release\ResolveAssemblyReference.cache
+C:\Users\deathknight\Documents\GIT_Projects\CinemaProject\CinemaProject\obj\x86\Release\CinemaProject.Login.resources
+C:\Users\deathknight\Documents\GIT_Projects\CinemaProject\CinemaProject\obj\x86\Release\CinemaProject.MainGUI.resources
+C:\Users\deathknight\Documents\GIT_Projects\CinemaProject\CinemaProject\obj\x86\Release\CinemaProject.Properties.Resources.resources
+C:\Users\deathknight\Documents\GIT_Projects\CinemaProject\CinemaProject\obj\x86\Release\GenerateResource.read.1.tlog
+C:\Users\deathknight\Documents\GIT_Projects\CinemaProject\CinemaProject\obj\x86\Release\GenerateResource.write.1.tlog
+C:\Users\deathknight\Documents\GIT_Projects\CinemaProject\CinemaProject\obj\x86\Release\CinemaProject.exe
+C:\Users\deathknight\Documents\GIT_Projects\CinemaProject\CinemaProject\obj\x86\Release\CinemaProject.pdb

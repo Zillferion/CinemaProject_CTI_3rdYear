@@ -146,6 +146,7 @@
             this.btnScheduleMovies = new System.Windows.Forms.Button();
             this.shapeContainer2 = new Microsoft.VisualBasic.PowerPacks.ShapeContainer();
             this.lineShape2 = new Microsoft.VisualBasic.PowerPacks.LineShape();
+            this.btnViewSchedule = new System.Windows.Forms.Button();
             this.tbcUserRoles.SuspendLayout();
             this.tbBookings.SuspendLayout();
             this.tbUserSettings.SuspendLayout();
@@ -212,7 +213,7 @@
             // btnBook
             // 
             this.btnBook.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnBook.Location = new System.Drawing.Point(457, 61);
+            this.btnBook.Location = new System.Drawing.Point(487, 61);
             this.btnBook.Name = "btnBook";
             this.btnBook.Size = new System.Drawing.Size(97, 23);
             this.btnBook.TabIndex = 7;
@@ -223,9 +224,9 @@
             // txtNumOfTickets
             // 
             this.txtNumOfTickets.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtNumOfTickets.Location = new System.Drawing.Point(421, 35);
+            this.txtNumOfTickets.Location = new System.Drawing.Point(377, 35);
             this.txtNumOfTickets.Name = "txtNumOfTickets";
-            this.txtNumOfTickets.Size = new System.Drawing.Size(133, 20);
+            this.txtNumOfTickets.Size = new System.Drawing.Size(207, 20);
             this.txtNumOfTickets.TabIndex = 5;
             // 
             // cbbSession
@@ -233,9 +234,9 @@
             this.cbbSession.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.cbbSession.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbbSession.FormattingEnabled = true;
-            this.cbbSession.Location = new System.Drawing.Point(421, 6);
+            this.cbbSession.Location = new System.Drawing.Point(377, 6);
             this.cbbSession.Name = "cbbSession";
-            this.cbbSession.Size = new System.Drawing.Size(133, 21);
+            this.cbbSession.Size = new System.Drawing.Size(207, 21);
             this.cbbSession.TabIndex = 3;
             this.cbbSession.SelectedIndexChanged += new System.EventHandler(this.cbbSession_SelectedIndexChanged);
             // 
@@ -245,7 +246,7 @@
                         | System.Windows.Forms.AnchorStyles.Right)));
             this.cbAttendanceSelectMovie.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbAttendanceSelectMovie.FormattingEnabled = true;
-            this.cbAttendanceSelectMovie.Location = new System.Drawing.Point(106, 6);
+            this.cbAttendanceSelectMovie.Location = new System.Drawing.Point(79, 6);
             this.cbAttendanceSelectMovie.Name = "cbAttendanceSelectMovie";
             this.cbAttendanceSelectMovie.Size = new System.Drawing.Size(192, 21);
             this.cbAttendanceSelectMovie.TabIndex = 1;
@@ -255,7 +256,7 @@
             // 
             this.lblNumberOfTickets.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lblNumberOfTickets.AutoSize = true;
-            this.lblNumberOfTickets.Location = new System.Drawing.Point(321, 38);
+            this.lblNumberOfTickets.Location = new System.Drawing.Point(277, 38);
             this.lblNumberOfTickets.Name = "lblNumberOfTickets";
             this.lblNumberOfTickets.Size = new System.Drawing.Size(94, 13);
             this.lblNumberOfTickets.TabIndex = 4;
@@ -265,7 +266,7 @@
             // 
             this.lbl.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lbl.AutoSize = true;
-            this.lbl.Location = new System.Drawing.Point(321, 9);
+            this.lbl.Location = new System.Drawing.Point(277, 9);
             this.lbl.Name = "lbl";
             this.lbl.Size = new System.Drawing.Size(44, 13);
             this.lbl.TabIndex = 2;
@@ -1370,6 +1371,7 @@
             this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
                         | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox2.Controls.Add(this.btnViewSchedule);
             this.groupBox2.Controls.Add(this.dataMovieSchedule);
             this.groupBox2.Controls.Add(this.label2);
             this.groupBox2.Controls.Add(this.label1);
@@ -1418,16 +1420,20 @@
             // 
             // dateScheduleTo
             // 
+            this.dateScheduleTo.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
             this.dateScheduleTo.Location = new System.Drawing.Point(68, 45);
             this.dateScheduleTo.Name = "dateScheduleTo";
-            this.dateScheduleTo.Size = new System.Drawing.Size(217, 20);
+            this.dateScheduleTo.Size = new System.Drawing.Size(260, 20);
             this.dateScheduleTo.TabIndex = 2;
             // 
             // dateScheduleFrom
             // 
+            this.dateScheduleFrom.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
             this.dateScheduleFrom.Location = new System.Drawing.Point(68, 19);
             this.dateScheduleFrom.Name = "dateScheduleFrom";
-            this.dateScheduleFrom.Size = new System.Drawing.Size(217, 20);
+            this.dateScheduleFrom.Size = new System.Drawing.Size(260, 20);
             this.dateScheduleFrom.TabIndex = 2;
             // 
             // btnScheduleMovies
@@ -1461,6 +1467,17 @@
             this.lineShape2.X2 = 568;
             this.lineShape2.Y1 = 62;
             this.lineShape2.Y2 = 62;
+            // 
+            // btnViewSchedule
+            // 
+            this.btnViewSchedule.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnViewSchedule.Location = new System.Drawing.Point(334, 20);
+            this.btnViewSchedule.Name = "btnViewSchedule";
+            this.btnViewSchedule.Size = new System.Drawing.Size(117, 45);
+            this.btnViewSchedule.TabIndex = 6;
+            this.btnViewSchedule.Text = "View Schedule";
+            this.btnViewSchedule.UseVisualStyleBackColor = true;
+            this.btnViewSchedule.Click += new System.EventHandler(this.btnViewSchedule_Click);
             // 
             // MainGUI
             // 
@@ -1619,6 +1636,7 @@
         private Microsoft.VisualBasic.PowerPacks.LineShape lineShape2;
         private System.Windows.Forms.DataGridView dataMovieSchedule;
         private System.Windows.Forms.Button btnGenerateReport;
+        private System.Windows.Forms.Button btnViewSchedule;
     }
 }
 

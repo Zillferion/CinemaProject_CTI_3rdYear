@@ -1,0 +1,8 @@
+C:\Users\deathknight\Documents\GIT_Projects\CinemaProject\CinemaDB\sql\release\CinemaDB_Script.PreDeployment.sql
+C:\Users\deathknight\Documents\GIT_Projects\CinemaProject\CinemaDB\sql\release\CinemaDB_Script.PostDeployment.sql
+C:\Users\deathknight\Documents\GIT_Projects\CinemaProject\CinemaDB\sql\release\CinemaDB_Database.sqlsettings
+C:\Users\deathknight\Documents\GIT_Projects\CinemaProject\CinemaDB\sql\release\CinemaDB_Database.sqldeployment
+C:\Users\deathknight\Documents\GIT_Projects\CinemaProject\CinemaDB\sql\release\CinemaDB_Database.sqlcmdvars
+C:\Users\deathknight\Documents\GIT_Projects\CinemaProject\CinemaDB\sql\release\CinemaDB.deploymanifest
+C:\Users\deathknight\Documents\GIT_Projects\CinemaProject\CinemaDB\sql\release\CinemaDB.dbschema
+C:\Users\deathknight\Documents\GIT_Projects\CinemaProject\CinemaDB\obj\Release\CinemaDB.dbschema

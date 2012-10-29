@@ -1727,6 +1727,114 @@ RETURN 0]]></Value>
 				<Property Name="HeaderContents" Value="CREATE PROCEDURE [dbo].[GetMovieList]&#xD;&#xA;AS" />
 			</Annotation>
 		</Element>
+		<Element Type="ISql100Procedure" Name="[dbo].[GetMovieScreenings]">
+			<Property Name="IsAnsiNullsOn" Value="True" />
+			<Property Name="BodyScript">
+				<Value><![CDATA[
+	IF @StartScreen = NULL OR
+	   @EndScreen = NULL
+	BEGIN
+		RAISERROR('Invalid parameter(s).', 16, 16)
+	END
+	ELSE
+	BEGIN
+		SELECT tblMovies.Name, tblScreen.ScreenId, tblScreen.ScreenNum, tblScreen.Seats, tlnkScreenMovie.StartScreen, tlnkScreenMovie.EndScreen 
+		FROM tblMovies, tblScreen, tlnkScreenMovie
+		WHERE tlnkScreenMovie.MovieId = tblMovies.MovieId AND
+			  tlnkScreenMovie.ScreenId = tblScreen.ScreenId AND
+			  tlnkScreenMovie.StartScreen >= @StartScreen AND
+			  tlnkScreenMovie.EndScreen <= @EndScreen
+		ORDER BY tlnkScreenMovie.StartScreen, tblScreen.ScreenNum, tblMovies.Name
+	END]]></Value>
+			</Property>
+			<Relationship Name="BodyDependencies">
+				<Entry>
+					<References Name="[dbo].[GetMovieScreenings].[@StartScreen]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[GetMovieScreenings].[@EndScreen]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[tblMovies]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[tblScreen]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[tlnkScreenMovie]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[tblMovies].[Name]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[tblScreen].[ScreenId]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[tblScreen].[ScreenNum]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[tblScreen].[Seats]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[tlnkScreenMovie].[StartScreen]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[tlnkScreenMovie].[EndScreen]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[tlnkScreenMovie].[MovieId]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[tblMovies].[MovieId]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[tlnkScreenMovie].[ScreenId]" />
+				</Entry>
+			</Relationship>
+			<Relationship Name="Owner">
+				<Entry>
+					<References ExternalSource="BuiltIns" Name="[dbo]" />
+				</Entry>
+			</Relationship>
+			<Relationship Name="Parameters">
+				<Entry>
+					<Element Type="ISql100SubroutineParameter" Name="[dbo].[GetMovieScreenings].[@StartScreen]">
+						<Relationship Name="Type">
+							<Entry>
+								<Element Type="ISql90TypeSpecifier">
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[datetime]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="ISql100SubroutineParameter" Name="[dbo].[GetMovieScreenings].[@EndScreen]">
+						<Relationship Name="Type">
+							<Entry>
+								<Element Type="ISql90TypeSpecifier">
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[datetime]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+			</Relationship>
+			<Annotation Type="SysCommentsObjectAnnotation">
+				<Property Name="Length" Value="703" />
+				<Property Name="StartLine" Value="1" />
+				<Property Name="StartColumn" Value="1" />
+				<Property Name="HeaderContents" Value="CREATE PROCEDURE [dbo].[GetMovieScreenings]&#xD;&#xA;&#x9;@StartScreen DATETIME, &#xD;&#xA;&#x9;@EndScreen DATETIME&#xD;&#xA;AS" />
+			</Annotation>
+		</Element>
 		<Element Type="ISql100Procedure" Name="[dbo].[GetScreenList]">
 			<Property Name="IsAnsiNullsOn" Value="True" />
 			<Property Name="BodyScript">
@@ -2218,6 +2326,152 @@ RETURN 0]]></Value>
 				<Property Name="StartLine" Value="1" />
 				<Property Name="StartColumn" Value="1" />
 				<Property Name="HeaderContents" Value="CREATE PROCEDURE [dbo].[ScheduleMovieScreening]&#xD;&#xA;&#x9;@MovieId UNIQUEIDENTIFIER,&#xD;&#xA;&#x9;@ScreenId UNIQUEIDENTIFIER,&#xD;&#xA;&#x9;@StartScreen DATETIME, &#xD;&#xA;&#x9;@EndScreen DATETIME&#xD;&#xA;AS" />
+			</Annotation>
+		</Element>
+		<Element Type="ISql100Procedure" Name="[dbo].[SetBookingNum]">
+			<Property Name="IsAnsiNullsOn" Value="True" />
+			<Property Name="BodyScript">
+				<Value><![CDATA[
+	IF @MovieId = NULL OR 
+	   @ScreenId = NULL OR
+	   @StartScreen = NULL OR
+	   @EndScreen = NULL
+	BEGIN
+		RAISERROR('Invalid parameter(s).', 16, 16)
+	END
+	ELSE
+	BEGIN
+		UPDATE tlnkScreenMovie 
+		SET BookedNum = @BookedNum 
+		WHERE MovieId = @MovieId AND
+		      ScreenId = @ScreenId AND 
+			  StartScreen = @StartScreen AND 
+			  EndScreen = @EndScreen
+	END
+RETURN 0]]></Value>
+			</Property>
+			<Relationship Name="BodyDependencies">
+				<Entry>
+					<References Name="[dbo].[SetBookingNum].[@MovieId]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[SetBookingNum].[@ScreenId]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[SetBookingNum].[@StartScreen]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[SetBookingNum].[@EndScreen]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[tlnkScreenMovie]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[tlnkScreenMovie].[BookedNum]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[SetBookingNum].[@BookedNum]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[tlnkScreenMovie].[MovieId]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[tlnkScreenMovie].[ScreenId]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[tlnkScreenMovie].[StartScreen]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[tlnkScreenMovie].[EndScreen]" />
+				</Entry>
+			</Relationship>
+			<Relationship Name="Owner">
+				<Entry>
+					<References ExternalSource="BuiltIns" Name="[dbo]" />
+				</Entry>
+			</Relationship>
+			<Relationship Name="Parameters">
+				<Entry>
+					<Element Type="ISql100SubroutineParameter" Name="[dbo].[SetBookingNum].[@MovieId]">
+						<Relationship Name="Type">
+							<Entry>
+								<Element Type="ISql90TypeSpecifier">
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[uniqueidentifier]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="ISql100SubroutineParameter" Name="[dbo].[SetBookingNum].[@ScreenId]">
+						<Relationship Name="Type">
+							<Entry>
+								<Element Type="ISql90TypeSpecifier">
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[uniqueidentifier]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="ISql100SubroutineParameter" Name="[dbo].[SetBookingNum].[@StartScreen]">
+						<Relationship Name="Type">
+							<Entry>
+								<Element Type="ISql90TypeSpecifier">
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[datetime]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="ISql100SubroutineParameter" Name="[dbo].[SetBookingNum].[@EndScreen]">
+						<Relationship Name="Type">
+							<Entry>
+								<Element Type="ISql90TypeSpecifier">
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[datetime]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="ISql100SubroutineParameter" Name="[dbo].[SetBookingNum].[@BookedNum]">
+						<Relationship Name="Type">
+							<Entry>
+								<Element Type="ISql90TypeSpecifier">
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[int]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+			</Relationship>
+			<Annotation Type="SysCommentsObjectAnnotation">
+				<Property Name="Length" Value="551" />
+				<Property Name="StartLine" Value="1" />
+				<Property Name="StartColumn" Value="1" />
+				<Property Name="HeaderContents" Value="CREATE PROCEDURE [dbo].[SetBookingNum]&#xD;&#xA;&#x9;@MovieId UNIQUEIDENTIFIER,&#xD;&#xA;&#x9;@ScreenId UNIQUEIDENTIFIER,&#xD;&#xA;&#x9;@StartScreen DATETIME, &#xD;&#xA;&#x9;@EndScreen DATETIME,&#xD;&#xA;&#x9;@BookedNum INT&#xD;&#xA;AS" />
 			</Annotation>
 		</Element>
 		<Element Type="ISql100Table" Name="[dbo].[tblDistributors]">
